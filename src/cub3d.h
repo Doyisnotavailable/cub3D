@@ -1,26 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
+/*   Updated: 2023/12/19 19:10:53 by mlumibao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include "../inc/libft/libft.h"
-#include "../inc/printf/ft_printf.h"
-#include <stdlib.h>
-#include <fcntl.h>
+# include "../inc/libft/libft.h"
+# include "../inc/printf/ft_printf.h"
+# include <stdlib.h>
+# include <fcntl.h>
 
-#define WIDTH       1080
-#define HEIGHT      720
+# define WIDTH       1080
+# define HEIGHT      720
 
 typedef struct s_img
 {
-    void		*img;
+	void		*img;
 	int			x;
 	int			y;
-} t_img;
+}	t_img;
 
 typedef struct s_map
 {
-    char **map;
-    
-}   t_map;
+	char		**map;
+}	t_map;
 typedef struct s_data
 {
     //map and mlx pointers;
@@ -34,19 +45,19 @@ typedef struct s_data
     t_img            *W_IMG;
     t_img            *S_IMG;
 
-} t_data;
+}	t_data;
 
 // init_utils.c
-t_img   	xpm_img(void *mlx, char *path, t_game *game);
+t_img		xpm_img(void *mlx, char *path, t_game *game);
 
 // init_game.c
-void        *img_ptr(t_data *game);
-void        init_errthang(t_data *game);
-void        init_mlx_ptr(t_data *game);
+void		*img_ptr(t_data *game);
+void		init_errthang(t_data *game);
+void		init_mlx_ptr(t_data *game);
 
 // free.c
-void        destroy_img(t_data *game);
+void		destroy_img(t_data *game);
 
 // check.c
-void    check(char **av, t_data *game);
-# endif
+void		check(char **av, t_data *game);
+#endif
