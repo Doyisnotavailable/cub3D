@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:14:06 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/19 19:14:08 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/19 21:14:20 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,22 @@ t_img	xpm_img(void *mlx, char *path, t_game *game)
 		free(game->mlx);
 	}
 	return (model);
+}
+
+int	ft_space(char c)
+{
+	if (c == ' ' || c == '\t')
+		return (1);
+	return (0);
+}
+
+int	ft_space_line(char *str)
+{
+	while (*str)
+	{
+		if (ft_isalnum(*str))
+			return (1);
+		*str++;
+	}
+	return (0);
 }
