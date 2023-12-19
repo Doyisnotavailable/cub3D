@@ -1,7 +1,7 @@
 NAME = cub3D
 
 SRC_DIR = ./src
-SRC = main.c
+SRC = main.c check.c free.c init_game.c init_utils.c
 
 START = make -C ./inc/printf
 PRINTF = -L./inc/printf -lftprintf
