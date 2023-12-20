@@ -6,12 +6,12 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:13:24 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/19 19:14:01 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/20 20:58:19 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+/* 
 void	init_errthang(t_data *game)
 {
 	init_mlx_ptr(game);
@@ -21,10 +21,10 @@ void	init_errthang(t_data *game)
 
 void	*img_ptr(t_data *game)
 {
-	data->N_IMG = xpm_img(game->mlx, "PATH OF THE XPM FILE", game);
-	data->E_IMG = xpm_img(game->mlx, "PATH OF THE XPM FILE", game);
-	data->W_IMG = xpm_img(game->mlx, "PATH OF THE XPM FILE", game);
-	data->S_IMG = xpm_img(game->mlx, "PATH OF THE XPM FILE", game);
+	game->elem->n_img = xpm_img(game->mlx, game->n_path, game);
+	game->e_img = xpm_img(game->mlx, game->e_path, game);
+	game->w_img = xpm_img(game->mlx, game->w_path, game);
+	game->s_img = xpm_img(game->mlx, game->s_path, game);
 }
 
 void	init_mlx_ptr(t_data *game)
@@ -48,3 +48,4 @@ void	init_mlx_ptr(t_data *game)
 		exit(1);
 	}
 }
+ */

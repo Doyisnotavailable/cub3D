@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:14:13 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/19 19:16:13 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/20 20:57:10 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 int	main(int ac, char **av)
 {
-	t_data		game;
+	t_data		*game;
 
 	game = NULL;
 	if (ac != 2)
-		return (NULL);
+		return (0);
 	else
-	{
-		check(av);
+	{	
 		game = malloc(sizeof(t_data));
+		check(av, game);
 		if (!game)
-			return (NULL);
+			return (0);
+		check_map_content(av, game);
 	}
 }

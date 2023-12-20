@@ -6,13 +6,13 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:14:06 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/19 21:14:20 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/20 20:58:54 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_img	xpm_img(void *mlx, char *path, t_game *game)
+/* t_img	xpm_img(void *mlx, char *path, t_data *game)
 {
 	t_img	model;
 
@@ -27,7 +27,7 @@ t_img	xpm_img(void *mlx, char *path, t_game *game)
 	}
 	return (model);
 }
-
+ */
 int	ft_space(char c)
 {
 	if (c == ' ' || c == '\t')
@@ -41,7 +41,7 @@ int	ft_space_line(char *str)
 	{
 		if (ft_isalnum(*str))
 			return (1);
-		*str++;
+		str++;
 	}
 	return (0);
 }

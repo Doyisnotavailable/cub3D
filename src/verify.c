@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:16:54 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/19 21:29:08 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/20 21:08:35 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static char	**get_whole_map(char **av)
 		free(line);
 		line = get_next_line(fd);
 	}
-	*ret = '\0';
+	*ret = 0;
 	return (ret);
 }
 
@@ -78,9 +78,56 @@ static char	**get_element_line(char **str)
 	return (ret);
 }
 
-static void	check_element(char **str)
+char	**get_element(char *elem, t_data *game, int *type)
 {
-	
+	char	**tmp;
+
+	tmp = ft_split_tab(elem, ' ');
+	if (count_array(tmp) != 2)
+		return (free_array(tmp), NULL);
+	if (ft_strncmp(tmp[0], "NO", ft_strlen(tmp[0])) == 0)
+		*type = NO;
+	else if (ft_strncmp(tmp[0], "EA", ft_strlen(tmp[0])) == 0)
+		*type = EA;
+	else if (ft_strncmp(tmp[0], "WE", ft_strlen(tmp[0])) == 0)
+		*type = WE;
+	else if (ft_strncmp(tmp[0], "SO", ft_strlen(tmp[0])) == 0)
+		*type = SO;
+	else if (ft_strncmp(tmp[0], "F", ft_strlen(tmp[0])) == 0)
+		*type = F;
+	else if (ft_strncmp(tmp[0], "C", ft_strlen(tmp[0])) == 0)
+		*type = C;
+	else
+		return (free_array(tmp), NULL);
+	return (tmp);
+}
+
+static void	get_elements(char **str, t_data *game)
+{
+	int		i;
+	int		type;
+	char	**tmp;
+
+	i = -1;
+	type = 0;
+	while (str[++i])
+	{
+		tmp = get_element(str[i], game, &i);
+		if (!tmp)
+			continue ;
+		if (type == NO)
+			game->tmp.n_path = copy_and_free(str[i]);
+		else if (type == EA)
+			game->tmp.e_path = copy_and_free(str[i]);
+		else if (type == WE)
+			game->tmp.w_path = copy_and_free(str[i]);
+		else if (type == SO)
+			game->tmp.s_path = copy_and_free(str[i]);
+		else if (type == F)
+			game->tmp.f = copy_and_free(str[i]);
+		else if (type == C)
+			game->tmp.c = copy_and_free(str[i]);
+	}
 }
 
 void	check_map_content(char **av, t_data *game)
@@ -88,6 +135,10 @@ void	check_map_content(char **av, t_data *game)
 	char		**tmp;
 	char		**element;
 
-	tmp = get_whole_map(av);
-	element = get_element_line(tmp);
+	tmp = get_whole_map(av); // the enter file
+	element = get_element_line(tmp); // just 6 lines for checking elements
+	get_elements(element);
+	check_elements(game->tmp);
 }
+
++
