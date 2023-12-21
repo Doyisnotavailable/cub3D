@@ -1,3 +1,3 @@
 #!/bin/bash
 
-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./cub3D map/42.cub
+valgrind --leak-check=full ./cub3D map/42.cub

@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:12:47 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/21 21:07:23 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/21 22:18:56 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	free_array(char **str)
 	int	i;
 
 	i = 0;
-	if (!str)
+	if (str == NULL)
 		return ;
 	while (str[i] != NULL)
 	{
