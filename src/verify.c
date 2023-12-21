@@ -6,13 +6,13 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:16:54 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/21 17:38:03 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/21 21:10:08 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	file_line_count(char **av)
+static int	file_line_count(char **av)
 {
 	int		fd;
 	char	*line;
@@ -20,16 +20,13 @@ int	file_line_count(char **av)
 
 	count = 0;
 	fd = open(av[1], O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
+	while (1)
 	{
-		if (ft_strchr(line, '\n'))
-		{
-			ft_printf("%s\ncount = %d\n", line);
-			count++;
-		}
-		free(line);
 		line = get_next_line(fd);
+		if (!line)
+			break ;
+		count++;
+		free(line);
 	}
 	close(fd);
 	return (count);
@@ -40,21 +37,22 @@ static char	**get_whole_map(char **av)
 	int		fd;
 	char	**ret;
 	char	*line;
+	int		i;
 
+	i = 0;
 	ret = (char **)malloc(sizeof(char *) * (1 + file_line_count(av)));
-	exit(1);
 	if (!ret)
 		return (NULL);
 	fd = open(av[1], O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
+	while (1)
 	{
-		*ret++ = line;
-		free(line);
 		line = get_next_line(fd);
+		if (!line)
+			break ;
+		ret[i++] = ft_strdup(line);
+		free(line);
 	}
-	*ret = NULL;
-	print_array(ret);
+	ret[i] = NULL;
 	close(fd);
 	return (ret);
 }
@@ -65,23 +63,18 @@ static char	**get_element_line(char **str)
 	char	**ret;
 	int		len;
 
-	ret = malloc(sizeof(char *) * 7);
+	ret = (char **)malloc(sizeof(char *) * 7);
 	len = 0;
 	i = -1;
-	while (str[++i])
+	while (str[++i] != NULL)
 	{
-		if (ft_space_line(str[i]) || str[i][0] == '\n')
-			i++;
-		else
-		{
-			*ret++ = ft_strdup(str[i]);
-			len++;
-			i++;
-		}
+		if (ft_space_line(str[i]))
+			continue ;
+		ret[len++] = ft_strdup(str[i]);
 		if (len == 6)
 			break ;
 	}
-	*ret = 0;
+	ret[len + 1] = NULL;
 	return (ret);
 }
 
@@ -120,7 +113,7 @@ static void	get_elements(char **str, t_data *game)
 	type = 0;
 	while (str[++i])
 	{
-		tmp = get_element(str[i], game, &i);
+		tmp = get_element(str[i], game, &type);
 		if (!tmp)
 			continue ;
 		if (type == NO)
@@ -143,11 +136,18 @@ void	check_map_content(char **av, t_data *game)
 	char		**tmp;
 	char		**element;
 
-	tmp = get_whole_map(av); // the enter file
-	// print_array(tmp);
-	// free_array(tmp);
-	exit(1);
-	element = get_element_line(tmp); // just 6 lines for checking elements
+	tmp = get_whole_map(av);
+	if (count_array(tmp) < 6)
+	{
+		printf("Exit on check_map_content count array\n");
+		free_array(tmp);
+		exit(1);
+	}
+	element = get_element_line(tmp);
 	get_elements(element, game);
+	print_tmp(game);
+	free_tmp(game);
+	exit(1);
 	check_elements(game);
 }
+

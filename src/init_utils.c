@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:14:06 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/20 20:58:54 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/21 20:41:34 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,15 @@ int	ft_space(char c)
 
 int	ft_space_line(char *str)
 {
-	while (*str)
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i] != '\n')
 	{
-		if (ft_isalnum(*str))
-			return (1);
-		str++;
+		while (ft_space(str[i]) && (str[i] != '\n'))
+			i++;
+		if (!ft_space(str[i]) && str[i] != '\n')
+			return (0);
 	}
-	return (0);
+	return (1);
 }

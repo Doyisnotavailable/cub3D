@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/21 16:19:40 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/21 21:07:30 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../inc/printf/ft_printf.h"
 # include <stdlib.h>
 # include <fcntl.h>
+# include <stdio.h> //to remove
 
 # define WIDTH			1080
 # define HEIGHT			720
@@ -85,7 +86,7 @@ void		init_mlx_ptr(t_data *game);
 
 // free.c
 void		destroy_img(t_data *game);
-void	free_array(char **str);
+void		free_array(char **str);
 
 // check.c
 void		check(char **av, t_data *game);
@@ -104,5 +105,7 @@ void		check_elements(t_data *game);
 
 // utils for testing testing_utils.c
 void	print_array(char **str);
+void	print_tmp(t_data *game);
+void	free_tmp(t_data *game);
 
 #endif

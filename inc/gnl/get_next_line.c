@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 21:04:15 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/21 16:38:30 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/21 20:15:22 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ char	*get_next_line(int fd)
 	static char	*buf;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
+		return (NULL);
 	buf = rngline(fd, buf);
 	if (!buf)
 		return (NULL);

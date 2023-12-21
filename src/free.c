@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:12:47 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/21 17:22:24 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/21 21:07:23 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,26 @@ void	free_array(char **str)
 	i = 0;
 	if (!str)
 		return ;
-	while (str[i])
+	while (str[i] != NULL)
 	{
-		if (!str[i])
-			break ;
 		free(str[i]);
-		str[i] = NULL;
 		i++;
 	}
 	free(str);
+}
+
+void	free_tmp(t_data *game)
+{
+	if (game->tmp.n_path)
+		free(game->tmp.n_path);
+	if (game->tmp.e_path)
+		free(game->tmp.e_path);
+	if (game->tmp.w_path)
+		free(game->tmp.w_path);
+	if (game->tmp.s_path)
+		free(game->tmp.s_path);
+	if (game->tmp.f)
+		free(game->tmp.f);
+	if (game->tmp.e_path)
+		free(game->tmp.c);
 }

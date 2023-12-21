@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   check_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 19:41:19 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/10/01 14:40:47 by mlumibao         ###   ########.fr       */
+/*   Created: 2023/12/20 20:28:26 by mlumibao          #+#    #+#             */
+/*   Updated: 2023/12/21 21:07:54 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "cub3d.h"
 
-# include <stdarg.h>
-# include "./../libft/libft.h"
-# include "./../gnl/get_next_line.h"
-
-int	ft_printf(const char *format, ...);
-int	print_char(char c);
-int	print_str(char *str);
-int	print_int(int num);
-int	print_ptr(unsigned long adr);
-int	print_hex(unsigned int num, char c);
-int	print_uns(unsigned int num);
-
-#endif
+void	check_elements(t_data *game)
+{
+	if (!game->tmp.n_path || !game->tmp.e_path
+		|| !game->tmp.w_path || !game->tmp.s_path
+		|| !game->tmp.f || !game->tmp.c)
+		free_tmp(game);
+}

@@ -19,7 +19,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	head = NULL;
 	while (lst)
-	{	
+	{
 		tmp = ft_lstnew((*f)(lst -> content));
 		if (!tmp)
 		{
