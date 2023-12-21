@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/20 21:05:56 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/21 16:19:40 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ typedef struct s_data
 	t_img			e_img;
 	t_img			w_img;
 	t_img			s_img;
-	t_rgb			*floor;
-	t_rgb			*sky;
+	t_rgb			floor;
+	t_rgb			sky;
 
 }	t_data;
 
@@ -100,5 +100,9 @@ int			count_array(char **s);
 
 // check_elements.c
 void		check_elements(t_data *game);
+
+
+// utils for testing testing_utils.c
+void	print_array(char **str);
 
 #endif

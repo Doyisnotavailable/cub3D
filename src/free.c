@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:12:47 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/20 20:57:55 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:22:24 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,18 @@ void	free_mlx_ptr(t_data *game)
 
 void	free_array(char **str)
 {
-	int		i;
+	int	i;
 
-	i = -1;
-	while (str[++i])
+	i = 0;
+	if (!str)
+		return ;
+	while (str[i])
+	{
+		if (!str[i])
+			break ;
 		free(str[i]);
+		str[i] = NULL;
+		i++;
+	}
 	free(str);
 }

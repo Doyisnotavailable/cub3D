@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 21:01:59 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/08/24 00:32:59 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:27:49 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
+#  define BUFFER_SIZE 10000
 # endif
 
 # include <unistd.h>
