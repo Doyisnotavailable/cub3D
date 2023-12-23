@@ -27,3 +27,13 @@ void	print_tmp(t_data *game)
 	if (game->tmp.e_path)
 		printf("%s\n", game->tmp.c);
 }
+
+void	print_rgb(t_data *game)
+{
+	printf("floor r = %d\n", game->floor.r);
+	printf("floor g = %d\n", game->floor.g);
+	printf("floor b = %d\n", game->floor.b);
+	printf("sky r = %d\n", game->sky.r);
+	printf("sky g = %d\n", game->sky.g);
+	printf("sky b = %d\n", game->sky.b);
+}

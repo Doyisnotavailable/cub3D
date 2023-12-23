@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:14:06 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/22 16:15:30 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/23 20:38:08 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,14 @@ void	init_tmp(t_data *game)
 	game->tmp.e_path = NULL;
 	game->tmp.w_path = NULL;
 	game->tmp.s_path = NULL;
+}
+
+void	init_rgb(t_data *game)
+{
+	game->floor.r = -1;
+	game->floor.g = -1;
+	game->floor.b = -1;
+	game->sky.r = -1;
+	game->sky.g = -1;
+	game->sky.b = -1;
 }

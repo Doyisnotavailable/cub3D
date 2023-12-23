@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:11:02 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/22 17:23:53 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/23 20:35:59 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ void	check(char **av, t_data *game)
 	}
 	check_valid_map(av);
 	init_tmp(game);
+	init_rgb(game);
 	check_map_content(av, game);
 }

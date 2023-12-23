@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:16:54 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/23 19:39:38 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/23 21:10:50 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,9 @@ void	check_map_content(char **av, t_data *game)
 	}
 	get_elements(element, game); //Works until this part after this have to get the map verify the map. Then check if elements and map has values.
 	check_elements(game);
-	exit(1);
 	get_store_map(tmp, game);
+	print_tmp(game);
+	print_rgb(game);
+	print_array(game->map);
+	exit(1);
 }

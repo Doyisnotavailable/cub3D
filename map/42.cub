@@ -1,9 +1,9 @@
 WE ./path_to_the_west_texture
 NO ./path_to_the_north_texture
 SO ./path_to_the_south_texture
-EA ./path_asd
+EA ./asdasda
 
-F 220,100,0
+F 220,0,0
 C 225,30,0
 
 1111111111111111111111111

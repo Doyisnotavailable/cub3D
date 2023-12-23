@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/23 16:29:09 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/23 21:05:56 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h> //to remove
+# include <limits.h>
 
 # define WIDTH			1080
 # define HEIGHT			720
@@ -79,6 +80,7 @@ t_img		xpm_img(void *mlx, char *path, t_data *game);
 int			ft_space(char c);
 int			ft_space_line(char *str);
 void		init_tmp(t_data *game);
+void		init_rgb(t_data *game);
 
 // init_game.c
 void		*img_ptr(t_data *game);
@@ -102,13 +104,22 @@ int			count_array(char **s);
 
 // check_elements.c
 void		check_elements(t_data *game);
+void		store_to_rgb(t_data *game, char *str, int type);
+void		check_hex(t_data *game, char **tmp, int type);
 
 // scan_utils.c
 void		get_store_map(char **file, t_data *game);
+char		**scan_map(char **file);
+
+// element_utils.c
+int			check_comma(char *str);
+int			check_valid_char(char *str);
+long		ft_atol(char *str);
 
 // utils for testing testing_utils.c
 void		print_array(char **str);
 void		print_tmp(t_data *game);
 void		free_tmp(t_data *game);
+void		print_rgb(t_data *game);
 
 #endif
