@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/21 21:07:30 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/23 16:29:09 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_data
 t_img		xpm_img(void *mlx, char *path, t_data *game);
 int			ft_space(char c);
 int			ft_space_line(char *str);
+void		init_tmp(t_data *game);
 
 // init_game.c
 void		*img_ptr(t_data *game);
@@ -102,10 +103,12 @@ int			count_array(char **s);
 // check_elements.c
 void		check_elements(t_data *game);
 
+// scan_utils.c
+void		get_store_map(char **file, t_data *game);
 
 // utils for testing testing_utils.c
-void	print_array(char **str);
-void	print_tmp(t_data *game);
-void	free_tmp(t_data *game);
+void		print_array(char **str);
+void		print_tmp(t_data *game);
+void		free_tmp(t_data *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:16:54 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/21 22:28:33 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/23 19:39:38 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,11 @@ static char	**get_element_line(char **str)
 			break ;
 	}
 	ret[len] = NULL;
+	if (len < 6)
+	{
+		free_array(ret);
+		ret = NULL;
+	}
 	return (ret);
 }
 
@@ -111,7 +116,6 @@ static void	get_elements(char **str, t_data *game)
 
 	i = -1;
 	type = 0;
-	tmp = NULL;
 	while (str[++i])
 	{
 		tmp = get_element(str[i], game, &type);
@@ -129,32 +133,31 @@ static void	get_elements(char **str, t_data *game)
 			game->tmp.f = copy_and_free(tmp);
 		else if (type == C)
 			game->tmp.c = copy_and_free(tmp);
-		else
-			print_array(tmp);
 	}
+	free_array(str);
 }
 
+/* This function gets the file content and checks for element and the map */
 void	check_map_content(char **av, t_data *game)
 {
 	char		**tmp;
 	char		**element;
 
-	element = NULL;
-	tmp = NULL;
 	tmp = get_whole_map(av);
 	if (count_array(tmp) < 6)
 	{
-		printf("Exit on check_map_content count 	array\n");
+		ft_putstr_fd("Error\n Exit on check_map_content count array\n", 2);
 		free_array(tmp);
 		exit(1);
 	}
 	element = get_element_line(tmp);
-	get_elements(element, game);
-	free_array(element);
-	// print_tmp(game);
-	free_array(tmp);
-	free_tmp(game);
-	exit(1);
+	if (!element)
+	{
+		free_array(tmp);
+		exit (1);
+	}
+	get_elements(element, game); //Works until this part after this have to get the map verify the map. Then check if elements and map has values.
 	check_elements(game);
+	exit(1);
+	get_store_map(tmp, game);
 }
-

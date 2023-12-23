@@ -1,3 +1,4 @@
 #!/bin/bash
 
-valgrind --leak-check=full ./cub3D map/42.cub
+clear
+valgrind --leak-check=full --show-leak-kinds=all -s ./cub3D map/42.cub

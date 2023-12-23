@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:14:06 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/21 20:41:34 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/22 16:15:30 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,14 @@ int	ft_space_line(char *str)
 			return (0);
 	}
 	return (1);
+}
+
+void	init_tmp(t_data *game)
+{
+	game->tmp.c = NULL;
+	game->tmp.f = NULL;
+	game->tmp.n_path = NULL;
+	game->tmp.e_path = NULL;
+	game->tmp.w_path = NULL;
+	game->tmp.s_path = NULL;
 }

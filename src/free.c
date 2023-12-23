@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:12:47 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/21 22:18:56 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/23 16:23:19 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ void	free_tmp(t_data *game)
 		free(game->tmp.s_path);
 	if (game->tmp.f)
 		free(game->tmp.f);
-	if (game->tmp.e_path)
+	if (game->tmp.c)
 		free(game->tmp.c);
+}
+
+void	free_all_data(t_data *game)
+{
+	free_tmp(game);
 }
