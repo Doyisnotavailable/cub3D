@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:14:06 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/23 20:38:08 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/25 16:32:08 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,24 @@ void	init_rgb(t_data *game)
 	game->sky.r = -1;
 	game->sky.g = -1;
 	game->sky.b = -1;
+}
+
+int	file_line_count(char **av)
+{
+	int		fd;
+	char	*line;
+	int		count;
+
+	count = 0;
+	fd = open(av[1], O_RDONLY);
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		count++;
+		free(line);
+	}
+	close(fd);
+	return (count);
 }

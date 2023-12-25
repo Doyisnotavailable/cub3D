@@ -5,163 +5,78 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 19:16:54 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/24 20:13:57 by mlumibao         ###   ########.fr       */
+/*   Created: 2023/12/25 16:34:12 by mlumibao          #+#    #+#             */
+/*   Updated: 2023/12/25 21:35:02 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	file_line_count(char **av)
+void	verify_map(t_data *game)
 {
-	int		fd;
-	char	*line;
-	int		count;
-
-	count = 0;
-	fd = open(av[1], O_RDONLY);
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		count++;
-		free(line);
-	}
-	close(fd);
-	return (count);
-}
-
-static char	**get_whole_map(char **av)
-{
-	int		fd;
-	char	**ret;
-	char	*line;
 	int		i;
 
 	i = 0;
-	ret = (char **)malloc(sizeof(char *) * (1 + file_line_count(av)));
-	if (!ret)
-		return (NULL);
-	fd = open(av[1], O_RDONLY);
-	while (1)
+	check_map_line(game);
+	if (check_map_char(game, &i) == 1)
 	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		ret[i++] = ft_strdup(line);
-		free(line);
+		free_tmp(game);
+		free_array_exit(game->map, "Error\nInvalid character in map");
 	}
-	ret[i] = NULL;
-	close(fd);
-	return (ret);
+	printf("Before exit\n");
+	exit (1);
 }
 
-static char	**get_element_line(char **str)
+void	check_map_line(t_data *game)
+{
+	int	i;
+	int	err;
+
+	err = 0;
+	i = 0;
+	while (game->map[i])
+	{
+		while (game->map[i] && ft_space_line(game->map[i]))
+			i++;
+		while (game->map[i] && !ft_space_line(game->map[i]))
+			i++;
+		while (game->map[i] && ft_space_line(game->map[i]))
+			i++;
+		if (game->map[i] && !ft_space_line(game->map[i]))
+			err = 1;
+	}
+	if (err == 1)
+	{
+		free_tmp(game);
+		free_array_exit(game->map, "Error\nNew line in map\n");
+	}
+}
+
+int	check_map_char(t_data *game, int *charnum)
 {
 	int		i;
-	char	**ret;
-	int		len;
-
-	ret = (char **)malloc(sizeof(char *) * 7);
-	len = 0;
-	i = -1;
-	while (str[++i] != NULL)
-	{
-		if (ft_space_line(str[i]))
-			continue ;
-		ret[len++] = ft_strdup(str[i]);
-		if (len == 6)
-			break ;
-	}
-	ret[len] = NULL;
-	if (len < 6)
-	{
-		free_array(ret);
-		ret = NULL;
-	}
-	return (ret);
-}
-
-char	**get_element(char *elem, t_data *game, int *type)
-{
-	char	**tmp;
-
-	(void)game;
-	tmp = ft_split_tab(elem, ' ');
-	if (count_array(tmp) != 2)
-		return (free_array(tmp), NULL);
-	if (ft_strncmp(tmp[0], "NO", ft_strlen(tmp[0])) == 0)
-		*type = NO;
-	else if (ft_strncmp(tmp[0], "EA", ft_strlen(tmp[0])) == 0)
-		*type = EA;
-	else if (ft_strncmp(tmp[0], "WE", ft_strlen(tmp[0])) == 0)
-		*type = WE;
-	else if (ft_strncmp(tmp[0], "SO", ft_strlen(tmp[0])) == 0)
-		*type = SO;
-	else if (ft_strncmp(tmp[0], "F", ft_strlen(tmp[0])) == 0)
-		*type = F;
-	else if (ft_strncmp(tmp[0], "C", ft_strlen(tmp[0])) == 0)
-		*type = C;
-	else
-		return (free_array(tmp), NULL);
-	return (tmp);
-}
-
-static void	get_elements(char **str, t_data *game)
-{
-	int		i;
-	int		type;
-	char	**tmp;
+	int		j;
 
 	i = -1;
-	type = 0;
-	while (str[++i])
+	while (game->map[++i])
 	{
-		tmp = get_element(str[i], game, &type);
-		if (!tmp)
-			continue ;
-		if (type == NO)
-			game->tmp.n_path = copy_and_free(tmp);
-		else if (type == EA)
-			game->tmp.e_path = copy_and_free(tmp);
-		else if (type == WE)
-			game->tmp.w_path = copy_and_free(tmp);
-		else if (type == SO)
-			game->tmp.s_path = copy_and_free(tmp);
-		else if (type == F)
-			game->tmp.f = copy_and_free(tmp);
-		else if (type == C)
-			game->tmp.c = copy_and_free(tmp);
+		j = 0;
+		while (game->map[i][j])
+		{
+			if (game->map[i][j] == 'N' || game->map[i][j] == 'E' || game->map[i][j] == 'S' || game->map[i][j] == 'W')
+				charnum++;
+			else if (game->map[i][j] == '1' || game->map[i][j] == '0' || game->map[i][j] == '\t' || game->map[i][j] == ' ' || game->map[i][j] == '\n')
+				continue ;
+			else
+				return (1);
+			j++;
+		}
 	}
-	free_array(str);
+	return (0);
 }
 
-/* This function gets the file content and checks for element and the map */
-void	check_map_content(char **av, t_data *game)
+/* void	check_map_walls(t_data *game)
 {
-	char		**tmp;
-	char		**element;
 
-	tmp = get_whole_map(av);
-	if (count_array(tmp) < 6)
-	{
-		ft_putstr_fd("Error\n Exit on check_map_content count array\n", 2);
-		free_array(tmp);
-		exit(1);
-	}
-	element = get_element_line(tmp);
-	if (!element)
-	{
-		printf("Nothing received");
-		free_array(tmp);
-		exit (1);
-	}
-	get_elements(element, game); //Works until this part after this have to get the map verify the map. Then check if elements and map has values.
-	check_elements(game);
-	get_store_map(tmp, game);
-	// print_tmp(game);
-	print_rgb(game);
-	print_array(game->map);
-	exit(1);
 }
+ */

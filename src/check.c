@@ -6,13 +6,13 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:11:02 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/23 20:35:59 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/25 16:14:56 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	check_valid_map(char **av)
+static void	check_valid_file(char **av)
 {
 	int		fd;
 	char	*str;	
@@ -48,8 +48,8 @@ void	check(char **av, t_data *game)
 		ft_putstr_fd("Error\nInvalid Map\n", 2);
 		exit(1);
 	}
-	check_valid_map(av);
+	check_valid_file(av);
 	init_tmp(game);
 	init_rgb(game);
-	check_map_content(av, game);
+	check_file_content(av, game);
 }

@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 15:33:47 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/23 17:53:18 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/25 20:48:32 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,5 @@ void	get_store_map(char **file, t_data *game)
 	while (ptr_map[++i])
 		game->map[i] = ft_strdup(ptr_map[i]);
 	game->map[i] = NULL;
+	free_array(file);
 }

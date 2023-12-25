@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/23 21:05:56 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/25 21:30:23 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int			ft_space(char c);
 int			ft_space_line(char *str);
 void		init_tmp(t_data *game);
 void		init_rgb(t_data *game);
+int			file_line_count(char **av);
 
 // init_game.c
 void		*img_ptr(t_data *game);
@@ -90,12 +91,19 @@ void		init_mlx_ptr(t_data *game);
 // free.c
 void		destroy_img(t_data *game);
 void		free_array(char **str);
+void		free_array_exit(char **tmp, char *str);
 
 // check.c
 void		check(char **av, t_data *game);
 
+// get_file.c
+void		check_file_content(char **av, t_data *game);
+
 // verify.c
-void		check_map_content(char **av, t_data *game);
+void		check_map_line(t_data *game);
+void		verify_map(t_data *game);
+int			check_map_char(t_data *game, int *i);
+void		check_map_walls(t_data *game);
 
 // verify_utils.c
 char		**ft_split_tab(char const *s, char c);

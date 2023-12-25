@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:12:47 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/23 16:23:19 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/25 16:23:00 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ void	free_mlx_ptr(t_data *game)
 	mlx_destroy_window(game->mlx, game->win);
 	free(game->mlx);
 } */
+
+void	free_array_exit(char **tmp, char *str)
+{
+	ft_putstr_fd(str, 2);
+	free_array(tmp);
+	exit (1);
+}
 
 void	free_array(char **str)
 {
