@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/25 21:30:23 by mlumibao         ###   ########.fr       */
+/*   Updated: 2023/12/30 18:51:16 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ typedef struct s_data
 	void			*mlx;
 	void			*win;
 
-	t_tmp			tmp;
 	t_img			n_img;
 	t_img			e_img;
 	t_img			w_img;
@@ -73,6 +72,7 @@ typedef struct s_data
 	t_rgb			floor;
 	t_rgb			sky;
 
+	t_tmp			tmp;
 }	t_data;
 
 // init_utils.c
