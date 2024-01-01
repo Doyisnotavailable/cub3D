@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/30 18:51:16 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/01/01 18:26:23 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,10 @@ void		check(char **av, t_data *game);
 void		check_file_content(char **av, t_data *game);
 
 // verify.c
-void		check_map_line(t_data *game);
+void		check_map_line(t_data *game, int &size);
 void		verify_map(t_data *game);
 int			check_map_char(t_data *game, int *i);
-void		check_map_walls(t_data *game);
+void		check_map_walls(t_data *game, int size);
 
 // verify_utils.c
 char		**ft_split_tab(char const *s, char c);
