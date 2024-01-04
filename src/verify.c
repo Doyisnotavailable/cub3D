@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 16:34:12 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/01/02 21:27:47 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/03 21:22:08 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	verify_map(t_data *game)
 		free_array_exit(game->map,
 			"Error\nInvalid character in map or more than 1 player");
 	}
-	check_map_walls(game, map_size);
+	edit_map(game);
 }
 
 void	check_map_line(t_data *game, int *size)
@@ -82,7 +82,7 @@ int	check_map_char(t_data *game, int *charnum)
 	return (0);
 }
 
-void	check_map_walls(t_data *game, int size)
+/* void	check_map_walls(t_data *game, int size)
 {
 	char	**mapcopy;
 
@@ -105,4 +105,4 @@ void	copy_edit_map(t_data *game, char **copy)
 		while (game->map[i][++j] == ' ' || game->map[i][j] == '\t')
 			*copy++ = game->map[i][j];
 	}
-}
+} */

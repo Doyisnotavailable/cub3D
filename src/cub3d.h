@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/01/01 18:26:23 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/01/03 21:26:27 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void		check(char **av, t_data *game);
 void		check_file_content(char **av, t_data *game);
 
 // verify.c
-void		check_map_line(t_data *game, int &size);
+void		check_map_line(t_data *game, int *size);
 void		verify_map(t_data *game);
 int			check_map_char(t_data *game, int *i);
 void		check_map_walls(t_data *game, int size);
@@ -124,10 +124,18 @@ int			check_comma(char *str);
 int			check_valid_char(char *str);
 long		ft_atol(char *str);
 
+// map_edit.c
+void		edit_map(t_data *game);
+
+// map_utils.c
+int			count_end_space(char *map);
+int			count_line_map(char **map);
+
 // utils for testing testing_utils.c
 void		print_array(char **str);
 void		print_tmp(t_data *game);
 void		free_tmp(t_data *game);
 void		print_rgb(t_data *game);
+
 
 #endif
