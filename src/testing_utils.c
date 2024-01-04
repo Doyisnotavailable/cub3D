@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 16:16:02 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/25 16:16:03 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/01/04 18:37:06 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_array(char **str)
 
 	while(str[i])
 	{
-		printf("%s", str[i]);
+		printf("%s\n", str[i]);
 		i++;
 	}
 }

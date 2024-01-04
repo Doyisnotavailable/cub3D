@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/01/03 21:26:27 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/04 23:36:06 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,10 +126,13 @@ long		ft_atol(char *str);
 
 // map_edit.c
 void		edit_map(t_data *game);
+int			check_enclosed_space(char **map);
+int			check_enclosed_zero(char **map);
 
 // map_utils.c
 int			count_end_space(char *map);
 int			count_line_map(char **map);
+int			count_line_col(char **map, int col);
 
 // utils for testing testing_utils.c
 void		print_array(char **str);
@@ -137,5 +140,9 @@ void		print_tmp(t_data *game);
 void		free_tmp(t_data *game);
 void		print_rgb(t_data *game);
 
-
+// check_map_utils.c for checking bounderies of 0 and spaces
+int			check_left_right_zero(char **map, int x, int y);
+int			check_up_down_zero(char **map, int x, int y);
+int			check_left_right_space(char **map, int x, int y);
+int			check_up_down_space(char **map, int x, int y);
 #endif

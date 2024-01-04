@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:16:54 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/01/04 17:40:16 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:54:56 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,7 @@ void	check_file_content(char **av, t_data *game)
 	check_elements(game);
 	get_store_map(tmp, game);
 	verify_map(game);
-	printf("Here\n");
 	free_tmp(game);
 	free_array(game->map);
-	exit(1);
 	//change
 }

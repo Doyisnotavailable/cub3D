@@ -6,11 +6,14 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 20:28:26 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/30 18:47:11 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:50:17 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	check_hex(t_data *game, char **tmp, int type);
+void	store_to_rgb(t_data *game, char *str, int type);
 
 void	check_elements(t_data *game)
 {
@@ -24,7 +27,9 @@ void	check_elements(t_data *game)
 	}
 	store_to_rgb(game, game->tmp.f, F);
 	store_to_rgb(game, game->tmp.f, C);
-	if (game->floor.r == -1 || game->floor.g == -1 || game->floor.b == -1 ||game->sky.r == -1 || game->sky.g == -1 || game->sky.b == -1)
+	if (game->floor.r == -1 || game->floor.g == -1
+		|| game->floor.b == -1 || game->sky.r == -1
+		|| game->sky.g == -1 || game->sky.b == -1)
 	{
 		ft_putstr_fd("Putangina ni abdul aziz\n", 2);
 		free_tmp(game);
