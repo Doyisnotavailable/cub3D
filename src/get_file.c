@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:16:54 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/01/01 18:03:00 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:40:16 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,4 +137,5 @@ void	check_file_content(char **av, t_data *game)
 	free_tmp(game);
 	free_array(game->map);
 	exit(1);
+	//change
 }
