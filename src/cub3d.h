@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/01/04 23:36:06 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/01/05 18:45:36 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,4 +145,5 @@ int			check_left_right_zero(char **map, int x, int y);
 int			check_up_down_zero(char **map, int x, int y);
 int			check_left_right_space(char **map, int x, int y);
 int			check_up_down_space(char **map, int x, int y);
+int			ft_valid_char(char c);
 #endif

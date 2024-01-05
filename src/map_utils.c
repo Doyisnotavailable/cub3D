@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 18:04:38 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/01/04 22:56:30 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/01/05 22:56:37 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,15 @@ int	count_line_col(char **map, int col)
 
 	i = 0;
 	ret = 0;
-	while (map[i] && map[i][col])
+	if (!map[i])
+		return (0);
+	while (map[i] && ((size_t)col <= ft_strlen(map[i])))
 	{
 		ret++;
 		i++;
 	}
 	i--;
-	while (map[i][col] == ' ' || map[i][col] == '\t')
+	while (i >= 0 && (map[i][col] == ' ' || map[i][col] == '\t'))
 	{
 		i--;
 		ret--;

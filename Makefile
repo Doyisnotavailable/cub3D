@@ -18,7 +18,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(START)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(PRINTF)
+	$(CC) -g $(CFLAGS) -o $(NAME) $(OBJ) $(PRINTF)
 
 clean:
 	$(RM) $(OBJ)

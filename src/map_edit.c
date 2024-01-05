@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:47:12 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/01/04 23:23:04 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/01/05 22:43:52 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static char	**remove_nl(char **map);
 void	edit_map(t_data *game)
 {
 	game->map = remove_nl(game->map); // working until this remove spaces and newline at the end of every string of the map.
-	print_array(game->map);
 	if (check_enclosed_zero(game->map) || check_enclosed_space(game->map))
 	{
 		free_tmp(game);
@@ -45,6 +44,7 @@ char	**remove_nl(char **map)
 		{
 			ret[j] = ft_substr(map[i], 0,
 				(ft_strlen(map[i]) - count_end_space(map[i])));
+			/* printf("Line copied = %s\n Line len = %lu\n Line to be copied = %lu\n", ret[j], (ft_strlen(map[i]) - count_end_space(map[i])), ft_strlen(ret[j])); */
 			i++;
 			j++;
 		}
@@ -70,10 +70,7 @@ int	check_enclosed_zero(char **map)
 			{
 				if (check_left_right_zero(map, x, y)
 					|| check_up_down_zero(map, x, y))
-				{
-					printf("function zero char = %c, x = %i, y = %i", map[x][y], x, y);
 					return (1);
-				}
 			}
 			y++;
 		}
@@ -98,12 +95,9 @@ int	check_enclosed_space(char **map)
 			if ((y < count_line_col(map, y))
 				&& (map[x][y] == ' ' || map[x][y] == '\t'))
 			{
-				if (check_left_right_space(map, x, y) ||
-					check_up_down_space(map, x, y))
-				{
-					printf("function space\nchar = %c, x = %i, y = %i", map[x][y], x, y);
+				if (check_left_right_space(map, x, y)
+					|| check_up_down_space(map, x, y))
 					return (1);
-				}
 			}
 			y++;
 		}

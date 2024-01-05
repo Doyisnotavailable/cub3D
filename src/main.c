@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:14:13 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/01/04 22:46:49 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/01/05 22:44:54 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,3 +23,5 @@ int	main(int ac, char **av)
 	}
 	check(av, &game);
 }
+
+// Errors in valgrind read size and such in map_edit.c
