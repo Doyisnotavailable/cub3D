@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 15:33:47 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/25 20:48:32 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:31:16 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	get_store_map(char **file, t_data *game)
 		free_array(file);
 		free_tmp(game);
 	}
-	game->map = (char **)malloc(sizeof(char *) * (map_len + 1));
+	game->map.map = (char **)malloc(sizeof(char *) * (map_len + 1));
 	while (ptr_map[++i])
-		game->map[i] = ft_strdup(ptr_map[i]);
-	game->map[i] = NULL;
+		game->map.map[i] = ft_strdup(ptr_map[i]);
+	game->map.map[i] = NULL;
 	free_array(file);
 }

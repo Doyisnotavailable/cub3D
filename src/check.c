@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iganiev <iganiev@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:11:02 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/25 16:14:56 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/02/14 13:16:20 by iganiev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static void	check_valid_file(char **av)
 
 void	check(char **av, t_data *game)
 {
-	(void)game;
 	if ((ft_strlen(av[1]) <= 4) || ft_strrchr(av[1], '.')
 		== 0 || (ft_strlen(ft_strrchr(av[1], '.')) != 4))
 	{

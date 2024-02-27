@@ -6,23 +6,39 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 16:16:02 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/01/04 18:37:06 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:31:58 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdio.h>
 
-void	print_array(char **str)
-{
-	int	i = 0;
+// void	print_array(t_data *data)
+// {
+// 	// int	i = 0;
 
-	while(str[i])
-	{
-		printf("%s\n", str[i]);
-		i++;
-	}
-}
+// 	int i = 0;
+// 	int j;
+// 	// while(str[i])
+// 	// {
+// 	// 	printf("%s\n", str[i]);
+// 	// 	i++;
+// 	// }
+// 	// count_rows_columns(data);
+// 	// printf("ROWS: %d\n", data->row);
+// 	// printf("Column: %d\n", data->column);
+// 	// while (i < data->row && data->map[i])
+// 	// {
+// 	// 	j = 0;
+// 	// 	while (j < data->column)
+// 	// 	{
+// 	// 		printf("%s", data->map[i]);
+// 	// 		j++;
+// 	// 	}
+// 	// 	printf("\n");
+// 	// 	i++;
+// 	// }
+// }
 
 void	print_tmp(t_data *game)
 {

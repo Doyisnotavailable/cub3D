@@ -6,19 +6,20 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/01/05 18:45:36 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/02/27 17:47:55 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../inc/libft/libft.h"
-# include "../inc/printf/ft_printf.h"
+# include "../libft/libft.h"
+# include "../mlx/mlx.h"
 # include <stdlib.h>
 # include <fcntl.h>
-# include <stdio.h> //to remove
+# include <stdio.h>
 # include <limits.h>
+# include <math.h>
 
 # define WIDTH			1080
 # define HEIGHT			720
@@ -28,6 +29,34 @@
 # define SO				4
 # define F				5
 # define C				6
+# define TEXSIZE		64
+# define MS				2 //movespeed
+# define RS				33 //rotate speed
+
+typedef struct s_draw
+{
+	int		lineH;
+	int		drawStart;
+	int		drawEnd;
+	int		pitch;
+	double	wallX;
+	int		texcoord;
+	double	step;
+	double	texpos;
+
+}	t_draw;
+typedef struct s_player
+{
+	char	facing;
+	int		x;
+	int		y;
+	double	posX;
+	double	posY;
+	double	dirX;
+	double	dirY;
+	double	planeX;
+	double	planeY;
+} t_player;
 
 typedef struct s_rgb
 {
@@ -38,15 +67,28 @@ typedef struct s_rgb
 
 typedef struct s_img
 {
-	void		*img;
 	char		*path;
 	int			x;
 	int			y;
 }	t_img;
 
+typedef struct s_mlx
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+
+	int		win_width;
+	int		win_length;
+}	t_mlx;
+
 typedef struct s_map
 {
 	char		**map;
+	int			width;
+	int			height;
 }	t_map;
 
 typedef struct s_tmp
@@ -59,11 +101,58 @@ typedef struct s_tmp
 	char			*c;
 }	t_tmp;
 
+typedef struct s_var
+{
+	// int		fd;
+	// char	*line_from_map;
+	// char	*line;
+	// int		n_prev_line_elems;
+	// char	**splitted_line;
+	// int		current_elems;
+
+	float	x;
+	float	y;
+	float	x1;
+	float	y1;
+	int		z;
+	int		z1;
+}	t_var;
+
+typedef struct s_ray
+{
+	double	cameraX;
+	double	rayDirX;
+	double	rayDirY;
+	int		mapX;
+	int		mapY;
+	double	sideDistX;
+	double	sideDistY;
+	double	deltaDistX;
+	double	deltaDistY;
+	double	perpWallDist;
+	int		stepX;
+	int		stepY;
+	int		hit;
+	int		side;
+} t_ray;
+
 typedef struct s_data
 {
-	char			**map;
-	void			*mlx;
-	void			*win;
+	void			*mlx_ptr;
+	void			*win_ptr;
+	int				color;
+	int				row;
+	int				column;
+	int				z_scale;
+	t_mlx			mlx;
+	t_var			vars;
+
+	t_ray			ray;
+	t_map			map;
+	t_player		player; // added this struct for storing player facing direction, and player position.
+	uint32_t		floorc; //converted 3int to one
+	uint32_t		skyc; //converted 3int to one
+
 
 	t_img			n_img;
 	t_img			e_img;
@@ -71,7 +160,7 @@ typedef struct s_data
 	t_img			s_img;
 	t_rgb			floor;
 	t_rgb			sky;
-
+	
 	t_tmp			tmp;
 }	t_data;
 
@@ -135,7 +224,8 @@ int			count_line_map(char **map);
 int			count_line_col(char **map, int col);
 
 // utils for testing testing_utils.c
-void		print_array(char **str);
+// void		print_array(char **str);
+void		print_array(t_data *data);
 void		print_tmp(t_data *game);
 void		free_tmp(t_data *game);
 void		print_rgb(t_data *game);
@@ -146,4 +236,35 @@ int			check_up_down_zero(char **map, int x, int y);
 int			check_left_right_space(char **map, int x, int y);
 int			check_up_down_space(char **map, int x, int y);
 int			ft_valid_char(char c);
+
+// added latest final_parse.c
+void		color(t_data *game);
+void		getplayerpos(t_data *game);
+void		finaladd(t_data *game);
+
+// added latest rect_map.c
+void 		rect_map(t_data *game);
+
+// added latest raycast.c
+void		calc_ray(t_data *game);
+void		calc_step(t_data *game);
+void		dda(t_data *game);
+void		draw_ray(t_data *game, t_draw *draw, int i);
+void		perp(t_data *game, int i);
+
+// added keymap.c
+int			key_rotate(int keycode, t_data *game);
+
+void	use_mlx(t_data *data);
+void	init_var(t_data *data);
+int		close_win(t_data *data);
+void	fullscreen_win(int key, t_data *data);
+void	resize_win(int key, t_data *data);
+int		esc_win(int key, t_data *data);
+int		key_hooks(int keycode, t_data *data);
+void    draw_map(t_data *data);
+void 	count_rows_columns(t_data *data);
+void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
+
+
 #endif

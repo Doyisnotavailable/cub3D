@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:47:12 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/01/05 22:43:52 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:31:16 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@ static char	**remove_nl(char **map);
 
 void	edit_map(t_data *game)
 {
-	game->map = remove_nl(game->map); // working until this remove spaces and newline at the end of every string of the map.
-	if (check_enclosed_zero(game->map) || check_enclosed_space(game->map))
+	game->map.map = remove_nl(game->map.map);
+	if (check_enclosed_zero(game->map.map) || check_enclosed_space(game->map.map))
 	{
 		free_tmp(game);
-		free_array_exit(game->map, "Error\n Map not enclosed with walls\n");
+		free_array_exit(game->map.map, "Error\n Map not enclosed with walls\n");
 	}
 }
 
+//Function to trim valid newlines in the map also trims end spaces each row
 char	**remove_nl(char **map)
 {
 	int		i;
@@ -32,8 +33,7 @@ char	**remove_nl(char **map)
 
 	i = -1;
 	j = 0;
-	ret = (char**)malloc(sizeof(char *) *
-		(1 + count_line_map(map)));
+	ret = malloc(sizeof(char *) * (1 + count_line_map(map)));
 	if (!ret)
 		return (NULL);
 	while (map[++i])
@@ -43,8 +43,7 @@ char	**remove_nl(char **map)
 		while (map[i] &&!ft_space_line(map[i]))
 		{
 			ret[j] = ft_substr(map[i], 0,
-				(ft_strlen(map[i]) - count_end_space(map[i])));
-			/* printf("Line copied = %s\n Line len = %lu\n Line to be copied = %lu\n", ret[j], (ft_strlen(map[i]) - count_end_space(map[i])), ft_strlen(ret[j])); */
+					(ft_strlen(map[i]) - count_end_space(map[i])));
 			i++;
 			j++;
 		}
@@ -70,7 +69,10 @@ int	check_enclosed_zero(char **map)
 			{
 				if (check_left_right_zero(map, x, y)
 					|| check_up_down_zero(map, x, y))
+				{
+				/* 	printf("character = '%c', in x = %i, y = %i", map[x][y], x, y); */
 					return (1);
+				}
 			}
 			y++;
 		}
@@ -97,7 +99,10 @@ int	check_enclosed_space(char **map)
 			{
 				if (check_left_right_space(map, x, y)
 					|| check_up_down_space(map, x, y))
+				{
+					/* 	printf("character = '%c', in x = %i, y = %i", map[x][y], x, y); */					
 					return (1);
+				}
 			}
 			y++;
 		}

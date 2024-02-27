@@ -1,15 +1,16 @@
 NAME = cub3D
 
 SRC_DIR = ./src
-SRC = main.c check.c free.c init_game.c init_utils.c verify.c verify_utils.c testing_utils.c check_elements.c scan_utils.c map_utils.c map_edit.c get_file.c element_utils.c check_map_utils.c
+SRC =	main.c check.c free.c init_game.c init_utils.c verify.c verify_utils.c testing_utils.c check_elements.c scan_utils.c map_utils.c map_edit.c get_file.c element_utils.c check_map_utils.c \
+		mlx_functions.c win_manipulation.c draw_map.c rect_map.c final_parse.c raycast.c keymap.c\
 
-START = make -C ./inc/printf
-PRINTF = -L./inc/printf -lftprintf
-CC = cc -I./inc/printf
+CC = cc
 OBJ_DIR = ./obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 $(shell mkdir -p $(OBJ_DIR))
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror  -fsanitize=address -g
+MLX = cd mlx && make
+LIB = cd libft && make
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -17,16 +18,18 @@ $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(START)
-	$(CC) -g $(CFLAGS) -o $(NAME) $(OBJ) $(PRINTF)
+	$(LIB)
+	$(MLX)
+	$(CC) $(CFLAGS) $(OBJ) libft/libft.a -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 clean:
 	$(RM) $(OBJ)
-	make -C inc/printf clean
+	$(MAKE) clean -C mlx
+	cd libft && make clean
 
-fclean:
-	$(RM) $(NAME) $(OBJ)
-	make -C inc/printf fclean
+fclean: clean
+		rm -f $(NAME)
+		cd libft && make fclean
 
 re: fclean all
 
