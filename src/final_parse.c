@@ -104,3 +104,32 @@ void finaladd(t_data *game)
 	init_ray(&game->ray);
 	// init_ray(game);
 }
+
+	if (player->dir == 'S')
+	{
+		player->dir_x = 0;
+		player->dir_y = 1;
+		player->plane_x = -0.66;
+		player->plane_y = 0;
+	}
+	else if (player->dir == 'N')
+	{
+		player->dir_x = 0;
+		player->dir_y = -1;
+		player->plane_x = 0.66;
+		player->plane_y = 0;
+	}
+	else if (player->dir == 'W')
+	{
+		player->dir_x = -1;
+		player->dir_y = 0;
+		player->plane_x = 0;
+		player->plane_y = -0.66;
+	}
+	else if (player->dir == 'E')
+	{
+		player->dir_x = 1;
+		player->dir_y = 0;
+		player->plane_x = 0;
+		player->plane_y = 0.66;
+	}
