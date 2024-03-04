@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:14:13 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/02/27 15:23:01 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:58:07 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	main(int ac, char **av)
 	game.mlx.addr = mlx_get_data_addr(game.mlx.img, \
 											&game.mlx.bits_per_pixel, \
 						&game.mlx.line_length, &game.mlx.endian);
-	mlx_hook(game.win_ptr, 3, 1L, key_hooks, &game);
+	mlx_hook(game.win_ptr, 3, 1L, key_rotate, &game);
 	mlx_loop_hook(game.mlx_ptr, game_loop, &game);
 	mlx_loop(game.mlx_ptr);
 }

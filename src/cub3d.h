@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/02/27 17:47:55 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:57:16 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define F				5
 # define C				6
 # define TEXSIZE		64
-# define MS				2 //movespeed
-# define RS				33 //rotate speed
+# define MS				1 //movespeed
+# define RS				120.0 //rotate speed
 
 typedef struct s_draw
 {
@@ -254,6 +254,7 @@ void		perp(t_data *game, int i);
 
 // added keymap.c
 int			key_rotate(int keycode, t_data *game);
+int			key_move(int keycode, t_data *game);
 
 void	use_mlx(t_data *data);
 void	init_var(t_data *data);

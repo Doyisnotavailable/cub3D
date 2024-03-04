@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:18:46 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/02/27 16:14:37 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/02/27 20:27:50 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,3 +47,24 @@ int key_rotate(int keycode, t_data *game)
 	return (0);
 }
 
+int key_move(int keycode, t_data *game)
+{
+
+	if (keycode == 13) // LEFT
+	{
+		game->player.posX += game->ray.rayDirX * MS;
+	}
+	else if (keycode == 1) // RIGHT
+	{
+		game->player.posX -= game->ray.rayDirX * MS;
+	}
+	else if (keycode == 0)
+	{
+		game->player.posX += game->ray.cameraX * MS;
+	}
+	else if (keycode == 2)
+	{
+		game->player.posX += game->ray.cameraX * MS;	
+	}
+	return (0);
+}
