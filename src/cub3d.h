@@ -30,8 +30,8 @@
 # define F				5
 # define C				6
 # define TEXSIZE		64
-# define MS				1 //movespeed
-# define RS				120.0 //rotate speed
+# define MS				0.0125 //movespeed
+# define RS				0.02 //rotate speed
 
 typedef struct s_draw
 {
@@ -45,6 +45,7 @@ typedef struct s_draw
 	double	texpos;
 
 }	t_draw;
+
 typedef struct s_player
 {
 	char	facing;
