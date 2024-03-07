@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 16:07:59 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/02 19:44:39 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/06 16:16:09 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ void finaladd(t_data *game)
 	init_player(game);
 	get_direction(game);
 	init_ray(&game->ray);
+	game->draw_flag = 1;
 	// init_ray(game);
 }
 

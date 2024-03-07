@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 20:28:26 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/01/04 17:50:17 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/05 18:02:18 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	check_elements(t_data *game)
 		exit (1);
 	}
 	store_to_rgb(game, game->tmp.f, F);
-	store_to_rgb(game, game->tmp.f, C);
+	store_to_rgb(game, game->tmp.c, C);
 	if (game->floor.r == -1 || game->floor.g == -1
 		|| game->floor.b == -1 || game->sky.r == -1
 		|| game->sky.g == -1 || game->sky.b == -1)
 	{
-		ft_putstr_fd("Putangina ni abdul aziz\n", 2);
+		ft_putstr_fd("Error\nceiling/floor color", 2);
 		free_tmp(game);
 		exit (1);
 	}
@@ -56,7 +56,7 @@ void	check_hex(t_data *game, char **tmp, int type)
 {
 	if (count_array(tmp) != 3)
 		return ;
-	if (ft_atol(tmp[0]) || ft_atol(tmp[1]) || ft_atol(tmp[2]))
+	if (ft_atol(tmp[0]) == 1 || ft_atol(tmp[1]) == 1 ||  ft_atol(tmp[2]) == 1)
 		return ;
 	if (type == F)
 	{

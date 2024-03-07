@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:46:16 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/02/28 17:12:30 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/06 16:17:32 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ void draw_ray(t_data *game, t_draw  *draw, int i)
 		my_mlx_pixel_put(&game->mlx, i, y, 0xAAAAAA);
 		y++;
 	}
-	mlx_clear_window(game->mlx_ptr, game->win_ptr);
+	// mlx_clear_window(game->mlx_ptr, game->win_ptr);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->mlx.img, 0, 0);
+	game->draw_flag = 0;
 }
 
 void perp(t_data *game, int i)

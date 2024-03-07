@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:18:46 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/02/27 20:27:50 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/06 16:19:14 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int key_rotate(int keycode, t_data *game)
 		oldPlaneX = game->player.planeX;
 		game->player.planeX = game->player.planeX * cos(-RS) - game->player.planeY * sin(-RS);
 		game->player.planeY = oldPlaneX * sin(-RS) + game->player.planeY * cos(-RS);
+		game->draw_flag = 1;
 	}
 	else if (keycode == 124) // RIGHT
 	{
@@ -43,6 +44,7 @@ int key_rotate(int keycode, t_data *game)
 		oldPlaneX = game->player.planeX;
 		game->player.planeX = game->player.planeX * cos(RS) - game->player.planeY * sin(RS);
 		game->player.planeY = oldPlaneX * sin(RS) + game->player.planeY * cos(RS);
+		game->draw_flag = 1;
 	}
 	return (0);
 }

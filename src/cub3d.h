@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/02/28 16:57:16 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/06 16:15:39 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define F				5
 # define C				6
 # define TEXSIZE		64
-# define MS				1 //movespeed
-# define RS				120.0 //rotate speed
+# define MS				0.00125 //movespeed
+# define RS				0.02 //rotate speed
 
 typedef struct s_draw
 {
@@ -152,7 +152,7 @@ typedef struct s_data
 	t_player		player; // added this struct for storing player facing direction, and player position.
 	uint32_t		floorc; //converted 3int to one
 	uint32_t		skyc; //converted 3int to one
-
+	int				draw_flag;
 
 	t_img			n_img;
 	t_img			e_img;
