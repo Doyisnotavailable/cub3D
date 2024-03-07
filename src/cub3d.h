@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/06 16:15:39 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/07 18:06:14 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_draw
 	double	texpos;
 
 }	t_draw;
+
 typedef struct s_player
 {
 	char	facing;
