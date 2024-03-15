@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:46:16 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/06 16:17:32 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/15 20:49:57 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,21 @@ void draw_ray(t_data *game, t_draw  *draw, int i)
 	y = 0;
 	while (y < draw->drawStart)
 	{
-		my_mlx_pixel_put(&game->mlx, i, y, 0x0000ff);
+		my_mlx_pixel_put(&game->fbuffer, i, y, 0x0000ff);
 		y++;
 	}
-	draw_wall(game, draw, i);
+	// draw_wall(game, draw, i);
+	while (y < draw->drawStart)
+	{
+		my_mlx_pixel_put(&game->fbuffer, i, y, 0xffffff);
+		y++;
+	}
 	y = draw->drawEnd;
 	while (y < HEIGHT)
 	{
-		my_mlx_pixel_put(&game->mlx, i, y, 0xAAAAAA);
+		my_mlx_pixel_put(&game->fbuffer, i, y, 0xAAAAAA);
 		y++;
 	}
-	// mlx_clear_window(game->mlx_ptr, game->win_ptr);
 	game->draw_flag = 0;
 }
 
@@ -48,11 +52,11 @@ void perp(t_data *game, int i)
 	draw.drawEnd = draw.lineH / 2 + HEIGHT / 2;
 	if (draw.drawEnd >= HEIGHT)
 		draw.drawEnd = HEIGHT - 1;
-	if (data->ray.side == 0)
-		data->draw.wallX = data->player.posY + data->ray.perpWallDist * data->ray.rayDirY;
+	if (game->ray.side == 0)
+		draw.wallX = game->player.posY + game->ray.perpWallDist * game->ray.rayDirY;
 	else
-		data->draw.WallX = data->player.posX + data->ray.perpWallDist * data->ray.rayDirX;
-	data->draw.WallX -= floor(data->draw.WallX);
+		draw.wallX = game->player.posX + game->ray.perpWallDist * game->ray.rayDirX;
+	draw.wallX -= floor(draw.wallX);
 	draw_ray(game, &draw, i);
 }
 
@@ -128,5 +132,6 @@ void calc_ray(t_data *game)
 		perp(game, i);
 		i++;
 	}
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->mlx.img, 0, 0);
+	mlx_clear_window(game->mlx_ptr, game->win_ptr);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->fbuffer.ptr, 0, 0);
 }

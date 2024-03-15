@@ -6,21 +6,21 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/07 18:06:14 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/15 21:05:24 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../inc/libft/libft.h"
+# include "../inc/printf/ft_printf.h"
 # include "../mlx/mlx.h"
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <limits.h>
 # include <math.h>
-
+# include <stdbool.h>
 # define WIDTH			1080
 # define HEIGHT			720
 # define NO				1
@@ -30,7 +30,7 @@
 # define F				5
 # define C				6
 # define TEXSIZE		64
-# define MS				0.00125 //movespeed
+# define MS				0.1 //movespeed
 # define RS				0.02 //rotate speed
 
 typedef struct s_draw
@@ -231,9 +231,17 @@ int			key_move(int keycode, t_data *game);
 void		init_mlx(t_data *game);
 
 // util.c
-void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 // draw_wall.c
 void		draw_wall(t_data *game, t_draw *draw, int i);
 
+// wasd_move.c
+void		move_w(t_data *game);
+void		move_s(t_data *game);
+void		move_a(t_data *game);
+void		move_d(t_data *game);
+
+// wall_collision.c
+bool		check_wall(t_data *game, double x, double y);
 #endif

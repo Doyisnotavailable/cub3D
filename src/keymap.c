@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:18:46 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/06 16:19:14 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/15 21:06:55 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int key_rotate(int keycode, t_data *game)
 
 int key_move(int keycode, t_data *game)
 {
-
+	printf("%i\n", keycode);
 	if (keycode == 13) // S
 		move_s(game);
 	if (keycode == 1) // W
