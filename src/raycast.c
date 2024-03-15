@@ -15,31 +15,21 @@
 void draw_ray(t_data *game, t_draw  *draw, int i)
 {
 	int y;
-	double wallX;
 
-	if (game->ray.side == 0)
-		wallX = game->player.posY + game->ray.perpWallDist * game->ray.rayDirY;
-	else
-		wallX = game->player.posX + game->ray.perpWallDist * game->ray.rayDirX;
-	wallX -= floor(wallX);
 	y = 0;
 	while (y < draw->drawStart)
 	{
 		my_mlx_pixel_put(&game->mlx, i, y, 0x0000ff);
 		y++;
 	}
-	while (y < draw->drawEnd)
-	{
-		my_mlx_pixel_put(&game->mlx, i, y, 0xffffff);
-		y++;
-	}
+	draw_wall(game, draw, i);
+	y = draw->drawEnd;
 	while (y < HEIGHT)
 	{
 		my_mlx_pixel_put(&game->mlx, i, y, 0xAAAAAA);
 		y++;
 	}
 	// mlx_clear_window(game->mlx_ptr, game->win_ptr);
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->mlx.img, 0, 0);
 	game->draw_flag = 0;
 }
 
@@ -58,6 +48,11 @@ void perp(t_data *game, int i)
 	draw.drawEnd = draw.lineH / 2 + HEIGHT / 2;
 	if (draw.drawEnd >= HEIGHT)
 		draw.drawEnd = HEIGHT - 1;
+	if (data->ray.side == 0)
+		data->draw.wallX = data->player.posY + data->ray.perpWallDist * data->ray.rayDirY;
+	else
+		data->draw.WallX = data->player.posX + data->ray.perpWallDist * data->ray.rayDirX;
+	data->draw.WallX -= floor(data->draw.WallX);
 	draw_ray(game, &draw, i);
 }
 
@@ -77,7 +72,14 @@ void dda(t_data *game)
           game->ray.mapY += game->ray.stepY;
           game->ray.side = 1;
         }
-		if ((game->map.width > game->ray.mapX && game->map.height > game->ray.mapY) && game->map.map[game->ray.mapY][game->ray.mapX] == '1')
+		/* if (ray->map_y < 0.25
+			|| ray->map_x < 0.25
+			|| ray->map_y > data->mapinfo.height - 0.25
+			|| ray->map_x > data->mapinfo.width - 1.25)
+			break ; */
+		if (game->ray.mapX < 0.2 || game->ray.mapY < 0.2 || game->ray.mapX > game->map.width - 1.25 || game->ray.mapY > game->map.height - 0.25 )
+			break;
+		else if ((game->map.width > game->ray.mapX && game->map.height > game->ray.mapY) && game->map.map[game->ray.mapY][game->ray.mapX] == '1')
 			game->ray.hit = 1;
 	}
 }
@@ -118,13 +120,13 @@ void calc_ray(t_data *game)
 		game->ray.rayDirY = game->player.dirY + game->player.planeY * game->ray.cameraX;
 		game->ray.mapX = (int)game->player.posX;
 		game->ray.mapY = (int)game->player.posY;
-		game->ray.deltaDistX = (game->ray.rayDirX == 0) ? 1e30 : fabs(1 / game->ray.rayDirX);
-		game->ray.deltaDistY = (game->ray.rayDirY == 0) ? 1e30 : fabs(1 / game->ray.rayDirY);
+		game->ray.deltaDistX = fabs(1 / game->ray.rayDirX);
+		game->ray.deltaDistY = fabs(1 / game->ray.rayDirY);
 		game->ray.hit = 0;
 		calc_step(game);
 		dda(game);
 		perp(game, i);
 		i++;
 	}
-	// printf("game->ray.mapX")
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->mlx.img, 0, 0);
 }

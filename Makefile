@@ -2,7 +2,7 @@ NAME = cub3D
 
 SRC_DIR = ./src
 SRC =	main.c check.c free.c init_game.c init_utils.c verify.c verify_utils.c testing_utils.c check_elements.c scan_utils.c map_utils.c map_edit.c get_file.c element_utils.c check_map_utils.c \
-		mlx_functions.c win_manipulation.c draw_map.c rect_map.c final_parse.c raycast.c keymap.c\
+		mlx_functions.c win_manipulation.c init.c rect_map.c final_parse.c raycast.c keymap.c\
 
 CC = cc
 OBJ_DIR = ./obj

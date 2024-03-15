@@ -36,7 +36,7 @@ int key_rotate(int keycode, t_data *game)
 		game->player.planeY = oldPlaneX * sin(-RS) + game->player.planeY * cos(-RS);
 		game->draw_flag = 1;
 	}
-	else if (keycode == 124) // RIGHT
+	if (keycode == 124) // RIGHT
 	{
 		oldDirX = game->ray.rayDirX;
 		game->ray.rayDirX = game->ray.rayDirX * cos(RS) - game->ray.rayDirY * sin(RS);
@@ -52,21 +52,13 @@ int key_rotate(int keycode, t_data *game)
 int key_move(int keycode, t_data *game)
 {
 
-	if (keycode == 13) // LEFT
-	{
-		game->player.posX += game->ray.rayDirX * MS;
-	}
-	else if (keycode == 1) // RIGHT
-	{
-		game->player.posX -= game->ray.rayDirX * MS;
-	}
-	else if (keycode == 0)
-	{
-		game->player.posX += game->ray.cameraX * MS;
-	}
-	else if (keycode == 2)
-	{
-		game->player.posX += game->ray.cameraX * MS;	
-	}
+	if (keycode == 13) // S
+		move_s(game);
+	if (keycode == 1) // W
+		move_w(game);
+	if (keycode == 0)
+		move_a(game);
+	if (keycode == 2)
+		move_d(game);
 	return (0);
 }

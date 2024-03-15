@@ -13,7 +13,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../libft/libft.h"
+# include "../inc/libft/libft.h"
 # include "../mlx/mlx.h"
 # include <stdlib.h>
 # include <fcntl.h>
@@ -38,12 +38,11 @@ typedef struct s_draw
 	int		lineH;
 	int		drawStart;
 	int		drawEnd;
-	int		pitch;
+	int		texX;
+	int		texY;
 	double	wallX;
-	int		texcoord;
 	double	step;
 	double	texpos;
-
 }	t_draw;
 
 typedef struct s_player
@@ -68,22 +67,13 @@ typedef struct s_rgb
 
 typedef struct s_img
 {
-	char		*path;
-	int			x;
-	int			y;
+	void		*ptr;
+	char		*adr;
+	char		dir;
+	int			endian;
+	int			bpp;
+	int			len;
 }	t_img;
-
-typedef struct s_mlx
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-
-	int		win_width;
-	int		win_length;
-}	t_mlx;
 
 typedef struct s_map
 {
@@ -101,23 +91,6 @@ typedef struct s_tmp
 	char			*f;
 	char			*c;
 }	t_tmp;
-
-typedef struct s_var
-{
-	// int		fd;
-	// char	*line_from_map;
-	// char	*line;
-	// int		n_prev_line_elems;
-	// char	**splitted_line;
-	// int		current_elems;
-
-	float	x;
-	float	y;
-	float	x1;
-	float	y1;
-	int		z;
-	int		z1;
-}	t_var;
 
 typedef struct s_ray
 {
@@ -141,12 +114,6 @@ typedef struct s_data
 {
 	void			*mlx_ptr;
 	void			*win_ptr;
-	int				color;
-	int				row;
-	int				column;
-	int				z_scale;
-	t_mlx			mlx;
-	t_var			vars;
 
 	t_ray			ray;
 	t_map			map;
@@ -155,13 +122,16 @@ typedef struct s_data
 	uint32_t		skyc; //converted 3int to one
 	int				draw_flag;
 
+	//texture files needed for execution
+	t_img			fbuffer; // this one to store all pixels in 1 to img in screen all at once
 	t_img			n_img;
 	t_img			e_img;
 	t_img			w_img;
 	t_img			s_img;
+
+	//variable for getting floor, ceiling and textures needed for parsing
 	t_rgb			floor;
 	t_rgb			sky;
-	
 	t_tmp			tmp;
 }	t_data;
 
@@ -257,16 +227,13 @@ void		perp(t_data *game, int i);
 int			key_rotate(int keycode, t_data *game);
 int			key_move(int keycode, t_data *game);
 
-void	use_mlx(t_data *data);
-void	init_var(t_data *data);
-int		close_win(t_data *data);
-void	fullscreen_win(int key, t_data *data);
-void	resize_win(int key, t_data *data);
-int		esc_win(int key, t_data *data);
-int		key_hooks(int keycode, t_data *data);
-void    draw_map(t_data *data);
-void 	count_rows_columns(t_data *data);
-void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
+// init.c
+void		init_mlx(t_data *game);
 
+// util.c
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+
+// draw_wall.c
+void		draw_wall(t_data *game, t_draw *draw, int i);
 
 #endif

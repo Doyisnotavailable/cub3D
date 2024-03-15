@@ -48,24 +48,6 @@ void getplayerpos(t_data *game)
 	}
 }
 
-// void init_ray(t_data *game)
-// {
-// 	game->ray.cameraX;
-// 	game->ray.rayDirX;
-// 	game->ray.rayDirY;
-// 	game->ray.mapX;
-// 	game->ray.mapY;
-// 	game->ray.sideDistX;
-// 	game->ray.sideDistY;
-// 	game->ray.deltaDistX;
-// 	game->ray.deltaDistY;
-// 	game->ray.perpWallDist;
-// 	game->ray.stepX;
-// 	game->ray.stepY;
-// 	game->ray.hit;
-// 	game->ray.side;
-// }
-
 static void get_direction_2(t_data *game)
 {
 	if (game->player.facing == 'W')
@@ -109,7 +91,7 @@ void init_player(t_data *game)
 {
 	game->player.posX = game->player.y;
 	game->player.posY = game->player.x;
-	
+	get_direction(game);
 }
 
 void init_ray(t_ray *ray)
@@ -134,41 +116,8 @@ void finaladd(t_data *game)
 {
 	color(game);
 	getplayerpos(game);
-	// printf("game->player.x = %d\n", game->player.x);
-	// printf("game->player.y = %d\n", game->player.y);
 	rect_map(game);
 	init_player(game);
-	get_direction(game);
 	init_ray(&game->ray);
 	game->draw_flag = 1;
-	// init_ray(game);
 }
-
-	// if (player->dir == 'S')
-	// {
-	// 	player->dir_x = 0;
-	// 	player->dir_y = 1;
-	// 	player->plane_x = -0.66;
-	// 	player->plane_y = 0;
-	// }
-	// else if (player->dir == 'N')
-	// {
-	// 	player->dir_x = 0;
-	// 	player->dir_y = -1;
-	// 	player->plane_x = 0.66;
-	// 	player->plane_y = 0;
-	// }
-	// else if (player->dir == 'W')
-	// {
-	// 	player->dir_x = -1;
-	// 	player->dir_y = 0;
-	// 	player->plane_x = 0;
-	// 	player->plane_y = -0.66;
-	// }
-	// else if (player->dir == 'E')
-	// {
-	// 	player->dir_x = 1;
-	// 	player->dir_y = 0;
-	// 	player->plane_x = 0;
-	// 	player->plane_y = 0.66;
-	// }
