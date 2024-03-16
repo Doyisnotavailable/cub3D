@@ -1,52 +1,14 @@
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include "inc/libft/libft.h"
+#include "cub3d.h"
 
-char	**ft_split(char const *s, char c);
-
-/* void	free_array(char ***str)
+int	main(int ac, char **av)
 {
-	int i = 0;
-	char **tmp;
+	t_data		game;
 
-	tmp = *str;
-	while (*str)
+	if (ac != 2)
 	{
-		free(*str[i]);
-		i++;
-	}
-	free(tmp);
-} */
-void	free_array(char **str)
-{
-	char **tmp;
-
-	tmp = str;
-	while (*str)
-	{
-		free(*str);
-		*str = NULL;
-		str++;
-	}
-	free(tmp);
-}
-
-
-int main()
-{
-	char **test = ft_split("asd bcd efg hik", ' ');
-
-	for (size_t i = 0; i < 4; i++)
-		printf("%s\n", test[i]);
-	free_array(test);
-	test = NULL;
-	if (!test)
-	{
-		printf("proper free");
+		ft_putstr_fd("Error\n Invalid Syntax ./cub3d 'MAP_PATH'", 2);
 		return (0);
 	}
-	while(*test)
-		printf("%s\n", *test++);
+	check(av, &game);
 }
