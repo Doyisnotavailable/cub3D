@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 16:07:59 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/16 19:23:27 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/17 01:29:02 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void getplayerpos(t_data *game)
 		{
 			if (game->map.map[i][j] == 'N' || game->map.map[i][j] == 'E' || game->map.map[i][j] == 'S' || game->map.map[i][j] == 'W')
 			{
-				game->player.x = i;
-				game->player.y = j;
+				game->player.x = j;
+				game->player.y = i;
 				game->player.facing = game->map.map[i][j];
 				game->map.map[i][j] = '0';
 				return ;
@@ -84,13 +84,12 @@ static void get_direction(t_data *game)
 	}
 	else
 		get_direction_2(game);
-	return ;
 }
 
 void init_player(t_data *game)
 {
-	game->player.posX = game->player.y;
-	game->player.posY = game->player.x;
+	game->player.posX = game->player.x + 0.5;
+	game->player.posY = game->player.y + 0.5;
 	get_direction(game);
 }
 

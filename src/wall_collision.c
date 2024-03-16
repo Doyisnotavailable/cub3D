@@ -6,13 +6,14 @@
         game->draw_flag = 1;
 } */
 
-/* bool check_wall(t_data *game, double x, double y)
+bool check_wall(t_data *game, double x, double y)
 {
     if (game->map.map[(int)y][(int)x] == '0')
 		return (true);
 	return (false);
-} */
-bool check_coord(t_data *game, double x, double y)
+}
+
+/* bool check_coord(t_data *game, double x, double y)
 {
 	if ((y > 0.25 && y < game->map.height - 1.25) && (x > 0.25 && x < game->map.width))
 		return (true);
@@ -32,7 +33,7 @@ bool check_wall(t_data *game, double x, double y)
 		return (true);
 	}
 	return (false);
-}
+} */
 
 /* bool check_map(t_data *game, double x, double y)
 {
