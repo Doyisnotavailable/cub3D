@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:34:55 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/02/21 18:35:02 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/16 19:33:58 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void fill_map(t_data *game, char **tmp, int len)
 			tmp[i][j] = game->map.map[i][j];
 		while (j < len)
 		{
-			tmp[i][j] = ' '; //change to space
+			tmp[i][j] = '1'; //change to space
 			j++;
 		}
 		tmp[i][j] = '\0';
@@ -79,6 +79,15 @@ void tab_space(char **map)
 				map[i][j] = ' ';
 		}
 	}
+}
+
+void print_array(char **str)
+{
+	int i = -1;
+
+	while (str[++i])
+		printf("%s\n", str[i]);
+	
 }
 
 void rect_map(t_data *game)

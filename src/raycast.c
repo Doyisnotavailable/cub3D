@@ -6,11 +6,18 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:46:16 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/15 20:49:57 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/16 19:21:45 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void print_values(t_data *game, t_draw *draw)
+{
+	printf("drawlineH = %i\ndrawStart = %i \n drawEnd= %i\n wallX = %f\n step = %f\n", draw->lineH, draw->drawStart, draw->drawEnd, draw->wallX, draw->step);
+	printf("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
+	printf("rayCameraX = %f\n rayDirX = %f\n rayDirY = %f\nmapX = %i\n mapY = %i\nsideDistX = %f\nsideDistY = %f\ndeltaDistX = %f\n deltaDistY =%f\n perpwallDist = %f\nstepX = %i\nstepY = %i\nhit = %i\nside %i\n", game->ray.cameraX, game->ray.rayDirX, game->ray.rayDirY, game->ray.mapX, game->ray.mapY, game->ray.sideDistX, game->ray.sideDistY, game->ray.deltaDistX, game->ray.deltaDistY, game->ray.perpWallDist, game->ray.stepX, game->ray.stepY, game->ray.hit, game->ray.side);	
+}
 
 void draw_ray(t_data *game, t_draw  *draw, int i)
 {
@@ -22,7 +29,6 @@ void draw_ray(t_data *game, t_draw  *draw, int i)
 		my_mlx_pixel_put(&game->fbuffer, i, y, 0x0000ff);
 		y++;
 	}
-	// draw_wall(game, draw, i);
 	while (y < draw->drawStart)
 	{
 		my_mlx_pixel_put(&game->fbuffer, i, y, 0xffffff);
@@ -41,12 +47,14 @@ void perp(t_data *game, int i)
 {
 	t_draw draw;
 	
+	init_draw(&draw);
 	if (game->ray.side == 0)
 		game->ray.perpWallDist = (game->ray.sideDistX - game->ray.deltaDistX);
 	else	
 		game->ray.perpWallDist = (game->ray.sideDistY - game->ray.deltaDistY);
-	draw.lineH = ((HEIGHT / game->ray.perpWallDist));
-	draw.drawStart = -draw.lineH / 2 + HEIGHT / 2;
+
+	draw.lineH = (int)((int)HEIGHT / game->ray.perpWallDist);
+	draw.drawStart = (-1 * draw.lineH) / 2 + HEIGHT / 2;
 	if (draw.drawStart < 0)
 		draw.drawStart = 0;
 	draw.drawEnd = draw.lineH / 2 + HEIGHT / 2;
@@ -76,12 +84,7 @@ void dda(t_data *game)
           game->ray.mapY += game->ray.stepY;
           game->ray.side = 1;
         }
-		/* if (ray->map_y < 0.25
-			|| ray->map_x < 0.25
-			|| ray->map_y > data->mapinfo.height - 0.25
-			|| ray->map_x > data->mapinfo.width - 1.25)
-			break ; */
-		if (game->ray.mapX < 0.2 || game->ray.mapY < 0.2 || game->ray.mapX > game->map.width - 1.25 || game->ray.mapY > game->map.height - 0.25 )
+		if (game->ray.mapX < 0.25 || game->ray.mapY < 0.25 || game->ray.mapX > game->map.width - 1.25 || game->ray.mapY > game->map.height - 0.25 )
 			break;
 		else if ((game->map.width > game->ray.mapX && game->map.height > game->ray.mapY) && game->map.map[game->ray.mapY][game->ray.mapX] == '1')
 			game->ray.hit = 1;
@@ -90,7 +93,7 @@ void dda(t_data *game)
 
 void calc_step(t_data *game)
 {
-	if(game->ray.rayDirX < 0)
+/* 	if(game->ray.rayDirX < 0)
       {
         game->ray.stepX = -1;
         game->ray.sideDistX = (game->player.posX - game->ray.mapX) * game->ray.deltaDistX;
@@ -109,7 +112,27 @@ void calc_step(t_data *game)
       {
         game->ray.stepY = 1;
         game->ray.sideDistY = (game->ray.mapY + 1.0 - game->player.posY) * game->ray.deltaDistY;
-      }
+      } */
+	if(game->ray.rayDirX < 0)
+    {
+        game->ray.stepX = -1;
+        game->ray.sideDistX = (game->player.posX - game->ray.mapX) * game->ray.deltaDistX;
+    }
+    else
+    {
+        game->ray.stepX = 1;
+        game->ray.sideDistX = (game->ray.mapX + 1.0 - game->player.posX) * game->ray.deltaDistX;
+    }
+    if(game->ray.rayDirY < 0)
+    {
+        game->ray.stepY = -1;
+        game->ray.sideDistY = (game->player.posY - game->ray.mapY) * game->ray.deltaDistY;
+    }
+    else
+    {
+        game->ray.stepY = 1;
+        game->ray.sideDistY = (game->ray.mapY + 1.0 - game->player.posY) * game->ray.deltaDistY;
+    }
 }
 
 void calc_ray(t_data *game)
@@ -127,6 +150,8 @@ void calc_ray(t_data *game)
 		game->ray.deltaDistX = fabs(1 / game->ray.rayDirX);
 		game->ray.deltaDistY = fabs(1 / game->ray.rayDirY);
 		game->ray.hit = 0;
+		// printf("rayCameraX = %f\n rayDirX = %f\n rayDirY = %f\nmapX = %i\n mapY = %i\nsideDistX = %f\nsideDistY = %f\ndeltaDistX = %f\n deltaDistY =%f\n perpwallDist = %f\nstepX = %i\nstepY = %i\nhit = %i\nside %i\n", game->ray.cameraX, game->ray.rayDirX, game->ray.rayDirY, game->ray.mapX, game->ray.mapY, game->ray.sideDistX, game->ray.sideDistY, game->ray.deltaDistX, game->ray.deltaDistY, game->ray.perpWallDist, game->ray.stepX, game->ray.stepY, game->ray.hit, game->ray.side);
+		// exit (1);
 		calc_step(game);
 		dda(game);
 		perp(game, i);

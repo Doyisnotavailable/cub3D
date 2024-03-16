@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/15 21:05:24 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/16 19:27:09 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,7 @@ int			count_line_col(char **map, int col);
 
 // utils for testing testing_utils.c
 // void		print_array(char **str);
-void		print_array(t_data *data);
+void		print_array(char **str);
 void		print_tmp(t_data *game);
 void		free_tmp(t_data *game);
 void		print_rgb(t_data *game);
@@ -244,4 +244,7 @@ void		move_d(t_data *game);
 
 // wall_collision.c
 bool		check_wall(t_data *game, double x, double y);
+
+// draw_utils.c
+void		 init_draw (t_draw *draw);
 #endif

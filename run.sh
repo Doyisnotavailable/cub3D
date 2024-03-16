@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./cub3D map/mini.cub
+./cub3D map/42.cub

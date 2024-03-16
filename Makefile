@@ -1,7 +1,7 @@
 NAME = cub3D
 
 SRC_DIR = ./src
-SRC =	main.c check.c free.c init_game.c init_utils.c verify.c verify_utils.c testing_utils.c check_elements.c scan_utils.c map_utils.c map_edit.c get_file.c element_utils.c check_map_utils.c init.c rect_map.c final_parse.c raycast.c keymap.c util.c wasd_move.c wall_collision.c draw_wall.c
+SRC =	main.c check.c free.c init_game.c init_utils.c verify.c verify_utils.c testing_utils.c check_elements.c scan_utils.c map_utils.c map_edit.c get_file.c element_utils.c check_map_utils.c init.c rect_map.c final_parse.c raycast.c keymap.c util.c wasd_move.c wall_collision.c draw_wall.c draw_utils.c
 
 START = make -C ./inc/printf
 PRINTF = -L./inc/printf -lftprintf

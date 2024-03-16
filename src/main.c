@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:14:13 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/15 21:04:37 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/15 21:29:54 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	game_loop(t_data *game)
 {
 	if (game->draw_flag == 0)
 		return (0);
-	printf("Draw\n");
 	calc_ray(game);
 
 	return (1);
