@@ -1,52 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/19 19:14:13 by mlumibao          #+#    #+#             */
+/*   Updated: 2024/03/18 02:16:35 by alsaeed          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include "inc/libft/libft.h"
+#include "cub3d.h"
 
-char	**ft_split(char const *s, char c);
-
-/* void	free_array(char ***str)
+// added this one just for printing map
+void print_array_char(char **str)
 {
-	int i = 0;
-	char **tmp;
-
-	tmp = *str;
-	while (*str)
-	{
-		free(*str[i]);
-		i++;
-	}
-	free(tmp);
-} */
-void	free_array(char **str)
-{
-	char **tmp;
-
-	tmp = str;
-	while (*str)
-	{
-		free(*str);
-		*str = NULL;
-		str++;
-	}
-	free(tmp);
+	int i = -1;
+	while (str[++i])
+		printf("%s\n", str[i]);
 }
 
-
-int main()
+int	game_loop(t_data *game)
 {
-	char **test = ft_split("asd bcd efg hik", ' ');
+	if (game->draw_flag == 0)
+		return (0);
+	calc_ray(game);
 
-	for (size_t i = 0; i < 4; i++)
-		printf("%s\n", test[i]);
-	free_array(test);
-	test = NULL;
-	if (!test)
+	return (1);
+}
+
+int	main(int ac, char **av)
+{
+	t_data		game;
+
+	if (ac != 2)
 	{
-		printf("proper free");
+		ft_putstr_fd("Error\n Invalid Syntax ./cub3d 'MAP_PATH'", 2);
 		return (0);
 	}
-	while(*test)
-		printf("%s\n", *test++);
+	check(av, &game);
+	finaladd(&game);
+	mlx_hook(game.win_ptr, 3, 1L, key_move, &game);
+	mlx_loop_hook(game.mlx_ptr, game_loop, &game);
+	mlx_loop(game.mlx_ptr);
 }
