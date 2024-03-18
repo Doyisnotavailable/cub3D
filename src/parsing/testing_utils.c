@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   testing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 16:16:02 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/02/21 18:31:58 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:47:41 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 
 void	print_tmp(t_data *game)
 {
+	printf("print_tmp\n");
 	if (game->tmp.n_path)
 		printf("%s\n", game->tmp.n_path);
 	if (game->tmp.e_path)
@@ -58,6 +59,7 @@ void	print_tmp(t_data *game)
 
 void	print_rgb(t_data *game)
 {
+	printf("print_rgb\n");
 	printf("floor r = %d\n", game->floor.r);
 	printf("floor g = %d\n", game->floor.g);
 	printf("floor b = %d\n", game->floor.b);

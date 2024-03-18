@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 20:06:10 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/15 20:06:46 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:52:02 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void init_mlx(t_data *game)
 {
+	printf("init_mlx\n");
 	game->mlx_ptr = mlx_init();
 	if (game->mlx_ptr== NULL)
 		ft_putstr_fd("Error: Can't initialize mlx\n", 2);

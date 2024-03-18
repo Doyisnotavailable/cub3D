@@ -2,6 +2,7 @@
 
 void move_w(t_data *game)
 {
+    printf("move_w\n");
     double  x;
     double  y;
 
@@ -17,6 +18,7 @@ void move_w(t_data *game)
 
 void move_s(t_data *game)
 {
+    printf("move_s\n");
     double  x;
     double  y;
 
@@ -32,6 +34,7 @@ void move_s(t_data *game)
 
 void move_a(t_data *game)
 {
+    printf("move_a\n");
     double  x;
     double  y;
 
@@ -47,6 +50,7 @@ void move_a(t_data *game)
 
 void move_d(t_data *game)
 {
+    printf("move_d\n");
     double  x;
     double  y;
 

@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 17:28:35 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/16 17:30:23 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:48:36 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void init_draw (t_draw *draw)
+void	init_draw(t_draw *draw)
 {
+	printf("init_draw\n");
 	draw->lineH = 0;
 	draw->drawStart = 0;
 	draw->drawEnd = 0;

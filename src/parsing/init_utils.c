@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:14:06 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/01/05 16:23:16 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:46:32 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 */
 int	ft_space(char c)
 {
+	printf("ft_space\n");
 	if (c == ' ' || c == '\t')
 		return (1);
 	return (0);
@@ -37,6 +38,7 @@ int	ft_space(char c)
 
 int	ft_space_line(char *str)
 {
+	printf("ft_space_line\n");
 	int	i;
 
 	i = 0;
@@ -52,6 +54,7 @@ int	ft_space_line(char *str)
 
 void	init_tmp(t_data *game)
 {
+	printf("init_tmp\n");
 	game->tmp.c = NULL;
 	game->tmp.f = NULL;
 	game->tmp.n_path = NULL;
@@ -62,6 +65,7 @@ void	init_tmp(t_data *game)
 
 void	init_rgb(t_data *game)
 {
+	printf("init_rgb\n");
 	game->floor.r = -1;
 	game->floor.g = -1;
 	game->floor.b = -1;
@@ -72,6 +76,7 @@ void	init_rgb(t_data *game)
 
 int	file_line_count(char **av)
 {
+	printf("file_line_count\n");
 	int		fd;
 	char	*line;
 	int		count;

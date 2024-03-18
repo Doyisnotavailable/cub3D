@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scan_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 15:33:47 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/02/21 18:31:16 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:47:25 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 char	**scan_map(char **file)
 {
+	printf("scan_map\n");
 	char	**tmp;
 	int		i;
 	int		valid;
@@ -38,6 +39,7 @@ char	**scan_map(char **file)
 
 void	get_store_map(char **file, t_data *game)
 {
+	printf("get_store_map\n");
 	char	**ptr_map;
 	int		map_len;
 	int		i;

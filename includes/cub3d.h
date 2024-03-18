@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/18 03:26:23 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/18 21:33:43 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 #  include <X11/keysym.h>
 # endif
 
-# define WIDTH			1080
-# define HEIGHT			720
+# define WIDTH			1024
+# define HEIGHT			768
 # define NO				1
 # define EA				2
 # define WE				3

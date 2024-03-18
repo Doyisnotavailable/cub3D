@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:38:13 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/18 03:27:24 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/18 20:48:04 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	alloc(char **tab, char const *s, char sep)
 {
+	printf("alloc\n");
 	char		**tab_p;
 	char const	*tmp;
 
@@ -38,6 +39,7 @@ static void	alloc(char **tab, char const *s, char sep)
 
 static int	ft_count_words(char const *s, char sep)
 {
+	printf("ft_count_words\n");
 	int	word_count;
 
 	word_count = 0;
@@ -55,6 +57,7 @@ static int	ft_count_words(char const *s, char sep)
 
 char	**ft_split_tab(char const *s, char c)
 {
+	printf("ft_split_tab\n");
 	char	**ptr;
 	int		size;
 
@@ -70,6 +73,7 @@ char	**ft_split_tab(char const *s, char c)
 
 int	count_array(char **s)
 {
+	printf("count_array\n");
 	int		i;
 
 	i = 0;
@@ -80,6 +84,7 @@ int	count_array(char **s)
 
 char	*copy_and_free(char **tmp)
 {
+	printf("copy_and_free\n");
 	int		i;
 	char	*ret;
 

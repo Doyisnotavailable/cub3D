@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keymap.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:18:46 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/15 21:25:19 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:52:27 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 int key_rotate(int keycode, t_data *game)
 {
+	printf("key_rotate\n");
 	double oldDirX;
 	double oldPlaneX;
 
@@ -51,6 +52,7 @@ int key_rotate(int keycode, t_data *game)
 
 int key_move(int keycode, t_data *game)
 {
+	printf("key_move\n");
 	printf("%i\n", keycode);
 	if (keycode == 13) // S
 		move_w(game);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:12:47 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/25 16:23:00 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:45:44 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	free_mlx_ptr(t_data *game)
 
 void	free_array_exit(char **tmp, char *str)
 {
+	printf("free_array_exit\n");
 	ft_putstr_fd(str, 2);
 	free_array(tmp);
 	exit (1);
@@ -39,6 +40,7 @@ void	free_array_exit(char **tmp, char *str)
 
 void	free_array(char **str)
 {
+	printf("free_array\n");
 	int	i;
 
 	i = 0;
@@ -54,6 +56,7 @@ void	free_array(char **str)
 
 void	free_tmp(t_data *game)
 {
+	printf("free_tmp\n");
 	if (game->tmp.n_path)
 		free(game->tmp.n_path);
 	if (game->tmp.e_path)
@@ -70,5 +73,6 @@ void	free_tmp(t_data *game)
 
 void	free_all_data(t_data *game)
 {
+	printf("free_all_data\n");
 	free_tmp(game);
 }

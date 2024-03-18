@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 20:28:26 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/18 02:15:36 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/18 20:44:33 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	store_to_rgb(t_data *game, char *str, int type);
 
 void	check_elements(t_data *game)
 {
+	printf("check_elements\n");
 	if (!game->tmp.n_path || !game->tmp.e_path
 		|| !game->tmp.w_path || !game->tmp.s_path
 		|| !game->tmp.f || !game->tmp.c)
@@ -39,6 +40,7 @@ void	check_elements(t_data *game)
 
 void	store_to_rgb(t_data *game, char *str, int type)
 {
+	printf("store_to_rgb\n");
 	char	**tmp;
 
 	if (check_comma(str) != 2 || check_valid_char(str) == 1)
@@ -54,6 +56,7 @@ void	store_to_rgb(t_data *game, char *str, int type)
 
 void	check_hex(t_data *game, char **tmp, int type)
 {
+	printf("check_hex\n");
 	if (count_array(tmp) != 3)
 		return ;
 	if (ft_atol(tmp[0]) == 1 || ft_atol(tmp[1]) == 1 ||  ft_atol(tmp[2]) == 1)

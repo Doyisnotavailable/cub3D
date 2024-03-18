@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rect_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:34:55 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/16 19:33:58 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:53:40 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int find_row_len(char **map)
 {
+	printf("find_row_len\n");
 	int	i;
 	int res;
 	int j;
@@ -39,6 +40,7 @@ static int find_row_len(char **map)
 
 void fill_map(t_data *game, char **tmp, int len)
 {
+	printf("fill_map\n");
 	int i;
 	int j;
 
@@ -66,6 +68,7 @@ void fill_map(t_data *game, char **tmp, int len)
 
 void tab_space(char **map)
 {
+	printf("tab_space\n");
 	int i;
 	int j;
 
@@ -83,6 +86,7 @@ void tab_space(char **map)
 
 void print_array(char **str)
 {
+	printf("print_array\n");
 	int i = -1;
 
 	while (str[++i])
@@ -92,6 +96,7 @@ void print_array(char **str)
 
 void rect_map(t_data *game)
 {
+	printf("rect_map\n");
 	char **tmp;
 	tmp = malloc(sizeof (char *) * (count_array(game->map.map) + 1));
 	fill_map(game, tmp, find_row_len(game->map.map));

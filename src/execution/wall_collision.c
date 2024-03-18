@@ -8,6 +8,7 @@
 
 bool check_wall(t_data *game, double x, double y)
 {
+	printf("check_wall\n");
     if (game->map.map[(int)y][(int)x] == '0')
 		return (true);
 	return (false);

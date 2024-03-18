@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_edit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:47:12 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/02/21 18:31:16 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:46:58 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static char	**remove_nl(char **map);
 
 void	edit_map(t_data *game)
 {
+	printf("edit_map\n");
 	game->map.map = remove_nl(game->map.map);
 	if (check_enclosed_zero(game->map.map) || check_enclosed_space(game->map.map))
 	{
@@ -27,6 +28,7 @@ void	edit_map(t_data *game)
 //Function to trim valid newlines in the map also trims end spaces each row
 char	**remove_nl(char **map)
 {
+	printf("remove_nl\n");
 	int		i;
 	int		j;
 	char	**ret;
@@ -56,6 +58,7 @@ char	**remove_nl(char **map)
 
 int	check_enclosed_zero(char **map)
 {
+	printf("check_enclosed_zero\n");
 	int	x;
 	int	y;
 
@@ -83,6 +86,7 @@ int	check_enclosed_zero(char **map)
 
 int	check_enclosed_space(char **map)
 {
+	printf("check_enclosed_space\n");
 	int	x;
 	int	y;
 

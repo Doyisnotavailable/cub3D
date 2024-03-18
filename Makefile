@@ -6,7 +6,7 @@
 #    By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 01:50:23 by alsaeed           #+#    #+#              #
-#    Updated: 2024/03/18 04:55:01 by alsaeed          ###   ########.fr        #
+#    Updated: 2024/03/18 20:43:10 by alsaeed          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME =	cub3D
 
 UNAME = $(shell uname)
 
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address
 LDFLAGS = -Llibs/libft/ -lft -lm
 INCLUDES = -Iincludes/ -Ilibs/libft/includes
 
