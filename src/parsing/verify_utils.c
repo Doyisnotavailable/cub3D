@@ -6,16 +6,16 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:38:13 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/18 06:09:42 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/18 03:27:24 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	alloc(char **tab, char *s, char sep)
+static void	alloc(char **tab, char const *s, char sep)
 {
-	char	**tab_p;
-	char	*tmp;
+	char		**tab_p;
+	char const	*tmp;
 
 	tmp = s;
 	tab_p = tab;
@@ -36,7 +36,7 @@ static void	alloc(char **tab, char *s, char sep)
 	*tab_p = 0;
 }
 
-static int	ft_count_words(char *s, char sep)
+static int	ft_count_words(char const *s, char sep)
 {
 	int	word_count;
 
@@ -53,7 +53,7 @@ static int	ft_count_words(char *s, char sep)
 	return (word_count);
 }
 
-char	**ft_split_tab(char *s, char c)
+char	**ft_split_tab(char const *s, char c)
 {
 	char	**ptr;
 	int		size;
