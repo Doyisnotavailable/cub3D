@@ -6,21 +6,13 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:32:06 by alsaeed           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/03/18 03:18:51 by alsaeed          ###   ########.fr       */
-=======
-/*   Updated: 2024/03/12 01:11:40 by alsaeed          ###   ########.fr       */
->>>>>>> main
+/*   Updated: 2024/03/18 06:04:05 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-<<<<<<< HEAD
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
-=======
-int	ft_strncmp(char *s1, char *s2, size_t n)
->>>>>>> main
 {
 	size_t	i;
 
@@ -36,11 +28,7 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 	return (0);
 }
 
-<<<<<<< HEAD
 int	ft_strcmp(const char *s1, const char *s2)
-=======
-int	ft_strcmp(char *s1, char *s2)
->>>>>>> main
 {
 	int	i;
 

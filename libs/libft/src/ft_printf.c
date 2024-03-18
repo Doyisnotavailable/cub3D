@@ -6,11 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:11:31 by alsaeed           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/03/18 03:07:10 by alsaeed          ###   ########.fr       */
-=======
-/*   Updated: 2024/03/12 01:11:40 by alsaeed          ###   ########.fr       */
->>>>>>> main
+/*   Updated: 2024/03/18 06:03:32 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +34,7 @@ static int	ft_check(char c, va_list lst)
 	return (len);
 }
 
-<<<<<<< HEAD
 int	ft_printf(const char *str, ...)
-=======
-int	ft_printf(char *str, ...)
->>>>>>> main
 {
 	va_list	lst;
 	int		i;

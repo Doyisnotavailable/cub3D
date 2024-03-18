@@ -6,21 +6,13 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:29:00 by alsaeed           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/03/18 03:04:13 by alsaeed          ###   ########.fr       */
-=======
-/*   Updated: 2024/03/12 01:11:40 by alsaeed          ###   ########.fr       */
->>>>>>> main
+/*   Updated: 2024/03/18 06:04:29 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-<<<<<<< HEAD
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
-=======
-size_t	ft_strlcat(char *dst, char *src, size_t dstsize)
->>>>>>> main
 {
 	size_t	i;
 	size_t	j;

@@ -6,21 +6,13 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 10:55:54 by alsaeed           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/03/18 03:03:46 by alsaeed          ###   ########.fr       */
-=======
-/*   Updated: 2024/03/12 01:11:40 by alsaeed          ###   ########.fr       */
->>>>>>> main
+/*   Updated: 2024/03/18 06:04:45 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-<<<<<<< HEAD
 char	*ft_strdup_nonl(const char *s1)
-=======
-char	*ft_strdup_nonl(char *s1)
->>>>>>> main
 {
 	char	*dup;
 	int		count;

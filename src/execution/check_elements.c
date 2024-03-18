@@ -6,11 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 20:28:26 by mlumibao          #+#    #+#             */
-<<<<<<<< HEAD:src/parsing/check_elements.c
-/*   Updated: 2024/03/18 02:15:36 by alsaeed          ###   ########.fr       */
-========
-/*   Updated: 2024/03/16 19:06:27 by alsaeed          ###   ########.fr       */
->>>>>>>> main:src/execution/check_elements.c
+/*   Updated: 2024/03/18 06:11:54 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -6,11 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:38:13 by mlumibao          #+#    #+#             */
-<<<<<<<< HEAD:src/parsing/verify_utils.c
-/*   Updated: 2024/03/18 03:27:24 by alsaeed          ###   ########.fr       */
-========
-/*   Updated: 2024/03/16 19:04:45 by alsaeed          ###   ########.fr       */
->>>>>>>> main:src/execution/verify_utils.c
+/*   Updated: 2024/03/18 06:10:15 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

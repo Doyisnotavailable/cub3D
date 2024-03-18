@@ -5,9 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-<<<<<<< HEAD
 #    Created: 2024/03/18 01:50:23 by alsaeed           #+#    #+#              #
-#    Updated: 2024/03/18 04:55:01 by alsaeed          ###   ########.fr        #
+#    Updated: 2024/03/18 05:55:12 by alsaeed          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,38 +30,6 @@ else ifeq ($(UNAME), Darwin)
 endif
 
 SRCD =	check.c \
-=======
-#    Created: 2024/03/04 12:19:50 by alsaeed           #+#    #+#              #
-#    Updated: 2024/03/16 19:14:07 by alsaeed          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-# --------------------------------- variables -------------------------------- #
-
-NAME =	cub3D
-
-UNAME = $(shell uname)
-
-CFLAGS = -Wall -Wextra -Werror
-LDFLAGS = -Llibs/libft/ -lft -lm
-INCLUDES = -Iincludes/ -Ilibs/libft/includes
-
-ifeq ($(UNAME), Linux)
-	CC = clang
-	LDFLAGS += -Llibs/mlx_linux/  -L/usr/lib -lXext -lX11 
-	INCLUDES += -Ilibs/mlx_linux/ -I/usr/include -D__LINUX__
-	MLX_DIR = libs/mlx_linux/
-else ifeq ($(UNAME), Darwin)
-	CC = cc
-	LDFLAGS += -Llibs/mlx_macos/ -lmlx -framework OpenGL -framework AppKit -L/usr/lib
-	INCLUDES += -Ilibs/mlx_macos/
-	MLX_DIR = libs/mlx_macos/
-endif
-
-SRCD =	
-
-SRCX =	check.c \
->>>>>>> main
 		free.c \
 		init_game.c \
 		init_utils.c \
@@ -77,7 +44,6 @@ SRCX =	check.c \
 		element_utils.c \
 		check_map_utils.c
 
-<<<<<<< HEAD
 SRCX =	init.c \
 		rect_map.c \
 		final_parse.c \
@@ -89,8 +55,6 @@ SRCX =	init.c \
 		draw_wall.c \
 		draw_utils.c
 
-=======
->>>>>>> main
 OBJD_DIR = src/parsing/objs
 OBJD = $(SRCD:%.c=$(OBJD_DIR)/%.o)
 OBJX_DIR = src/execution/objs
@@ -110,13 +74,8 @@ $(OBJX_DIR)%.o: src/execution%.c
 	@mkdir -p $(OBJX_DIR)
 	@$(CC) $(CFLAGS) -c $(INCLUDES) $< -o $@
 	
-<<<<<<< HEAD
 $(NAME): $(LIBFT) $(MINILIBX) $(OBJD) $(OBJX) main.c
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJD) $(OBJX) main.c -o $(NAME) $(LDFLAGS)
-=======
-$(NAME): $(LIBFT) $(MINILIBX) $(OBJX) main.c
-	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJX) main.c -o $(NAME) $(LDFLAGS)
->>>>>>> main
 	@echo "cub3D Compiled : \033[1;32mOK\033[0m"
 
 $(LIBFT):
@@ -156,8 +115,4 @@ fclean: clean
 
 re: fclean all
 
-<<<<<<< HEAD
 .PHONY: all clean fclean re
-=======
-.PHONY: all clean fclean re
->>>>>>> main
