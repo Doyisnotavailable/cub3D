@@ -6,7 +6,11 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/03/18 03:26:23 by alsaeed          ###   ########.fr       */
+=======
+/*   Updated: 2024/03/16 19:05:10 by alsaeed          ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +176,7 @@ int			check_map_char(t_data *game, int *i);
 void		check_map_walls(t_data *game, int size);
 
 // verify_utils.c
-char		**ft_split_tab(char const *s, char c);
+char		**ft_split_tab(char *s, char c);
 char		*copy_and_free(char **tmp);
 int			count_array(char **s);
 

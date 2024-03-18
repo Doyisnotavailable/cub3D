@@ -6,13 +6,21 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:37:05 by alsaeed           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/03/18 03:03:09 by alsaeed          ###   ########.fr       */
+=======
+/*   Updated: 2024/03/12 01:11:42 by alsaeed          ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
+<<<<<<< HEAD
 static int	ft_count_words(char const *s, char c)
+=======
+static int	ft_count_words(char *s, char c)
+>>>>>>> main
 {
 	int	count;
 
