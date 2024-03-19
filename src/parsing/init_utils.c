@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:14:06 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/19 04:25:35 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/20 00:29:30 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ void	init_tmp(t_data *game)
 {
 	game->tmp.c = NULL;
 	game->tmp.f = NULL;
-	game->tmp.n_path = NULL;
-	game->tmp.e_path = NULL;
-	game->tmp.w_path = NULL;
-	game->tmp.s_path = NULL;
+	game->tmp.texture[NO] = NULL;
+	game->tmp.texture[EA] = NULL;
+	game->tmp.texture[WE] = NULL;
+	game->tmp.texture[SO] = NULL;
 }
 
 void	init_rgb(t_data *game)

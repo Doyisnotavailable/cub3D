@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:12:47 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/19 04:26:04 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/20 00:28:23 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,14 @@ void	free_array(char **str)
 
 void	free_tmp(t_data *game)
 {
-	if (game->tmp.n_path)
-		free(game->tmp.n_path);
-	if (game->tmp.e_path)
-		free(game->tmp.e_path);
-	if (game->tmp.w_path)
-		free(game->tmp.w_path);
-	if (game->tmp.s_path)
-		free(game->tmp.s_path);
+	if (game->tmp.texture[NO])
+		free(game->tmp.texture[NO]);
+	if (game->tmp.texture[EA])
+		free(game->tmp.texture[EA]);
+	if (game->tmp.texture[WE])
+		free(game->tmp.texture[WE]);
+	if (game->tmp.texture[SO])
+		free(game->tmp.texture[SO]);
 	if (game->tmp.f)
 		free(game->tmp.f);
 	if (game->tmp.c)

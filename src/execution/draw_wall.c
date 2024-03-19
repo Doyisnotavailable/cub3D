@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 20:49:00 by alsaeed           #+#    #+#             */
-/*   Updated: 2024/03/19 04:30:08 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/20 00:00:25 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,17 @@ void	draw_tex(t_data *game, t_draw *draw, int i, t_img img)
 	}
 }
 
-void	draw_wall(t_data *game, t_draw *draw, int i)
-{
-	int	wall;
+// void	draw_wall(t_data *game, t_draw *draw, int i)
+// {
+// 	int	wall;
 
-	wall = get_wall_direction(game);
-	if (wall == 1)
-		draw_tex(game, draw, i, game->e_img);
-	else if (wall == 2)
-		draw_tex(game, draw, i, game->s_img);
-	else if (wall == 3)
-		draw_tex(game, draw, i, game->w_img);
-	else
-		draw_tex(game, draw, i, game->n_img);
-}
+// 	wall = get_wall_direction(game);
+// 	if (wall == 1)
+// 		draw_tex(game, draw, i, game->e_img);
+// 	else if (wall == 2)
+// 		draw_tex(game, draw, i, game->s_img);
+// 	else if (wall == 3)
+// 		draw_tex(game, draw, i, game->w_img);
+// 	else
+// 		draw_tex(game, draw, i, game->n_img);
+// }

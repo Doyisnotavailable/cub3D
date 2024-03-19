@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 16:07:59 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/19 05:37:56 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/20 00:14:04 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,11 @@ void init_ray(t_ray *ray)
 
 void finaladd(t_data *game)
 {
-	init_mlx(game);
 	color(game);
 	getplayerpos(game);
 	rect_map(game);
 	init_player(game);
 	init_ray(&game->ray);
 	game->draw_flag = 1;
+	init_mlx(game);
 }

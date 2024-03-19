@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 16:16:02 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/19 04:24:54 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/20 00:31:02 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,17 @@
 
 void	print_tmp(t_data *game)
 {
-	if (game->tmp.n_path)
-		printf("%s\n", game->tmp.n_path);
-	if (game->tmp.e_path)
-		printf("%s\n", game->tmp.e_path);
-	if (game->tmp.w_path)
-		printf("%s\n", game->tmp.w_path);
-	if (game->tmp.s_path)
-		printf("%s\n", game->tmp.s_path);
+	if (game->tmp.texture[NO])
+		printf("%s\n", game->tmp.texture[NO]);
+	if (game->tmp.texture[EA])
+		printf("%s\n", game->tmp.texture[EA]);
+	if (game->tmp.texture[WE])
+		printf("%s\n", game->tmp.texture[WE]);
+	if (game->tmp.texture[SO])
+		printf("%s\n", game->tmp.texture[SO]);
 	if (game->tmp.f)
 		printf("%s\n", game->tmp.f);
-	if (game->tmp.e_path)
+	if (game->tmp.c)
 		printf("%s\n", game->tmp.c);
 }
 

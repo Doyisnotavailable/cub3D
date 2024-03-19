@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/19 21:46:29 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/20 00:43:09 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,31 @@
 
 # define WIDTH			1024
 # define HEIGHT			768
-# define NO				1
-# define EA				2
-# define WE				3
-# define SO				4
-# define F				5
-# define C				6
+# define NO				0
+# define EA				1
+# define WE				2
+# define SO				3
+# define F				4
+# define C				5
 # define X				0
 # define Y				1
 # define TEXSIZE		64
 # define MS				0.1 //movespeed
 # define RS				0.02 //rotate speed
 # define BIG_NUM 453211111.0f
+
+# ifndef TRUE
+#  undef TRUE
+# endif
+# ifndef FALSE
+#  undef FALSE
+# endif
+
+typedef enum e_bool
+{
+	FALSE,
+	TRUE
+}	t_bool;
 
 typedef struct s_draw
 {
@@ -82,6 +95,8 @@ typedef struct s_img
 	int			endian;
 	int			bpp;
 	int			len;
+	int			height;
+	int			width;
 }	t_img;
 
 typedef struct s_map
@@ -93,10 +108,11 @@ typedef struct s_map
 
 typedef struct s_tmp
 {
-	char			*n_path;
-	char			*e_path;
-	char			*w_path;
-	char			*s_path;
+	// char			*n_path;
+	// char			*e_path;
+	// char			*w_path;
+	// char			*s_path;
+	char			*texture[4];
 	char			*f;
 	char			*c;
 }	t_tmp;
@@ -135,10 +151,7 @@ typedef struct s_data
 
 	//texture files needed for execution
 	t_img			fbuffer; // this one to store all pixels in 1 to img in screen all at once
-	t_img			n_img;
-	t_img			e_img;
-	t_img			w_img;
-	t_img			s_img;
+	t_img			texture[4];
 
 	//variable for getting floor, ceiling and textures needed for parsing
 	t_rgb			floor;

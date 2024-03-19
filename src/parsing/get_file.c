@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:16:54 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/19 04:25:51 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/20 00:25:56 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,13 +102,13 @@ static void	get_elements(char **str, t_data *game)
 		if (!tmp)
 			continue ;
 		if (type == NO)
-			game->tmp.n_path = copy_and_free(tmp);
+			game->tmp.texture[NO] = copy_and_free(tmp);
 		else if (type == EA)
-			game->tmp.e_path = copy_and_free(tmp);
+			game->tmp.texture[EA] = copy_and_free(tmp);
 		else if (type == WE)
-			game->tmp.w_path = copy_and_free(tmp);
+			game->tmp.texture[WE] = copy_and_free(tmp);
 		else if (type == SO)
-			game->tmp.s_path = copy_and_free(tmp);
+			game->tmp.texture[SO] = copy_and_free(tmp);
 		else if (type == F)
 			game->tmp.f = copy_and_free(tmp);
 		else if (type == C)

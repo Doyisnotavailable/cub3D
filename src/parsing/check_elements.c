@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 20:28:26 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/19 04:26:37 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/20 00:27:13 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	store_to_rgb(t_data *game, char *str, int type);
 
 void	check_elements(t_data *game)
 {
-	if (!game->tmp.n_path || !game->tmp.e_path
-		|| !game->tmp.w_path || !game->tmp.s_path
+	if (!game->tmp.texture[NO] || !game->tmp.texture[EA]
+		|| !game->tmp.texture[WE] || !game->tmp.texture[SO]
 		|| !game->tmp.f || !game->tmp.c)
 	{
 		free_tmp(game);
