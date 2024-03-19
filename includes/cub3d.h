@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/19 01:26:54 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/19 21:46:29 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,12 @@
 # define SO				4
 # define F				5
 # define C				6
+# define X				0
+# define Y				1
 # define TEXSIZE		64
 # define MS				0.1 //movespeed
 # define RS				0.02 //rotate speed
+# define BIG_NUM 453211111.0f
 
 typedef struct s_draw
 {
@@ -114,6 +117,8 @@ typedef struct s_ray
 	int		stepY;
 	int		hit;
 	int		side;
+	int		sideX;
+	int		sideY;
 } t_ray;
 
 typedef struct s_data
@@ -243,10 +248,12 @@ void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void		draw_wall(t_data *game, t_draw *draw, int i);
 
 // wasd_move.c
-void		move_w(t_data *game);
-void		move_s(t_data *game);
-void		move_a(t_data *game);
-void		move_d(t_data *game);
+void		calc_move(t_data *game, int key_code, double *move);
+void		move(int key_code, t_data *game);
+// void		move_w(t_data *game);
+// void		move_s(t_data *game);
+// void		move_a(t_data *game);
+// void		move_d(t_data *game);
 
 // wall_collision.c
 bool		check_wall(t_data *game, double x, double y);

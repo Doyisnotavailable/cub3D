@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:34:55 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/19 04:27:02 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/19 05:40:27 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int find_row_len(char **map)
 	return res;
 }
 
-void fill_map(t_data *game, char **tmp, int len)
+void	fill_map(t_data *game, char **tmp, int len)
 {
 	int i;
 	int j;
@@ -45,7 +45,7 @@ void fill_map(t_data *game, char **tmp, int len)
 	i = 0;
 	while (game->map.map[i])
 	{
-		tmp[i] = malloc(sizeof(char) * (len + 1));
+		tmp[i] = ft_calloc(len + 1, sizeof(char));
 		if (!tmp[i])
 			return ;
 		j = -1;
@@ -93,7 +93,8 @@ void print_array(char **str)
 void rect_map(t_data *game)
 {
 	char **tmp;
-	tmp = malloc(sizeof (char *) * (count_array(game->map.map) + 1));
+
+	tmp = ft_calloc(count_array(game->map.map) + 1, sizeof(char *));
 	fill_map(game, tmp, find_row_len(game->map.map));
 	tab_space(game->map.map);
 	game->map.height = count_array(game->map.map);
