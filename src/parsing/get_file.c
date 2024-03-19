@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:16:54 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/18 20:46:09 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/19 04:25:51 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static char	**get_whole_map(char **av)
 {
-	printf("get_whole_map\n");
 	int		fd;
 	char	**ret;
 	char	*line;
@@ -40,7 +39,6 @@ static char	**get_whole_map(char **av)
 
 static char	**get_element_line(char **str)
 {
-	printf("get_element_line\n");
 	int		i;
 	char	**ret;
 	int		len;
@@ -67,7 +65,6 @@ static char	**get_element_line(char **str)
 
 static char	**get_element(char *elem, t_data *game, int *type)
 {
-	printf("get_element\n");
 	char	**tmp;
 
 	(void)game;
@@ -93,7 +90,6 @@ static char	**get_element(char *elem, t_data *game, int *type)
 
 static void	get_elements(char **str, t_data *game)
 {
-	printf("get_elements\n");
 	int		i;
 	int		type;
 	char	**tmp;
@@ -124,7 +120,6 @@ static void	get_elements(char **str, t_data *game)
 /* This function gets the file content and checks for element and the map */
 void	check_file_content(char **av, t_data *game)
 {
-	printf("check_file_content\n");
 	char		**tmp;
 	char		**element;
 

@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 22:49:29 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/18 20:44:57 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/19 04:26:29 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	check_left_right_zero(char **map, int x, int y)
 {
-	printf("check_left_right_zero\n");
 	int		i;
 	int		rowsize;
 
@@ -43,7 +42,6 @@ int	check_left_right_zero(char **map, int x, int y)
 
 int	check_up_down_zero(char **map, int x, int y)
 {
-	printf("check_up_down_zero\n");
 	int		i;
 	int		colsize;
 
@@ -73,7 +71,6 @@ int	check_up_down_zero(char **map, int x, int y)
 
 int	check_left_right_space(char **map, int x, int y)
 {
-	printf("check_left_right_space\n");
 	int		i;
 	int		rowsize;
 
@@ -103,7 +100,6 @@ int	check_left_right_space(char **map, int x, int y)
 
 int	check_up_down_space(char **map, int x, int y)
 {
-	printf("check_up_down_space\n");
 	int		i;
 	int		colsize;
 
@@ -132,7 +128,6 @@ int	check_up_down_space(char **map, int x, int y)
 
 int	ft_valid_char(char c)
 {
-	printf("ft_valid_char\n");
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == '0')
 		return (1);
 	return (0);

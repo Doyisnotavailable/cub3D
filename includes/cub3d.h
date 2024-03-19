@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/18 21:33:43 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/19 01:26:54 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 # include <limits.h>
 # include <math.h>
 # include <stdbool.h>
-// # include "key_code.h"
+# include "key_code.h"
 
-# ifdef __LINUX__
+# ifdef __linux__
 #  include <X11/keysym.h>
 # endif
 
@@ -252,5 +252,9 @@ void		move_d(t_data *game);
 bool		check_wall(t_data *game, double x, double y);
 
 // draw_utils.c
-void		 init_draw (t_draw *draw);
+void		init_draw (t_draw *draw);
+
+// Added by Ali
+int			ft_close_game(t_data *game);
+
 #endif

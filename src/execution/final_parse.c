@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 16:07:59 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/18 20:51:31 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/19 04:30:22 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,18 @@
 //getting 3 int and storing it in 1 int for hexadecimal colors of floor and ceiling(sky)
 uint32_t conv_color(t_rgb color)
 {
-	printf("conv_color\n");
 	return ((color.r << 16) | (color.g << 8) | color.b);
 }
 
 //this function is to convert color and store it ints values inside t_data game
 void color(t_data *game)
 {
-	printf("color\n");
 	game->floorc = conv_color(game->floor);
 	game->skyc = conv_color(game->sky);
 }
 
 void getplayerpos(t_data *game)
 {
-	printf("getplayerpos\n");
 	int i;
 	int	j;
 
@@ -53,7 +50,6 @@ void getplayerpos(t_data *game)
 
 static void get_direction_2(t_data *game)
 {
-	printf("get_direction_2\n");
 	if (game->player.facing == 'W')
 	{
 		game->player.dirX = -1;
@@ -72,7 +68,6 @@ static void get_direction_2(t_data *game)
 
 static void get_direction(t_data *game)
 {
-	printf("get_direction\n");
 	if (game->player.facing == 'N')
 	{
 		game->player.dirX = 0;
@@ -93,7 +88,6 @@ static void get_direction(t_data *game)
 
 void init_player(t_data *game)
 {
-	printf("init_player\n");
 	game->player.posX = game->player.x + 0.5;
 	game->player.posY = game->player.y + 0.5;
 	get_direction(game);
@@ -101,7 +95,6 @@ void init_player(t_data *game)
 
 void init_ray(t_ray *ray)
 {
-	printf("init_ray\n");
 	ray->cameraX = 0;
 	ray->rayDirX = 0;
 	ray->rayDirY = 0;
@@ -120,7 +113,6 @@ void init_ray(t_ray *ray)
 
 void finaladd(t_data *game)
 {
-	printf("finaladd\n");
 	color(game);
 	getplayerpos(game);
 	rect_map(game);

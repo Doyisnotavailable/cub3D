@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 20:39:22 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/18 20:45:23 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/19 04:26:11 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	check_comma(char *str)
 {
-	printf("check_comma\n");
 	int		i;
 	int		ret;
 
@@ -30,7 +29,6 @@ int	check_comma(char *str)
 
 int	check_valid_char(char *str)
 {
-	printf("check_valid_char\n");
 	int	i;
 
 	i = 0;
@@ -45,7 +43,6 @@ int	check_valid_char(char *str)
 
 long	ft_atol(char *str)
 {
-	printf("ft_atol\n");
 	int			i;
 	long long	res;
 

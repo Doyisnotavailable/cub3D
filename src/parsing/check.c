@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:11:02 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/18 20:45:06 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/19 04:26:18 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	check_valid_file(char **av)
 {
-	printf("check_valid_file\n");
 	int		fd;
 	char	*str;	
 
@@ -42,7 +41,6 @@ static void	check_valid_file(char **av)
 
 void	check(char **av, t_data *game)
 {
-	printf("check\n");
 	if ((ft_strlen(av[1]) <= 4) || ft_strrchr(av[1], '.')
 		== 0 || (ft_strlen(ft_strrchr(av[1], '.')) != 4))
 	{

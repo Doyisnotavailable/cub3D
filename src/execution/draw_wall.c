@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 20:49:00 by alsaeed           #+#    #+#             */
-/*   Updated: 2024/03/18 20:50:57 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/19 04:30:08 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	get_wall_direction(t_data *game)
 {
-	printf("get_wall_direction\n");
 	double	angle;
 
 	angle = atan2(game->ray.rayDirY, game->ray.rayDirX);
@@ -40,7 +39,6 @@ int	get_wall_direction(t_data *game)
 
 int	text_color(t_img img, int x, int y)
 {
-	printf("text_color\n");
 	int	index;
 	int	color;
 
@@ -51,7 +49,6 @@ int	text_color(t_img img, int x, int y)
 
 void	draw_tex(t_data *game, t_draw *draw, int i, t_img img)
 {
-	printf("draw_tex\n");
 	int	y;
 	int	color;
 
@@ -77,7 +74,6 @@ void	draw_tex(t_data *game, t_draw *draw, int i, t_img img)
 
 void	draw_wall(t_data *game, t_draw *draw, int i)
 {
-	printf("draw_wall\n");
 	int	wall;
 
 	wall = get_wall_direction(game);

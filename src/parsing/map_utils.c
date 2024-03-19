@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 18:04:38 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/18 20:47:13 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/19 04:25:12 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	count_end_space(char *map)
 {
-	printf("count_end_space\n");
 	int		ret;
 	int		len;
 
@@ -34,7 +33,6 @@ int	count_end_space(char *map)
 
 int	count_line_map(char **map)
 {
-	printf("count_line_map\n");
 	int		i;
 	int		ret;
 
@@ -56,7 +54,6 @@ int	count_line_map(char **map)
 
 int	count_line_col(char **map, int col)
 {
-	printf("count_line_col\n");
 	int		ret;
 	int		i;
 

@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 16:34:12 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/18 20:48:19 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/19 04:24:31 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	verify_map(t_data *game)
 {
-	printf("verify_map\n");
 	int		i;
 	int		map_size;
 
@@ -32,7 +31,6 @@ void	verify_map(t_data *game)
 
 void	check_map_line(t_data *game, int *size)
 {
-	printf("check_map_line\n");
 	int	i;
 	int	err;
 
@@ -61,7 +59,6 @@ void	check_map_line(t_data *game, int *size)
 
 int	check_map_char(t_data *game, int *charnum)
 {
-	printf("check_map_char\n");
 	int		i;
 	int		j;
 

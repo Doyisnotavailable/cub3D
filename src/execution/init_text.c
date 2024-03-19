@@ -12,7 +12,6 @@ t_img	xpm_img(t_data *game, char *path)
 
 init_tex_adr(t_data *game)
 {
-    printf("init_tex_adr\n");
     game->n_img.adr = mlx_get_data_addr(game->n_img.ptr, game->n_img.bpp, game->n_img.len, game->n_img.endian);
     game->s_img.adr = mlx_get_data_addr(game->s_img.ptr, game->s_img.bpp, game->s_img.len, game->s_img.endian);
     game->e_img.adr = mlx_get_data_addr(game->e_img.ptr, game->e_img.bpp, game->e_img.len, game->e_img.endian);
@@ -26,7 +25,6 @@ init_tex_adr(t_data *game)
 
 init_textures(t_data *game)
 {
-    printf("init_textures\n");
     game->n_img = xpm_img(game->mlx_ptr, game->tmp.n_path);
     game->s_img = xpm_img(game->mlx_ptr, game->tmp.s_path);
     game->e_img = xpm_img(game->mlx_ptr, game->tmp.e_path);

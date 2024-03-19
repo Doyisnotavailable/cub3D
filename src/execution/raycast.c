@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:46:16 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/18 21:25:36 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/19 04:27:37 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void print_values(t_data *game, t_draw *draw)
 {
-	printf("print_values\n");
 	printf("drawlineH = %i\ndrawStart = %i \n drawEnd= %i\n wallX = %f\n step = %f\n", draw->lineH, draw->drawStart, draw->drawEnd, draw->wallX, draw->step);
 	printf("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
 	printf("rayCameraX = %f\n rayDirX = %f\n rayDirY = %f\nmapX = %i\n mapY = %i\nsideDistX = %f\nsideDistY = %f\ndeltaDistX = %f\n deltaDistY =%f\n perpwallDist = %f\nstepX = %i\nstepY = %i\nhit = %i\nside %i\n", game->ray.cameraX, game->ray.rayDirX, game->ray.rayDirY, game->ray.mapX, game->ray.mapY, game->ray.sideDistX, game->ray.sideDistY, game->ray.deltaDistX, game->ray.deltaDistY, game->ray.perpWallDist, game->ray.stepX, game->ray.stepY, game->ray.hit, game->ray.side);	
@@ -52,7 +51,6 @@ void draw_ray(t_data *game, t_draw  *draw, int i)
 
 void perp(t_data *game, int i)
 {
-	printf("perp\n");
 	t_draw draw;
 	
 	init_draw(&draw);
@@ -78,7 +76,6 @@ void perp(t_data *game, int i)
 
 void dda(t_data *game)
 {
-	printf("dda\n");
 	while (game->ray.hit == 0)
 	{
 		if(game->ray.sideDistX < game->ray.sideDistY)
@@ -102,7 +99,6 @@ void dda(t_data *game)
 
 void calc_step(t_data *game)
 {
-	printf("calc_step\n");
 	if(game->ray.rayDirX < 0)
 	{
 	  game->ray.stepX = -1;
@@ -127,7 +123,6 @@ void calc_step(t_data *game)
 
 void calc_ray(t_data *game)
 {
-	printf("calc_ray\n");
 	int i;
 
 	i = 0;

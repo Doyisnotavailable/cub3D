@@ -6,7 +6,7 @@
 #    By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 01:50:23 by alsaeed           #+#    #+#              #
-#    Updated: 2024/03/18 20:43:10 by alsaeed          ###   ########.fr        #
+#    Updated: 2024/03/19 00:41:05 by alsaeed          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ INCLUDES = -Iincludes/ -Ilibs/libft/includes
 ifeq ($(UNAME), Linux)
 	CC = clang
 	LDFLAGS += -Llibs/mlx_linux/ -lmlx_Linux -L/usr/lib -lXext -lX11 
-	INCLUDES += -I/usr/include -Ilibs/mlx_linux/ -D__LINUX__
+	INCLUDES += -I/usr/include -Ilibs/mlx_linux/ -D__linux__
 	MLX_DIR = libs/mlx_linux/
 else ifeq ($(UNAME), Darwin)
 	CC = cc
@@ -53,7 +53,8 @@ SRCX =	init.c \
 		wasd_move.c \
 		wall_collision.c \
 		draw_wall.c \
-		draw_utils.c
+		draw_utils.c \
+		ft_close_game.c
 
 OBJD_DIR = src/parsing/objs
 OBJD = $(SRCD:%.c=$(OBJD_DIR)/%.o)
