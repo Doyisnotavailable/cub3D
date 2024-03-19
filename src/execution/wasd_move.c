@@ -91,18 +91,15 @@ void	calc_move(t_data *game, int key_code, double *move)
 
 void	move(int key_code, t_data *game)
 {
-	double  *coord[2];
 	double  move[3];
 
-	coord[X] = &game->player.posX;
-	coord[Y] = &game->player.posY;
 	move[X] = 0;
 	move[Y] = 0;
 	move[2] = 0;
 	calc_move(game, key_code, move);
-	if (game->map.map[(int)(*coord[Y] + move[Y])][(int)(*coord[X])] != '1')
-		*coord[Y] += move[Y];
-	if (game->map.map[(int)(*coord[Y])][(int)(*coord[X] + move[X])] != '1')
-		*coord[X] += move[X];
+	if (game->map.map[(int)(game->player.posY + move[Y])][(int)(game->player.posX)] != '1')
+		game->player.posY += move[Y];
+	if (game->map.map[(int)(game->player.posY)][(int)(game->player.posX + move[X])] != '1')
+		game->player.posX += move[X];
 	calc_ray(game);
 }
