@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:46:16 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/20 03:32:34 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/20 04:29:10 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,35 +21,26 @@ void print_values(t_data *game, t_draw *draw)
 
 void	draw_ray(t_data *game, t_draw  *draw, int i)
 {
-	printf("draw_ray\n");
 	int y;
 
 	y = 0;
-	// print_values(game, draw);
-	printf("drawStart = %i\n", draw->drawStart);
 	while (y < draw->drawStart)
 	{
 		my_mlx_pixel_put(&game->fbuffer, i, y, 0x0000ff);
 		y++;
 	}
-	printf("drawEnd = %i\n", draw->drawEnd);
 	while (y < draw->drawEnd)
 	{
 		my_mlx_pixel_put(&game->fbuffer, i, y, 0xffffff);
 		y++;
 	}
-	// y = draw->drawEnd;
-	printf("HEIGHT = %i\n", HEIGHT);
 	while (y < HEIGHT)
 	{
 		my_mlx_pixel_put(&game->fbuffer, i, y, 0xAAAAAA);
 		y++;
 	}
 	game->draw_flag = 0;
-	printf("draw_ray end\n");
 }
-
-// static bool set_texel(t_data *game, ) 
 
 static bool	set_texel(t_data *game, double *texel, t_draw *draw)
 {
@@ -82,14 +73,19 @@ static bool	set_texel(t_data *game, double *texel, t_draw *draw)
 
 inline static unsigned int	get_texel_color(t_img *img, int x, int y, bool dark)
 {
+	unsigned int	offset_to_line_for_pixel;
+	unsigned int	offset_to_pixel_within_line;
+	unsigned int	total_pixel_offset;
 	unsigned int	current_color;
 
+	offset_to_line_for_pixel = y * img->len;
+	offset_to_pixel_within_line = x * (img->bpp / 8);
+	total_pixel_offset = offset_to_line_for_pixel + offset_to_pixel_within_line;
 	current_color = 0;
 	if (y >= 0 && x >= 0 && x < img->width && y < img->height)
-		current_color = *((unsigned int *)(img->adr
-					+ (y * img->len + x * (img->bpp / 8))));
+		current_color = *((unsigned int *)(img->adr + total_pixel_offset));
 	if (dark)
-		current_color = (current_color >> 1) & 8355711;
+		current_color = (current_color >> 1) & 0x7F7F7F;
 	return (current_color);
 }
 

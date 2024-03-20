@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 23:31:50 by alsaeed           #+#    #+#             */
-/*   Updated: 2024/03/19 04:21:43 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/20 04:02:04 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 
 int	ft_close_game(t_data *game)
 {
-	// int		i;
+	int		i;
 	char	**map;
 
 	map = game->map.map;
-	// i = 0;
+	i = 0;
 	mlx_destroy_image(game->mlx_ptr, game->fbuffer.ptr);
-	// while (i < TOTAL_TEXTURES && game->textures[i].img_ptr)
-	// 	mlx_destroy_image(game->mlx_ptr, game->textures[i++].img_ptr);
+	while (i < 4 && game->texture[i].ptr)
+		mlx_destroy_image(game->mlx_ptr, game->texture[i++].ptr);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr);
 	free_set_null((void **)&game->mlx_ptr);
@@ -39,14 +39,14 @@ int	ft_close_game(t_data *game)
 
 int	ft_close_game(t_data *game)
 {
-	// int		i;
+	int		i;
 	char	**map;
 
 	map = game->map.map;
-	// i = 0;
+	i = 0;
 	mlx_destroy_image(game->mlx_ptr, game->fbuffer.ptr);
-	// while (i < TOTAL_TEXTURES && game->textures[i].img_ptr)
-	// 	mlx_destroy_image(game->mlx_ptr, game->textures[i++].img_ptr);
+	while (i < 4 && game->texture[i].ptr)
+		mlx_destroy_image(game->mlx_ptr, game->texture[i++].ptr);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	free_set_null((void **)&game->mlx_ptr);
 	free_set_null((void **)&game);
