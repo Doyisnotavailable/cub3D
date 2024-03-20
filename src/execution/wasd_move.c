@@ -89,7 +89,7 @@ void	calc_move(t_data *game, int key_code, double *move)
 	}
 }
 
-void	move(int key_code, t_data *game)
+void	key_move(int key_code, t_data *game)
 {
 	double  move[3];
 

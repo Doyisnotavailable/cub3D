@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/20 00:43:09 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/20 05:04:53 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,8 +248,9 @@ void		draw_ray(t_data *game, t_draw *draw, int i);
 void		perp(t_data *game, int i);
 
 // added keymap.c
-int			key_rotate(int keycode, t_data *game);
-int			key_move(int keycode, t_data *game);
+int			key_map(int keycode, t_data *game);
+void		key_move(int keycode, t_data *game);
+void		key_rotate(int rot, t_data *game);
 
 // init.c
 void		init_mlx(t_data *game);
@@ -262,7 +263,6 @@ void		draw_wall(t_data *game, t_draw *draw, int i);
 
 // wasd_move.c
 void		calc_move(t_data *game, int key_code, double *move);
-void		move(int key_code, t_data *game);
 // void		move_w(t_data *game);
 // void		move_s(t_data *game);
 // void		move_a(t_data *game);

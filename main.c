@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:14:13 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/19 04:24:09 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/20 05:05:15 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int ac, char **av)
 	check(av, game);
 	finaladd(game);
 	mlx_loop_hook(game->mlx_ptr, game_loop, game);
-	mlx_hook(game->win_ptr, 2, 1L << 0, key_move, game);
+	mlx_hook(game->win_ptr, 2, 1L << 0, key_map, game);
 	mlx_hook(game->win_ptr, 17, 1L << 17, ft_close_game, game);
 	mlx_loop(game->mlx_ptr);
 	return (0);
