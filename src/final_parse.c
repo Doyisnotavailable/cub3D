@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 16:07:59 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/21 04:42:48 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/21 07:30:06 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,37 +52,37 @@ void getplayerpos(t_data *game)
 //CURRENT NORTH need to be change as west
 static void get_direction_2(t_data *game)
 {
-	if (game->player.facing == 'W')
+	if (game->player.facing == 'E')
 	{
-		game->player.dirX = -1;
-		game->player.dirY = 0;
-		game->player.planeX = 0;
-		game->player.planeY = -0.66;
+		game->player.dirX = 0;
+		game->player.dirY = 1;
+		game->player.planeX = 0.66;
+		game->player.planeY = 0;
 	}
-	else if (game->player.facing == 'E')
+	else if (game->player.facing == 'W')
 	{
-		game->player.dirX = 1;
-		game->player.dirY = 0;
-		game->player.planeX = 0;
-		game->player.planeY = 0.66;
+		game->player.dirX = 0;
+		game->player.dirY = -1;
+		game->player.planeX = -0.66;
+		game->player.planeY = 0;
 	}
 }
 
 static void get_direction(t_data *game)
 {
-	if (game->player.facing == 'N')
+	if (game->player.facing == 'S') //correct
 	{
-		game->player.dirX = 0;
-		game->player.dirY = -1;
-		game->player.planeX = 0.66;
-		game->player.planeY = 0;
+		game->player.dirX = 1;
+		game->player.dirY = 0;
+		game->player.planeX = 0;
+		game->player.planeY = -0.66;
 	}
-	else if (game->player.facing == 'S')
+	else if (game->player.facing == 'N')
 	{
-		game->player.dirX = 0;
-		game->player.dirY = 1;
-		game->player.planeX = -0.66;
-		game->player.planeY = 0;
+		game->player.dirX = -1;
+		game->player.dirY = 0;
+		game->player.planeX = 0;
+		game->player.planeY = 0.66;
 	}
 	else
 		get_direction_2(game);

@@ -12,7 +12,6 @@ void move_w(t_data *game)
         game->player.posX  = x;
         game->player.posY = y;
         game->draw_flag = 1;
-		printf("DRAWFLAG = 1\n");
     }
 }
 
@@ -28,27 +27,10 @@ void move_s(t_data *game)
         game->player.posX  = x;
         game->player.posY = y;
         game->draw_flag = 1;
-		printf("DRAWFLAG = 1\n");
     }
 }
 
 void move_a(t_data *game)
-{
-    double  x;
-    double  y;
-
-    x = game->player.posX + game->player.dirY * MS;
-    y = game->player.posY - game->player.dirX * MS;
-    if (check_wall(game, x, y))
-    {
-        game->player.posX  = x;
-        game->player.posY = y;
-        game->draw_flag = 1;
-		printf("DRAWFLAG = 1\n");
-    }
-}
-
-void move_d(t_data *game)
 {
     double  x;
     double  y;
@@ -60,6 +42,20 @@ void move_d(t_data *game)
         game->player.posX  = x;
         game->player.posY = y;
         game->draw_flag = 1;
-		printf("DRAWFLAG = 1\n");
+    }
+}
+
+void move_d(t_data *game)
+{
+    double  x;
+    double  y;
+
+    x = game->player.posX + game->player.dirY * MS;
+    y = game->player.posY - game->player.dirX * MS;
+    if (check_wall(game, x, y))
+    {
+        game->player.posX  = x;
+        game->player.posY = y;
+        game->draw_flag = 1;
     }
 }
