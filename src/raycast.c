@@ -6,17 +6,18 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:46:16 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/17 01:33:03 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/21 04:19:44 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 void print_values(t_data *game, t_draw *draw)
-{
+{	printf("\\\\\\\\\\START\\\\\\\\\\\\\\\\\\\n");
 	printf("drawlineH = %i\ndrawStart = %i \n drawEnd= %i\n wallX = %f\n step = %f\n", draw->lineH, draw->drawStart, draw->drawEnd, draw->wallX, draw->step);
-	printf("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
-	printf("rayCameraX = %f\n rayDirX = %f\n rayDirY = %f\nmapX = %i\n mapY = %i\nsideDistX = %f\nsideDistY = %f\ndeltaDistX = %f\n deltaDistY =%f\n perpwallDist = %f\nstepX = %i\nstepY = %i\nhit = %i\nside %i\n", game->ray.cameraX, game->ray.rayDirX, game->ray.rayDirY, game->ray.mapX, game->ray.mapY, game->ray.sideDistX, game->ray.sideDistY, game->ray.deltaDistX, game->ray.deltaDistY, game->ray.perpWallDist, game->ray.stepX, game->ray.stepY, game->ray.hit, game->ray.side);	
+	printf("rayCameraX = %f\n rayDirX = %f\n rayDirY = %f\nmapX = %i\n mapY = %i\nsideDistX = %f\nsideDistY = %f\ndeltaDistX = %f\n deltaDistY =%f\n perpwallDist = %f\nstepX = %i\nstepY = %i\nhit = %i\nside %i\n", game->ray.cameraX, game->ray.rayDirX, game->ray.rayDirY, game->ray.mapX, game->ray.mapY, game->ray.sideDistX, game->ray.sideDistY, game->ray.deltaDistX, game->ray.deltaDistY, game->ray.perpWallDist, game->ray.stepX, game->ray.stepY, game->ray.hit, game->ray.side);
+	printf("posX = %f\nposY = %f\ndirX = %f\ndirY = %f\nplaneX = %f\nplaneY = %f\n", game->player.posX, game->player.posY, game->player.dirX, game->player.dirY, game->player.planeX, game->player.planeY);
+	printf("\\\\\\\\\\\\\\ END \\\\\\\\\\\\\\\\\n");
 }
 
 void draw_ray(t_data *game, t_draw  *draw, int i)
@@ -24,19 +25,21 @@ void draw_ray(t_data *game, t_draw  *draw, int i)
 	int y;
 
 	y = 0;
-	// print_values(game, draw);
+		
+	print_values(game, draw);
 	while (y < draw->drawStart)
 	{
 		my_mlx_pixel_put(&game->fbuffer, i, y, 0x0000ff);
 		y++;
 	}
-	while (y < draw->drawEnd)
-	{
-		my_mlx_pixel_put(&game->fbuffer, i, y, 0xffffff);
-		y++;
-	}
-	// y = draw->drawEnd;
-	while (y < HEIGHT)
+	// while (y < draw->drawEnd)
+	// {
+	// 	my_mlx_pixel_put(&game->fbuffer, i, y, 0xffffff);
+	// 	y++;
+	// }
+	draw_wall(game, draw, i);
+	y = draw->drawEnd;
+	while (y < HEIGHT - 1)
 	{
 		my_mlx_pixel_put(&game->fbuffer, i, y, 0xAAAAAA);
 		y++;
@@ -54,8 +57,8 @@ void perp(t_data *game, int i)
 	else	
 		game->ray.perpWallDist = (game->ray.sideDistY - game->ray.deltaDistY);
 
-	draw.lineH = (HEIGHT / game->ray.perpWallDist);
-	draw.drawStart = (-1 * draw.lineH) / 2 + HEIGHT / 2;
+	draw.lineH = (int)(HEIGHT / game->ray.perpWallDist);
+	draw.drawStart = -draw.lineH / 2 + HEIGHT / 2;
 	if (draw.drawStart < 0)
 		draw.drawStart = 0;
 	draw.drawEnd = draw.lineH / 2 + HEIGHT / 2;
@@ -85,9 +88,7 @@ void dda(t_data *game)
           game->ray.mapY += game->ray.stepY;
           game->ray.side = 1;
         }
-		if (game->ray.mapX < 0.25 || game->ray.mapY < 0.25 || game->ray.mapX > game->map.width - 1.25 || game->ray.mapY > game->map.height - 0.25 )
-			break;
-		else if ((game->map.width > game->ray.mapX && game->map.height > game->ray.mapY) && game->map.map[game->ray.mapY][game->ray.mapX] == '1')
+		if(game->map.map[game->ray.mapX][game->ray.mapY] == '1')
 			game->ray.hit = 1;
 	}
 }
@@ -124,15 +125,14 @@ void calc_ray(t_data *game)
 	mlx_clear_window(game->mlx_ptr, game->win_ptr);
 	while (i < WIDTH)
 	{
+		init_ray(&game->ray);
 		game->ray.cameraX = 2 * i / (double)WIDTH  - 1;
 		game->ray.rayDirX = game->player.dirX + game->player.planeX * game->ray.cameraX;
 		game->ray.rayDirY = game->player.dirY + game->player.planeY * game->ray.cameraX;
-		game->ray.mapX = (int)game->player.posX;
-		game->ray.mapY = (int)game->player.posY;
+		game->ray.mapX = game->player.posX;
+		game->ray.mapY = game->player.posY;
 		game->ray.deltaDistX = fabs(1 / game->ray.rayDirX);
 		game->ray.deltaDistY = fabs(1 / game->ray.rayDirY);
-		// printf("rayCameraX = %f\n rayDirX = %f\n rayDirY = %f\nmapX = %i\n mapY = %i\nsideDistX = %f\nsideDistY = %f\ndeltaDistX = %f\n deltaDistY =%f\n perpwallDist = %f\nstepX = %i\nstepY = %i\nhit = %i\nside %i\n", game->ray.cameraX, game->ray.rayDirX, 
-		// game->ray.rayDirY, game->ray.mapX, game->ray.mapY, game->ray.sideDistX, game->ray.sideDistY, game->ray.deltaDistX, game->ray.deltaDistY, game->ray.perpWallDist, game->ray.stepX, game->ray.stepY, game->ray.hit, game->ray.side);
 		calc_step(game);
 		dda(game);
 		perp(game, i);

@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:14:13 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/15 21:29:54 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/21 04:15:39 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	main(int ac, char **av)
 	}
 	check(av, &game);
 	finaladd(&game);
-	mlx_hook(game.win_ptr, 3, 1L, key_move, &game);
+	mlx_hook(game.win_ptr, 2, 0, key_move, &game);
+	mlx_hook(game.win_ptr, 3, 0, key_move, &game);
 	mlx_loop_hook(game.mlx_ptr, game_loop, &game);
 	mlx_loop(game.mlx_ptr);
 }

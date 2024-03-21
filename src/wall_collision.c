@@ -8,7 +8,7 @@
 
 bool check_wall(t_data *game, double x, double y)
 {
-    if (game->map.map[(int)y][(int)x] == '0')
+    if (game->map.map[(int)x][(int)y] == '0')
 		return (true);
 	return (false);
 }

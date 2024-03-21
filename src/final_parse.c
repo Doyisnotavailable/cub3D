@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 16:07:59 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/17 01:29:02 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/21 04:42:48 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void getplayerpos(t_data *game)
 		{
 			if (game->map.map[i][j] == 'N' || game->map.map[i][j] == 'E' || game->map.map[i][j] == 'S' || game->map.map[i][j] == 'W')
 			{
-				game->player.x = j;
-				game->player.y = i;
+				game->player.x = i;
+				game->player.y = j;
 				game->player.facing = game->map.map[i][j];
 				game->map.map[i][j] = '0';
 				return ;
@@ -47,7 +47,9 @@ void getplayerpos(t_data *game)
 		}
 	}
 }
-
+//CURRENT EAST need to be changed as south
+//CURRENT SOUTH need to be changed as EAST
+//CURRENT NORTH need to be change as west
 static void get_direction_2(t_data *game)
 {
 	if (game->player.facing == 'W')
@@ -119,5 +121,8 @@ void finaladd(t_data *game)
 	init_player(game);
 	init_ray(&game->ray);
 	init_mlx(game);
+	// print_tmp(game);
+	// exit(1);
+	init_textures(game);
 	game->draw_flag = 1;
 }

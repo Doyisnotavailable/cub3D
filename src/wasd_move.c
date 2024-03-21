@@ -12,6 +12,7 @@ void move_w(t_data *game)
         game->player.posX  = x;
         game->player.posY = y;
         game->draw_flag = 1;
+		printf("DRAWFLAG = 1\n");
     }
 }
 
@@ -27,6 +28,7 @@ void move_s(t_data *game)
         game->player.posX  = x;
         game->player.posY = y;
         game->draw_flag = 1;
+		printf("DRAWFLAG = 1\n");
     }
 }
 
@@ -42,6 +44,7 @@ void move_a(t_data *game)
         game->player.posX  = x;
         game->player.posY = y;
         game->draw_flag = 1;
+		printf("DRAWFLAG = 1\n");
     }
 }
 
@@ -57,5 +60,6 @@ void move_d(t_data *game)
         game->player.posX  = x;
         game->player.posY = y;
         game->draw_flag = 1;
+		printf("DRAWFLAG = 1\n");
     }
 }

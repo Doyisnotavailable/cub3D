@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/16 19:27:09 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/21 04:36:11 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@
 # include <limits.h>
 # include <math.h>
 # include <stdbool.h>
-# define WIDTH			1080
-# define HEIGHT			720
+# define WIDTH			1024
+# define HEIGHT			768
 # define NO				1
 # define EA				2
 # define WE				3
 # define SO				4
 # define F				5
 # define C				6
-# define TEXSIZE		64
-# define MS				0.1 //movespeed
-# define RS				0.02 //rotate speed
+# define TEXSIZE		255
+# define MS				0.08 //movespeed
+# define RS				0.08 //rotate speed
 
 typedef struct s_draw
 {
@@ -73,6 +73,8 @@ typedef struct s_img
 	int			endian;
 	int			bpp;
 	int			len;
+	int			width;
+	int			height;
 }	t_img;
 
 typedef struct s_map
@@ -136,7 +138,7 @@ typedef struct s_data
 }	t_data;
 
 // init_utils.c
-t_img		xpm_img(void *mlx, char *path, t_data *game);
+t_img		xpm_img(t_data *game, char *path);
 int			ft_space(char c);
 int			ft_space_line(char *str);
 void		init_tmp(t_data *game);
@@ -212,6 +214,7 @@ int			ft_valid_char(char c);
 void		color(t_data *game);
 void		getplayerpos(t_data *game);
 void		finaladd(t_data *game);
+void		init_ray(t_ray *ray);
 
 // added latest rect_map.c
 void 		rect_map(t_data *game);
@@ -247,4 +250,8 @@ bool		check_wall(t_data *game, double x, double y);
 
 // draw_utils.c
 void		 init_draw (t_draw *draw);
+
+// init_textures.c
+void		 init_textures(t_data *game);
+
 #endif
