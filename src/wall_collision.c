@@ -1,16 +1,38 @@
 #include "cub3d.h"
 
-/* void check_move(t_data *game, double x, double y)
-{
-    if (check_next_pos(game, x ,y))
-        game->draw_flag = 1;
-} */
 
 bool check_wall(t_data *game, double x, double y)
 {
-    if (game->map.map[(int)x][(int)y] == '0')
+	printf("x = %f\ny = %f\nint x = %i\n int y = %i\n", x, y, (int)x, (int)y);
+    if (game->map.map[(int)x][(int)y] && game->map.map[(int)x][(int)y] == '0')
 		return (true);
 	return (false);
+}
+
+/* bool check_distance(t_data *game, double x, double y)
+{
+
+	if ((x > (int)x + 0.15 && x < (int)x + 0.85) && (y > (int)y + 0.15 && y < (int)y + 0.85))
+		return (true);
+	return (false);
+} */
+
+int check_move(t_data *game, double x, double y)
+{
+	int		i;
+
+	i = 0;
+    if (check_wall(game, x, game->player.posY))
+	{
+		game->player.posX = x;
+		i = 1;
+	}
+	if (check_wall(game, game->player.posX, y))
+	{
+		game->player.posY = y;
+		i = 1;
+	}
+	return (i);
 }
 
 /* bool check_coord(t_data *game, double x, double y)

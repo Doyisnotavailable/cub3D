@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:46:16 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/21 04:19:44 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/21 08:13:46 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void draw_ray(t_data *game, t_draw  *draw, int i)
 
 	y = 0;
 		
-	print_values(game, draw);
+	// print_values(game, draw);
 	while (y < draw->drawStart)
 	{
 		my_mlx_pixel_put(&game->fbuffer, i, y, 0x0000ff);

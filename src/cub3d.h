@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/21 04:36:11 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/21 07:52:38 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,6 +247,7 @@ void		move_d(t_data *game);
 
 // wall_collision.c
 bool		check_wall(t_data *game, double x, double y);
+int			check_move(t_data *game, double x, double y);
 
 // draw_utils.c
 void		 init_draw (t_draw *draw);
