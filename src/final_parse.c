@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 16:07:59 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/21 07:30:06 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/22 14:37:37 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,6 @@ void finaladd(t_data *game)
 	init_player(game);
 	init_ray(&game->ray);
 	init_mlx(game);
-	// print_tmp(game);
-	// exit(1);
 	init_textures(game);
 	game->draw_flag = 1;
 }

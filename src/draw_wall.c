@@ -2,17 +2,19 @@
 
 int get_wall_direction(t_data *game)
 {
-    double angle;
-
-    angle = atan2(game->ray.rayDirY, game->ray.rayDirX);
-    if (angle >= -M_PI_4 && angle < M_PI_4) // East-facing wall
-        return 1;
-    else if (angle >= M_PI_4 && angle < 3 * M_PI_4) // South-facing wall
-        return 2;
-    else if (angle >= 3 * M_PI_4 || angle < -3 * M_PI_4) // West-facing wall
-        return 3;
-    else // North-facing wall
-        return 4;
+	if (game->ray.side == 0)
+	{
+		if (game->ray.rayDirX < 0)
+			return 1;
+		return 2;
+	}
+	else
+	{
+		if (game->ray.rayDirY > 0)
+			return 3;
+		else
+			return 4;
+	}
 };
 
 /* int get_texture_color(int texNum, int texX, int texY) {
@@ -27,11 +29,11 @@ int get_wall_direction(t_data *game)
 
 int text_color(t_img img, int x, int y)
 {
-    int     index;
+    char    *index;
     int     color;
 
-    index = y * img.len + x * (img.bpp / 8);
-    color = *(int *)(img.adr + index);
+	index = img.adr + (y * img.len + x * (img.bpp / 8));
+    color = *(unsigned int *)(index);
     return (color);
 }
 
@@ -45,11 +47,12 @@ void draw_tex(t_data *game, t_draw *draw, int i, t_img img)
     else
         draw->texpos = game->player.posX + game->ray.perpWallDist * game->ray.rayDirX;
     draw->texpos -= floor(draw->texpos);
-    draw->texX = (int)draw->texpos * TEXSIZE;
+    draw->texX = (int)(draw->texpos * TEXSIZE);
     draw->step = 1.0 * TEXSIZE / draw->lineH;
     draw->texpos = (draw->drawStart - HEIGHT / 2 + draw->lineH / 2) * draw->step;
 
     y = draw->drawStart;
+	// printf("texpos = %f\ntexX = %i\nstep = %f\ntexpos = %f\n", draw->texpos, draw->texX, draw->step, draw->texpos);
     while (y < draw->drawEnd)
     {
         draw->texY = (int)draw->texpos & (TEXSIZE - 1);
