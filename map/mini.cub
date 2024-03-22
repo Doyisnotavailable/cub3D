@@ -1,14 +1,14 @@
-WE ./xpm/hev.xpm
-NO ./xpm/hev.xpm
-SO ./xpm/hev.xpm
-EA ./xpm/hev.xpm
+WE ./xpm/West.xpm
+NO ./xpm/north.xpm
+SO ./xpm/South.xpm
+EA ./xpm/East.xpm
 
 F 12,0,12
 C 225,30,0
 
 111111
 100001
-1000E1
+1000N1
 100001
 111101
 111111

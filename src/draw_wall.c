@@ -17,16 +17,6 @@ int get_wall_direction(t_data *game)
 	}
 };
 
-/* int get_texture_color(int texNum, int texX, int texY) {
-    // Calculate the index of the pixel in the texture data array
-    int index = texY * textures[texNum].size_line + texX * (textures[texNum].bpp / 8);
-
-    // Retrieve the color of the pixel from the texture data
-    int color = *(int *)(textures[texNum].data + index);
-
-    return color;
-} */
-
 int text_color(t_img img, int x, int y)
 {
     char    *index;
@@ -70,11 +60,11 @@ void draw_wall(t_data *game, t_draw *draw, int i)
     wall = get_wall_direction(game);
 
     if (wall == 1)
-        draw_tex(game, draw, i, game->e_img);
-    else if (wall == 2)
         draw_tex(game, draw, i, game->s_img);
+    else if (wall == 2)
+        draw_tex(game, draw, i, game->n_img);
     else if (wall == 3)
         draw_tex(game, draw, i, game->w_img);
     else
-        draw_tex(game, draw, i, game->n_img);
+        draw_tex(game, draw, i, game->e_img);
 }
