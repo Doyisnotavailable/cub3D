@@ -5,38 +5,34 @@
 #                                                     +:+ +:+         +:+      #
 #    By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/04 12:19:50 by alsaeed           #+#    #+#              #
-#    Updated: 2024/03/16 19:14:07 by alsaeed          ###   ########.fr        #
+#    Created: 2024/03/18 01:50:23 by alsaeed           #+#    #+#              #
+#    Updated: 2024/03/23 00:39:03 by alsaeed          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-# --------------------------------- variables -------------------------------- #
 
 NAME =	cub3D
 
 UNAME = $(shell uname)
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 LDFLAGS = -Llibs/libft/ -lft -lm
 INCLUDES = -Iincludes/ -Ilibs/libft/includes
 
 ifeq ($(UNAME), Linux)
 	CC = clang
-	LDFLAGS += -Llibs/mlx_linux/  -L/usr/lib -lXext -lX11 
-	INCLUDES += -Ilibs/mlx_linux/ -I/usr/include -D__LINUX__
+	LDFLAGS += -Llibs/mlx_linux/ -lmlx_Linux -L/usr/lib -lXext -lX11 
+	INCLUDES += -I/usr/include -Ilibs/mlx_linux/ -D__linux__
 	MLX_DIR = libs/mlx_linux/
 else ifeq ($(UNAME), Darwin)
 	CC = cc
-	LDFLAGS += -Llibs/mlx_macos/ -lmlx -framework OpenGL -framework AppKit -L/usr/lib
-	INCLUDES += -Ilibs/mlx_macos/
+	LDFLAGS += -Llibs/mlx_macos/ -Ilibs/mlx_macos/ -framework OpenGL -framework AppKit
 	MLX_DIR = libs/mlx_macos/
 endif
 
-SRCD =	
-
-SRCX =	check.c \
+SRCD =	check.c \
 		free.c \
 		init_game.c \
+		init_text.c \
 		init_utils.c \
 		verify.c \
 		verify_utils.c \
@@ -47,7 +43,18 @@ SRCX =	check.c \
 		map_edit.c \
 		get_file.c \
 		element_utils.c \
-		check_map_utils.c
+		check_map_utils.c \
+		final_parse.c
+
+SRCX =	init.c \
+		rect_map.c \
+		raycast.c \
+		keymap.c \
+		util.c \
+		wasd_move.c \
+		wall_collision.c \
+		draw_wall.c \
+		draw_utils.c
 
 OBJD_DIR = src/parsing/objs
 OBJD = $(SRCD:%.c=$(OBJD_DIR)/%.o)
@@ -68,8 +75,8 @@ $(OBJX_DIR)%.o: src/execution%.c
 	@mkdir -p $(OBJX_DIR)
 	@$(CC) $(CFLAGS) -c $(INCLUDES) $< -o $@
 	
-$(NAME): $(LIBFT) $(MINILIBX) $(OBJX) main.c
-	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJX) main.c -o $(NAME) $(LDFLAGS)
+$(NAME): $(LIBFT) $(MINILIBX) $(OBJD) $(OBJX) main.c
+	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJD) $(OBJX) main.c -o $(NAME) $(LDFLAGS)
 	@echo "cub3D Compiled : \033[1;32mOK\033[0m"
 
 $(LIBFT):

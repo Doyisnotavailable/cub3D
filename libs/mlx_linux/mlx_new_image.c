@@ -43,8 +43,13 @@ void	*mlx_int_new_xshm_image(t_xvar *xvar,int width,int height,int format)
     return ((void *)0);
   bzero(img,sizeof(*img));
   img->data = 0;
-  img->image = XShmCreateImage(xvar->display,xvar->visual,xvar->depth,
-			       format,img->data,&(img->shm),width,height);
+  img->image = XShmCreateImage(xvar->display, \
+                xvar->visual, \
+                xvar->depth, \
+			       format,img->data, \
+             &(img->shm), \
+             width, \
+            height);
   if (!img->image)
     {
       free(img);
