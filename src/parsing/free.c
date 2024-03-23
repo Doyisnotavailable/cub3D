@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:12:47 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/22 22:37:02 by alsaeed          ###   ########.fr       */
+/*   Updated: 2023/12/25 16:23:00 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,19 +68,7 @@ void	free_tmp(t_data *game)
 		free(game->tmp.c);
 }
 
-int	free_all_data(t_data *game)
+void	free_all_data(t_data *game)
 {
-	free_set_null((void **)&game->tmp);
-	mlx_destroy_image(game->mlx_ptr, game->fbuffer.ptr);
-	mlx_destroy_image(game->mlx_ptr, game->n_img.ptr);
-	mlx_destroy_image(game->mlx_ptr, game->e_img.ptr);
-	mlx_destroy_image(game->mlx_ptr, game->w_img.ptr);
-	mlx_destroy_image(game->mlx_ptr, game->s_img.ptr);
-	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	mlx_destroy_display(game->mlx_ptr);
-	free_set_null((void **)&game->mlx_ptr);
-	free_array(game->map.map);
-	free(game->map.map);
-	return (0);
-	
+	free_tmp(game);
 }

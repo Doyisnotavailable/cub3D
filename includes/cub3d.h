@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/22 22:50:51 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/24 02:02:43 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@
 
 typedef struct s_draw
 {
-	int		lineH;
-	int		drawStart;
-	int		drawEnd;
-	int		texX;
-	int		texY;
-	double	wallX;
+	int		line_h;
+	int		draw_start;
+	int		draw_end;
+	int		tex_x;
+	int		tex_y;
+	double	wall_x;
 	double	step;
 	double	texpos;
 }	t_draw;
@@ -56,13 +56,13 @@ typedef struct s_player
 	char	facing;
 	int		x;
 	int		y;
-	double	posX;
-	double	posY;
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
-} t_player;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+}	t_player;
 
 typedef struct s_rgb
 {
@@ -102,21 +102,21 @@ typedef struct s_tmp
 
 typedef struct s_ray
 {
-	double	cameraX;
-	double	rayDirX;
-	double	rayDirY;
-	int		mapX;
-	int		mapY;
-	double	sideDistX;
-	double	sideDistY;
-	double	deltaDistX;
-	double	deltaDistY;
-	double	perpWallDist;
-	int		stepX;
-	int		stepY;
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		map_x;
+	int		map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+	int		step_x;
+	int		step_y;
 	int		hit;
 	int		side;
-} t_ray;
+}	t_ray;
 
 typedef struct s_data
 {
@@ -125,13 +125,13 @@ typedef struct s_data
 
 	t_ray			ray;
 	t_map			map;
-	t_player		player; // added this struct for storing player facing direction, and player position.
+	t_player		player; // added this struct for storing player dir and pos
 	uint32_t		floorc; //converted 3int to one
 	uint32_t		skyc; //converted 3int to one
 	int				draw_flag;
 
 	//texture files needed for execution
-	t_img			fbuffer; // this one to store all pixels in 1 to img in screen all at once
+	t_img			fbuffer; // store all pixels in 1 to img in screen
 	t_img			n_img;
 	t_img			e_img;
 	t_img			w_img;
@@ -144,8 +144,7 @@ typedef struct s_data
 }	t_data;
 
 // init_utils.c
-void		xpm_img(t_img *tex, t_data *game, char *path);
-void		init_tex_adr(t_data *game);
+t_img		xpm_img(t_data *game, char *path);
 int			ft_space(char c);
 int			ft_space_line(char *str);
 void		init_tmp(t_data *game);
@@ -161,7 +160,6 @@ void		init_mlx_ptr(t_data *game);
 void		destroy_img(t_data *game);
 void		free_array(char **str);
 void		free_array_exit(char **tmp, char *str);
-int			free_all_data(t_data *game);
 
 // check.c
 void		check(char **av, t_data *game);
@@ -225,7 +223,7 @@ void		finaladd(t_data *game);
 void		init_ray(t_ray *ray);
 
 // added latest rect_map.c
-void 		rect_map(t_data *game);
+void		rect_map(t_data *game);
 
 // added latest raycast.c
 void		calc_ray(t_data *game);
@@ -240,6 +238,7 @@ int			key_move(int keycode, t_data *game);
 
 // init.c
 void		init_mlx(t_data *game);
+void		init_player(t_data *game);
 
 // util.c
 void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
@@ -258,9 +257,10 @@ bool		check_wall(t_data *game, double x, double y);
 int			check_move(t_data *game, double x, double y);
 
 // draw_utils.c
-void		 init_draw (t_draw *draw);
+void		init_draw(t_draw *draw);
+void		get_direction(t_data *game);
 
 // init_textures.c
-void		 init_textures(t_data *game);
+void		init_textures(t_data *game);
 
 #endif
