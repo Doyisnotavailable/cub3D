@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   rect_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:34:55 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/16 19:33:58 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/23 04:49:41 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int find_row_len(char **map)
+static int	find_row_len(char **map)
 {
-	int	i;
-	int res;
-	int j;
-	char *ptr;
+	int		i;
+	int		res;
+	int		j;
+	char	*ptr;
 
 	i = -1;
 	res = 0;
@@ -27,20 +27,20 @@ static int find_row_len(char **map)
 		j = 0;
 		ptr = ft_strrchr(map[i], '1');
 		if (ptr)
-		{	
+		{
 			while (&map[i][j] != ptr)
 				j++;
 			if (++j > res)
 				res = j;
 		}
 	}
-	return res;
+	return (res);
 }
 
-void fill_map(t_data *game, char **tmp, int len)
+void	fill_map(t_data *game, char **tmp, int len)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (game->map.map[i])
@@ -53,7 +53,7 @@ void fill_map(t_data *game, char **tmp, int len)
 			tmp[i][j] = game->map.map[i][j];
 		while (j < len)
 		{
-			tmp[i][j] = '1'; //change to space
+			tmp[i][j] = '1';
 			j++;
 		}
 		tmp[i][j] = '\0';
@@ -64,10 +64,10 @@ void fill_map(t_data *game, char **tmp, int len)
 	game->map.map = tmp;
 }
 
-void tab_space(char **map)
+void	tab_space(char **map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = -1;
 	while (map[++i])
@@ -81,18 +81,10 @@ void tab_space(char **map)
 	}
 }
 
-void print_array(char **str)
+void	rect_map(t_data *game)
 {
-	int i = -1;
+	char	**tmp;
 
-	while (str[++i])
-		printf("%s\n", str[i]);
-	
-}
-
-void rect_map(t_data *game)
-{
-	char **tmp;
 	tmp = malloc(sizeof (char *) * (count_array(game->map.map) + 1));
 	fill_map(game, tmp, find_row_len(game->map.map));
 	tab_space(game->map.map);

@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:14:13 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/21 04:15:39 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/23 04:44:16 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-
 // added this one just for printing map
-void print_array_char(char **str)
+void	print_array_char(char **str)
 {
-	int i = -1;
+	int	i;
+
+	i = -1;
 	while (str[++i])
 		printf("%s\n", str[i]);
 }
@@ -27,7 +27,6 @@ int	game_loop(t_data *game)
 	if (game->draw_flag == 0)
 		return (0);
 	calc_ray(game);
-
 	return (1);
 }
 

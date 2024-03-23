@@ -3,42 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:46:16 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/21 08:13:46 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/23 04:59:12 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void print_values(t_data *game, t_draw *draw)
-{	printf("\\\\\\\\\\START\\\\\\\\\\\\\\\\\\\n");
-	printf("drawlineH = %i\ndrawStart = %i \n drawEnd= %i\n wallX = %f\n step = %f\n", draw->lineH, draw->drawStart, draw->drawEnd, draw->wallX, draw->step);
-	printf("rayCameraX = %f\n rayDirX = %f\n rayDirY = %f\nmapX = %i\n mapY = %i\nsideDistX = %f\nsideDistY = %f\ndeltaDistX = %f\n deltaDistY =%f\n perpwallDist = %f\nstepX = %i\nstepY = %i\nhit = %i\nside %i\n", game->ray.cameraX, game->ray.rayDirX, game->ray.rayDirY, game->ray.mapX, game->ray.mapY, game->ray.sideDistX, game->ray.sideDistY, game->ray.deltaDistX, game->ray.deltaDistY, game->ray.perpWallDist, game->ray.stepX, game->ray.stepY, game->ray.hit, game->ray.side);
-	printf("posX = %f\nposY = %f\ndirX = %f\ndirY = %f\nplaneX = %f\nplaneY = %f\n", game->player.posX, game->player.posY, game->player.dirX, game->player.dirY, game->player.planeX, game->player.planeY);
-	printf("\\\\\\\\\\\\\\ END \\\\\\\\\\\\\\\\\n");
-}
-
-void draw_ray(t_data *game, t_draw  *draw, int i)
+void	draw_ray(t_data *game, t_draw *draw, int i)
 {
-	int y;
+	int	y;
 
 	y = 0;
-		
-	// print_values(game, draw);
-	while (y < draw->drawStart)
+	while (y < draw->draw_start)
 	{
 		my_mlx_pixel_put(&game->fbuffer, i, y, 0x0000ff);
 		y++;
 	}
-	// while (y < draw->drawEnd)
-	// {
-	// 	my_mlx_pixel_put(&game->fbuffer, i, y, 0xffffff);
-	// 	y++;
-	// }
 	draw_wall(game, draw, i);
-	y = draw->drawEnd;
+	y = draw->draw_end;
 	while (y < HEIGHT - 1)
 	{
 		my_mlx_pixel_put(&game->fbuffer, i, y, 0xAAAAAA);
@@ -47,96 +32,106 @@ void draw_ray(t_data *game, t_draw  *draw, int i)
 	game->draw_flag = 0;
 }
 
-void perp(t_data *game, int i)
+void	perp(t_data *game, int i)
 {
-	t_draw draw;
-	
+	t_draw	draw;
+
 	init_draw(&draw);
 	if (game->ray.side == 0)
-		game->ray.perpWallDist = (game->ray.sideDistX - game->ray.deltaDistX);
-	else	
-		game->ray.perpWallDist = (game->ray.sideDistY - game->ray.deltaDistY);
-
-	draw.lineH = (int)(HEIGHT / game->ray.perpWallDist);
-	draw.drawStart = -draw.lineH / 2 + HEIGHT / 2;
-	if (draw.drawStart < 0)
-		draw.drawStart = 0;
-	draw.drawEnd = draw.lineH / 2 + HEIGHT / 2;
-	if (draw.drawEnd >= HEIGHT)
-		draw.drawEnd = HEIGHT - 1;
-	if (game->ray.side == 0)
-		draw.wallX = game->player.posY + game->ray.perpWallDist * game->ray.rayDirY;
+		game->ray.perp_wall_dist = (game->ray.side_dist_x \
+		- game->ray.delta_dist_x);
 	else
-		draw.wallX = game->player.posX + game->ray.perpWallDist * game->ray.rayDirX;
-	draw.wallX -= floor(draw.wallX);
+		game->ray.perp_wall_dist = (game->ray.side_dist_y \
+		- game->ray.delta_dist_y);
+	draw.line_h = (int)(HEIGHT / game->ray.perp_wall_dist);
+	draw.draw_start = -draw.line_h / 2 + HEIGHT / 2;
+	if (draw.draw_start < 0)
+		draw.draw_start = 0;
+	draw.draw_end = draw.line_h / 2 + HEIGHT / 2;
+	if (draw.draw_end >= HEIGHT)
+		draw.draw_end = HEIGHT - 1;
+	if (game->ray.side == 0)
+		draw.wall_x = game->player.pos_y + game->ray.perp_wall_dist \
+		* game->ray.ray_dir_y;
+	else
+		draw.wall_x = game->player.pos_x + game->ray.perp_wall_dist \
+		* game->ray.ray_dir_x;
+	draw.wall_x -= floor(draw.wall_x);
 	draw_ray(game, &draw, i);
 }
 
-void dda(t_data *game)
+void	dda(t_data *game)
 {
 	while (game->ray.hit == 0)
 	{
-		if(game->ray.sideDistX < game->ray.sideDistY)
-        {
-          game->ray.sideDistX += game->ray.deltaDistX;
-          game->ray.mapX += game->ray.stepX;
-          game->ray.side = 0;
-        }
-        else
-        {
-          game->ray.sideDistY += game->ray.deltaDistY;
-          game->ray.mapY += game->ray.stepY;
-          game->ray.side = 1;
-        }
-		if(game->map.map[game->ray.mapX][game->ray.mapY] == '1')
+		if (game->ray.side_dist_x < game->ray.side_dist_y)
+		{
+			game->ray.side_dist_x += game->ray.delta_dist_x;
+			game->ray.map_x += game->ray.step_x;
+			game->ray.side = 0;
+		}
+		else
+		{
+			game->ray.side_dist_y += game->ray.delta_dist_y;
+			game->ray.map_y += game->ray.step_y;
+			game->ray.side = 1;
+		}
+		if (game->map.map[game->ray.map_x][game->ray.map_y] == '1')
 			game->ray.hit = 1;
 	}
 }
 
-void calc_step(t_data *game)
+void	calc_step(t_data *game)
 {
-	if(game->ray.rayDirX < 0)
+	if (game->ray.ray_dir_x < 0)
 	{
-	  game->ray.stepX = -1;
-	  game->ray.sideDistX = (game->player.posX - game->ray.mapX) * game->ray.deltaDistX;
+		game->ray.step_x = -1;
+		game->ray.side_dist_x = (game->player.pos_x - game->ray.map_x) \
+		* game->ray.delta_dist_x;
 	}
 	else
 	{
-	  game->ray.stepX = 1;
-	  game->ray.sideDistX = (game->ray.mapX + 1.0 - game->player.posX) * game->ray.deltaDistX;
+		game->ray.step_x = 1;
+		game->ray.side_dist_x = (game->ray.map_x + 1.0 - game->player.pos_x) \
+		* game->ray.delta_dist_x;
 	}
-	if(game->ray.rayDirY < 0)
+	if (game->ray.ray_dir_y < 0)
 	{
-	  game->ray.stepY = -1;
-	  game->ray.sideDistY = (game->player.posY - game->ray.mapY) * game->ray.deltaDistY;
+		game->ray.step_y = -1;
+		game->ray.side_dist_y = (game->player.pos_y - game->ray.map_y) \
+		* game->ray.delta_dist_y;
 	}
 	else
 	{
-	  game->ray.stepY = 1;
-	  game->ray.sideDistY = (game->ray.mapY + 1.0 - game->player.posY) * game->ray.deltaDistY;
+		game->ray.step_y = 1;
+		game->ray.side_dist_y = (game->ray.map_y + 1.0 - game->player.pos_y) \
+		* game->ray.delta_dist_y;
 	}
 }
 
-void calc_ray(t_data *game)
+void	calc_ray(t_data *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	mlx_clear_window(game->mlx_ptr, game->win_ptr);
 	while (i < WIDTH)
 	{
 		init_ray(&game->ray);
-		game->ray.cameraX = 2 * i / (double)WIDTH  - 1;
-		game->ray.rayDirX = game->player.dirX + game->player.planeX * game->ray.cameraX;
-		game->ray.rayDirY = game->player.dirY + game->player.planeY * game->ray.cameraX;
-		game->ray.mapX = game->player.posX;
-		game->ray.mapY = game->player.posY;
-		game->ray.deltaDistX = fabs(1 / game->ray.rayDirX);
-		game->ray.deltaDistY = fabs(1 / game->ray.rayDirY);
+		game->ray.camera_x = 2 * i / (double)WIDTH - 1;
+		game->ray.ray_dir_x = game->player.dir_x + game->player.plane_x \
+		* game->ray.camera_x;
+		game->ray.ray_dir_y = game->player.dir_y + game->player.plane_y \
+		* game->ray.camera_x;
+		game->ray.map_x = game->player.pos_x;
+		game->ray.map_y = game->player.pos_y;
+		game->ray.delta_dist_x = fabs(1 / game->ray.ray_dir_x);
+		game->ray.delta_dist_y = fabs(1 / game->ray.ray_dir_y);
 		calc_step(game);
 		dda(game);
 		perp(game, i);
 		i++;
 	}
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->fbuffer.ptr, 0, 0);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
+	game->fbuffer.ptr, 0, 0);
 }

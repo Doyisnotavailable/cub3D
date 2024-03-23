@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 20:28:26 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/05 18:02:18 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/23 04:28:55 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	check_hex(t_data *game, char **tmp, int type)
 {
 	if (count_array(tmp) != 3)
 		return ;
-	if (ft_atol(tmp[0]) == 1 || ft_atol(tmp[1]) == 1 ||  ft_atol(tmp[2]) == 1)
+	if (ft_atol(tmp[0]) == 1 || ft_atol(tmp[1]) == 1 || ft_atol(tmp[2]) == 1)
 		return ;
 	if (type == F)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_edit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:47:12 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/02/21 18:31:16 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/23 04:45:03 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static char	**remove_nl(char **map);
 void	edit_map(t_data *game)
 {
 	game->map.map = remove_nl(game->map.map);
-	if (check_enclosed_zero(game->map.map) || check_enclosed_space(game->map.map))
+	if (check_enclosed_zero(game->map.map) \
+	|| check_enclosed_space(game->map.map))
 	{
 		free_tmp(game);
 		free_array_exit(game->map.map, "Error\n Map not enclosed with walls\n");
@@ -70,7 +71,6 @@ int	check_enclosed_zero(char **map)
 				if (check_left_right_zero(map, x, y)
 					|| check_up_down_zero(map, x, y))
 				{
-				/* 	printf("character = '%c', in x = %i, y = %i", map[x][y], x, y); */
 					return (1);
 				}
 			}
@@ -100,7 +100,6 @@ int	check_enclosed_space(char **map)
 				if (check_left_right_space(map, x, y)
 					|| check_up_down_space(map, x, y))
 				{
-					/* 	printf("character = '%c', in x = %i, y = %i", map[x][y], x, y); */					
 					return (1);
 				}
 			}
@@ -110,11 +109,3 @@ int	check_enclosed_space(char **map)
 	}
 	return (0);
 }
-
-
-/* 11111111111111111111
-11111111111111111111
-111111111   11111111
-111111111   11111111
-111  11111111111  11
-111  11111111111  11 */

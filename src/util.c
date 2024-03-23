@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 20:11:03 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/21 03:13:15 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/23 04:50:08 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	if ((x > WIDTH - 1 && x < 0) || (y > HEIGHT - 1 && y < 0))
 		return ;
 	dst = img->adr + (y * img->len + x * (img->bpp / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
-
