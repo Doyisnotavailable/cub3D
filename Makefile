@@ -6,7 +6,7 @@
 #    By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 01:50:23 by alsaeed           #+#    #+#              #
-#    Updated: 2024/03/24 10:34:31 by alsaeed          ###   ########.fr        #
+#    Updated: 2024/03/24 20:19:24 by alsaeed          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ ifeq ($(UNAME), Linux)
 	MLX_DIR = libs/mlx_linux/
 else ifeq ($(UNAME), Darwin)
 	CC = cc
-	LDFLAGS += -Llibs/mlx_macos/ -Ilibs/mlx_macos/ -framework OpenGL -framework AppKit
+	LDFLAGS += -Llibs/mlx_macos/ -Ilibs/mlx_macos/ -lmlx -framework OpenGL -framework AppKit -L/usr/lib
 	MLX_DIR = libs/mlx_macos/
 endif
 
