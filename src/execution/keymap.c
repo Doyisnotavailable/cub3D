@@ -6,52 +6,35 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:18:46 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/24 09:58:21 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/24 10:28:48 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	key_rotate(int keycode, t_data *game)
+int	key_rotate(int sign, t_data *game)
 {
 	double	old_dir_x;
 	double	old_plane_x;
 
 	old_dir_x = 0;
 	old_plane_x = 0;
-	if (keycode == K_L_ARROW)
-	{
-		old_dir_x = game->player.dir_x;
-		game->player.dir_x = game->player.dir_x * cos(RS) \
-		- game->player.dir_y * sin(RS);
-		game->player.dir_y = old_dir_x * sin(RS) + game->player.dir_y * cos(RS);
-		old_plane_x = game->player.plane_x;
-		game->player.plane_x = game->player.plane_x * cos(RS) \
-		- game->player.plane_y * sin(RS);
-		game->player.plane_y = old_plane_x * sin(RS) \
-		+ game->player.plane_y * cos(RS);
-		game->draw_flag = 1;
-	}
-	if (keycode == K_R_ARROW)
-	{
-		old_dir_x = game->player.dir_x;
-		game->player.dir_x = game->player.dir_x * cos(-RS) \
-		- game->player.dir_y * sin(-RS);
-		game->player.dir_y = old_dir_x * sin(-RS) \
-		+ game->player.dir_y * cos(-RS);
-		old_plane_x = game->player.plane_x;
-		game->player.plane_x = game->player.plane_x \
-		* cos(-RS) - game->player.plane_y * sin(-RS);
-		game->player.plane_y = old_plane_x * sin(-RS) \
-		+ game->player.plane_y * cos(-RS);
-		game->draw_flag = 1;
-	}
+	old_dir_x = game->player.dir_x;
+	game->player.dir_x = game->player.dir_x * cos(sign * RS) \
+	- game->player.dir_y * sin(sign * RS);
+	game->player.dir_y = old_dir_x * sin(sign * RS) + game->player.dir_y \
+	* cos(sign * RS);
+	old_plane_x = game->player.plane_x;
+	game->player.plane_x = game->player.plane_x * cos(sign * RS) \
+	- game->player.plane_y * sin(sign * RS);
+	game->player.plane_y = old_plane_x * sin(sign * RS) \
+	+ game->player.plane_y * cos(sign * RS);
+	game->draw_flag = 1;
 	return (0);
 }
 
 int	key_move(int keycode, t_data *game)
 {
-	printf("%i\n", keycode);
 	if (keycode == K_ESC)
 		close_game(game);
 	else if (keycode == K_W)
@@ -62,7 +45,9 @@ int	key_move(int keycode, t_data *game)
 		move_a(game);
 	else if (keycode == K_D)
 		move_d(game);
-	else if (keycode == K_L_ARROW || keycode == K_R_ARROW)
-		key_rotate(keycode, game);
+	else if (keycode == K_L_ARROW)
+		key_rotate(1, game);
+	else if (keycode == K_R_ARROW)
+		key_rotate(-1, game);
 	return (0);
 }

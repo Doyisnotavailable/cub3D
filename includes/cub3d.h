@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/24 10:06:07 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/24 10:27:39 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ typedef struct s_data
 }	t_data;
 
 // init_utils.c
-void		xpm_img(t_data *game, char *path);
+void		xpm_img(t_data *game);
 int			ft_space(char c);
 int			ft_space_line(char *str);
 void		init_tmp(t_data *game);
@@ -233,7 +233,7 @@ void		draw_ray(t_data *game, t_draw *draw, int i);
 void		perp(t_data *game, int i);
 
 // added keymap.c
-int			key_rotate(int keycode, t_data *game);
+int			key_rotate(int sign, t_data *game);
 int			key_move(int keycode, t_data *game);
 
 // init.c
@@ -263,6 +263,6 @@ void		get_direction(t_data *game);
 // init_textures.c
 void		init_textures(t_data *game);
 int			close_game(t_data *game);
-void		exit_init(t_data *game, char *error_message);
+void		exit_init(t_data *game, char *str);
 
 #endif
