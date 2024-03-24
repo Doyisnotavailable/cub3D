@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 16:07:59 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/24 02:02:11 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/24 03:06:12 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,5 @@ void	finaladd(t_data *game)
 	init_player(game);
 	init_ray(&game->ray);
 	init_mlx(game);
-	init_textures(game);
 	game->draw_flag = 1;
 }

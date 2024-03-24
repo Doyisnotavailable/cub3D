@@ -6,7 +6,7 @@
 #    By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 01:50:23 by alsaeed           #+#    #+#              #
-#    Updated: 2024/03/23 02:46:52 by alsaeed          ###   ########.fr        #
+#    Updated: 2024/03/24 09:57:40 by alsaeed          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME =	cub3D
 
 UNAME = $(shell uname)
 
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 LDFLAGS = -Llibs/libft/ -lft -lm
 INCLUDES = -Iincludes/ -Ilibs/libft/includes
 
@@ -54,7 +54,8 @@ SRCX =	init.c \
 		wasd_move.c \
 		wall_collision.c \
 		draw_wall.c \
-		draw_utils.c
+		draw_utils.c \
+		close_game.c
 
 OBJD_DIR = src/parsing/objs
 OBJD = $(SRCD:%.c=$(OBJD_DIR)/%.o)
@@ -70,7 +71,6 @@ all: $(NAME)
 $(OBJD_DIR)%.o: src/parsing%.c
 	@mkdir -p $(OBJD_DIR)
 	@$(CC) $(CFLAGS) -c $(INCLUDES) $< -o $@
-	
 $(OBJX_DIR)%.o: src/execution%.c
 	@mkdir -p $(OBJX_DIR)
 	@$(CC) $(CFLAGS) -c $(INCLUDES) $< -o $@

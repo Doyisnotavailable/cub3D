@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 20:06:10 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/23 04:56:18 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/24 10:07:15 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 void	init_mlx(t_data *game)
 {
 	game->mlx_ptr = mlx_init();
-	if (game->mlx_ptr == NULL)
-		ft_putstr_fd("Error: Can't initialize mlx\n", 2);
+	if (!game->mlx_ptr)
+		exit_init(game, "Error: Can't initialize mlx\n");
+	init_textures(game);
 	game->win_ptr = mlx_new_window(game->mlx_ptr, WIDTH, HEIGHT, "cub3D");
 	if (!game->win_ptr)
-		ft_putstr_fd("Error: Can't initialize window\n", 2);
+		exit_init(game, "Error: Can't initialize mlx\n");
 	game->fbuffer.ptr = mlx_new_image(game->mlx_ptr, WIDTH, HEIGHT);
 	game->fbuffer.adr = mlx_get_data_addr(game->fbuffer.ptr, \
 	&game->fbuffer.bpp, &game->fbuffer.len, &game->fbuffer.endian);

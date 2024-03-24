@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/24 02:02:43 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/24 10:06:07 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ typedef struct s_data
 }	t_data;
 
 // init_utils.c
-t_img		xpm_img(t_data *game, char *path);
+void		xpm_img(t_data *game, char *path);
 int			ft_space(char c);
 int			ft_space_line(char *str);
 void		init_tmp(t_data *game);
@@ -262,5 +262,7 @@ void		get_direction(t_data *game);
 
 // init_textures.c
 void		init_textures(t_data *game);
+int			close_game(t_data *game);
+void		exit_init(t_data *game, char *error_message);
 
 #endif

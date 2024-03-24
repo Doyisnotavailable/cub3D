@@ -6,7 +6,7 @@
 /*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:18:46 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/24 01:59:30 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/24 09:58:21 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,17 @@ int	key_rotate(int keycode, t_data *game)
 int	key_move(int keycode, t_data *game)
 {
 	printf("%i\n", keycode);
-	if (keycode == K_W)
+	if (keycode == K_ESC)
+		close_game(game);
+	else if (keycode == K_W)
 		move_w(game);
-	if (keycode == K_S)
+	else if (keycode == K_S)
 		move_s(game);
-	if (keycode == K_A)
+	else if (keycode == K_A)
 		move_a(game);
-	if (keycode == K_D)
+	else if (keycode == K_D)
 		move_d(game);
-	if (keycode == K_L_ARROW || keycode == K_R_ARROW)
+	else if (keycode == K_L_ARROW || keycode == K_R_ARROW)
 		key_rotate(keycode, game);
 	return (0);
 }
