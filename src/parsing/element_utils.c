@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 20:39:22 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/05 18:03:04 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/24 22:07:49 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,3 @@ long	ft_atol(char *str)
 		return (1);
 	return (0);
 }
-
-//change

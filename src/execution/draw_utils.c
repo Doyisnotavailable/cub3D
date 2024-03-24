@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 17:28:35 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/23 04:59:12 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/25 00:21:58 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,15 @@ void	init_draw(t_draw *draw)
 	draw->wall_x = 0;
 	draw->step = 0;
 	draw->texpos = 0;
+}
+
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = NULL;
+	if ((x > WIDTH - 1 && x < 0) || (y > HEIGHT - 1 && y < 0))
+		return ;
+	dst = img->adr + (y * img->len + x * (img->bpp / 8));
+	*(unsigned int *)dst = color;
 }

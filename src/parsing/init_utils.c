@@ -6,28 +6,12 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:14:06 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/01/05 16:23:16 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/24 21:04:11 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-/* t_img	xpm_img(void *mlx, char *path, t_data *game)
-{
-	t_img	model;
-
-	(void)game;
-	model.img = mlx_xpm_file_to_image(mlx, path, &model.x, &model.y);
-	if (model.img == NULL)
-	{
-		ft_putstr_fd("Error\nInvalid XPM file\n", 2);
-		destroy_img(game);
-		mlx_destroy_window(game->mlx, game->win);
-		free(game->mlx);
-	}
-	return (model);
-}
-*/
 int	ft_space(char c)
 {
 	if (c == ' ' || c == '\t')

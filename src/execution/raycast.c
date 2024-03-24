@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:46:16 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/23 04:59:12 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/25 00:22:18 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	draw_ray(t_data *game, t_draw *draw, int i)
 	y = 0;
 	while (y < draw->draw_start)
 	{
-		my_mlx_pixel_put(&game->fbuffer, i, y, 0x0000ff);
+		my_mlx_pixel_put(&game->fbuffer, i, y, game->skyc);
 		y++;
 	}
 	draw_wall(game, draw, i);
 	y = draw->draw_end;
 	while (y < HEIGHT - 1)
 	{
-		my_mlx_pixel_put(&game->fbuffer, i, y, 0xAAAAAA);
+		my_mlx_pixel_put(&game->fbuffer, i, y, game->floorc);
 		y++;
 	}
 	game->draw_flag = 0;

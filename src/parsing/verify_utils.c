@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:38:13 by mlumibao          #+#    #+#             */
-/*   Updated: 2023/12/24 15:39:57 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/24 23:23:24 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	alloc(char **tab, char const *s, char sep)
 
 	tmp = s;
 	tab_p = tab;
-	while (*tmp)
+	while (*tmp != '\0')
 	{
 		while (*s == sep || *s == '\t' || *s == '\n')
 			++s;
@@ -33,7 +33,7 @@ static void	alloc(char **tab, char const *s, char sep)
 			++tab_p;
 		}
 	}
-	*tab_p = 0;
+	*tab_p = NULL;
 }
 
 static int	ft_count_words(char const *s, char sep)
@@ -47,7 +47,7 @@ static int	ft_count_words(char const *s, char sep)
 			++s;
 		if (*s)
 			++word_count;
-		while (*s && *s != sep)
+		while (*s && *s != sep && *s != '\t')
 			++s;
 	}
 	return (word_count);

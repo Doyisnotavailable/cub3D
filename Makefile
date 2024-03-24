@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+         #
+#    By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 01:50:23 by alsaeed           #+#    #+#              #
-#    Updated: 2024/03/24 20:19:24 by alsaeed          ###   ########.fr        #
+#    Updated: 2024/03/25 00:25:06 by mlumibao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME =	cub3D
 
 UNAME = $(shell uname)
 
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror
 LDFLAGS = -Llibs/libft/ -lft -lm
 INCLUDES = -Iincludes/ -Ilibs/libft/includes
 
@@ -50,7 +50,6 @@ SRCX =	init.c \
 		rect_map.c \
 		raycast.c \
 		keymap.c \
-		util.c \
 		wasd_move.c \
 		wall_collision.c \
 		draw_wall.c \
@@ -85,7 +84,7 @@ $(LIBFT):
 $(MINILIBX):
 	@make -sC $(MLX_DIR)
 	@if [ $(UNAME) = Darwin ]; then \
-		cp $(MLX_DIR)libmlx.dylib ./ ; \
+		cp $(MLX_DIR)libmlx.a ./ ; \
 	fi
 	@echo "minilibx Compiled : \033[1;32mOK\033[0m"
 
@@ -107,7 +106,7 @@ clean:
 fclean: clean
 	@make fclean -sC $(LIBFT_DIR)
 	@if [ $(UNAME) = Darwin ]; then \
-		rm -rf ./libmlx.dylib ; \
+		rm -rf ./libmlx.a ; \
 	fi
 	@if [ -e $(NAME) ]; then \
 		rm -f $(NAME); \

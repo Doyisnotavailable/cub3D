@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 16:34:12 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/02/27 14:08:53 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/25 00:01:56 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	check_map_char(t_data *game, int *charnum)
 				|| game->map.map[i][j] == 'S' || game->map.map[i][j] == 'W')
 				(*charnum)++;
 			else if (game->map.map[i][j] == '1' || game->map.map[i][j] ==
-				'0' || game->map.map[i][j] == '\t' ||
+				'0' ||
 					game->map.map[i][j] == ' ' || game->map.map[i][j] == '\n')
 				continue ;
 			else
@@ -82,27 +82,3 @@ int	check_map_char(t_data *game, int *charnum)
 	return (0);
 }
 
-/* void	check_map_walls(t_data *game, int size)
-{
-	char	**mapcopy;
-
-	mapcopy = (char **)malloc(sizeof(char *) * (1 + size));
-	
-}
-
-void	copy_edit_map(t_data *game, char **copy)
-{
-	int		i;
-	int		j;
-
-	i = -1;
-	while (game->map.map[++i])
-	{
-		j = -1;
-		while(game->map.map[i] && ft_space_line)
-			i++;
-		*copy = (char *)malloc(sizeof(char) * (1 + ft_strlen(game->map.map[i])));
-		while (game->map.map[i][++j] == ' ' || game->map.map[i][j] == '\t')
-			*copy++ = game->map.map[i][j];
-	}
-} */
