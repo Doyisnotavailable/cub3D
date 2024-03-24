@@ -6,7 +6,7 @@
 #    By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 01:50:23 by alsaeed           #+#    #+#              #
-#    Updated: 2024/03/25 01:05:00 by mlumibao         ###   ########.fr        #
+#    Updated: 2024/03/25 01:54:21 by mlumibao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME =	cub3D
 
 UNAME = $(shell uname)
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 LDFLAGS = -Llibs/libft/ -lft -lm
 INCLUDES = -Iincludes/ -Ilibs/libft/includes
 
@@ -32,7 +32,6 @@ endif
 
 SRCD =	check.c \
 		free.c \
-		init_game.c \
 		init_text.c \
 		init_utils.c \
 		verify.c \

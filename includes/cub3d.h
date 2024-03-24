@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:10:21 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/24 20:34:00 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/25 02:39:21 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@
 # define SO				4
 # define F				5
 # define C				6
-# define TEXSIZE		255
-# define MS				0.08 //movespeed
+# define TEXSIZE		64
+# define MS				0.06 //movespeed
 # define RS				0.08 //rotate speed
 
 typedef struct s_draw
@@ -239,8 +239,8 @@ int			key_move(int keycode, t_data *game);
 // init.c
 void		init_mlx(t_data *game);
 void		init_player(t_data *game);
+void		destroy_img(t_data *game);
 
-// util.c
 void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 // draw_wall.c

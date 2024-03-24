@@ -1,7 +1,10 @@
-WE	./xpm/hev.xpm
 NO	./xpm/north.xpm
+
+
+
 SO ./xpm/South.xpm      
-EA ./xpm/East.xpm
+EA ./xpm/East.xpm																	
+WE	./xpm/hev.xpm
 
 C 255,255,255
 F 0,0,0

@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:14:13 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/25 01:09:19 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/25 01:51:09 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	main(int ac, char **av)
 {
 	t_data		game;
 
+
+	game = (t_data){0};
 	if (ac != 2)
 	{
 		ft_putstr_fd("Error\n Invalid Syntax ./cub3d 'MAP_PATH'", 2);

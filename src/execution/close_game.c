@@ -6,7 +6,7 @@
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 09:51:56 by alsaeed           #+#    #+#             */
-/*   Updated: 2024/03/24 21:45:22 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/25 02:26:37 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	close_game(t_data *game)
 	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
 	free_tmp(game);
-	free(game);
 	free_array(map);
 	exit (0);
 }
@@ -43,17 +42,14 @@ int	close_game(t_data *game)
 #elif __APPLE__
 
 int	close_game(t_data *game)
-{
-	int		i;
-
-	i = 0;
-	mlx_destroy_image(game->mlx_ptr, game->fbuffer.ptr);
-	mlx_destroy_image(game->mlx_ptr, game->n_img.ptr);
-	mlx_destroy_image(game->mlx_ptr, game->s_img.ptr);
-	mlx_destroy_image(game->mlx_ptr, game->e_img.ptr);
-	mlx_destroy_image(game->mlx_ptr, game->w_img.ptr);
-	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+{	
+	if (game->fbuffer.ptr)
+		mlx_destroy_image(game->mlx_ptr, game->fbuffer.ptr);
+	destroy_img(game);
+	if (game->win_ptr)
+		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	free(game->mlx_ptr);
+	free_tmp(game);
 	free_array(game->map.map);
 	exit (0);
 }
@@ -75,7 +71,6 @@ void	exit_init(t_data *game, char *str)
 		free(game->mlx_ptr);
 	}
 	free_tmp(game);
-	free(game);
 	if (str)
 		put_strerror(str);
 	exit (1);
@@ -85,15 +80,16 @@ void	exit_init(t_data *game, char *str)
 
 void	exit_init(t_data *game, char *str)
 {
-	if (game->map.map && game->fbuffer.ptr)
+	if (game->mlx_ptr && game->map.map && game->fbuffer.ptr)
 		mlx_destroy_image(game->mlx_ptr, game->fbuffer.ptr);
+	destroy_img(game);
 	if (game->win_ptr)
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	if (game->map.map)
 		free_array(game->map.map);
 	if (game->mlx_ptr)
 		free(game->mlx_ptr);
-	free(game);
+	free_tmp(game);
 	if (str)
 		put_strerror(str);
 	exit (1);

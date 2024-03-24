@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 20:06:10 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/24 10:13:15 by alsaeed          ###   ########.fr       */
+/*   Updated: 2024/03/25 02:21:55 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@ void	init_mlx(t_data *game)
 	if (!game->win_ptr)
 		exit_init(game, "Error: Can't initialize mlx\n");
 	game->fbuffer.ptr = mlx_new_image(game->mlx_ptr, WIDTH, HEIGHT);
+	if (!game->fbuffer.ptr)
+		exit_init(game, "Error: Can't initialize buffer\n");
 	game->fbuffer.adr = mlx_get_data_addr(game->fbuffer.ptr, \
 	&game->fbuffer.bpp, &game->fbuffer.len, &game->fbuffer.endian);
+	if (!game->fbuffer.adr)
+		exit_init(game, "Error: Can't initialize buffer\n");
 }
 
 void	init_player(t_data *game)
@@ -49,4 +53,16 @@ void	init_ray(t_ray *ray)
 	ray->step_y = 0;
 	ray->hit = 0;
 	ray->side = 0;
+}
+
+void	destroy_img(t_data *game)
+{
+	if (game->n_img.ptr)
+		mlx_destroy_image(game->mlx_ptr, game->n_img.ptr);
+	if (game->s_img.ptr)
+		mlx_destroy_image(game->mlx_ptr, game->s_img.ptr);
+	if (game->e_img.ptr)
+		mlx_destroy_image(game->mlx_ptr, game->e_img.ptr);
+	if (game->w_img.ptr)
+		mlx_destroy_image(game->mlx_ptr, game->w_img.ptr);
 }
