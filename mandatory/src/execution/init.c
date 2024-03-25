@@ -3,14 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 20:06:10 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/25 07:45:04 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/25 22:39:55 by alsaeed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+#ifdef __linux__
+
+void	init_mlx(t_data *game)
+{
+	game->mlx_ptr = mlx_init();
+	if (!game->mlx_ptr)
+		exit_init(game, "Error: Can't initialize mlx\n");
+	init_textures(game);
+	game->win_ptr = mlx_new_window(game->mlx_ptr, WIDTH, HEIGHT, "cub3D");
+	if (!game->win_ptr)
+		exit_init(game, "Error: Can't initialize mlx\n");
+	game->fbuffer.ptr = mlx_new_image(game->mlx_ptr, WIDTH, HEIGHT);
+	if (!game->fbuffer.ptr)
+		exit_init(game, "Error: Can't initialize buffer\n");
+	game->fbuffer.adr = mlx_get_data_addr(game->fbuffer.ptr, \
+	&game->fbuffer.bpp, &game->fbuffer.len, &game->fbuffer.endian);
+	if (!game->fbuffer.adr)
+		exit_init(game, "Error: Can't initialize buffer\n");
+	mlx_mouse_move(game->mlx_ptr, game->win_ptr, WIDTH / 2, HEIGHT / 2);
+}
+
+#elif __APPLE__
 
 void	init_mlx(t_data *game)
 {
@@ -30,6 +53,8 @@ void	init_mlx(t_data *game)
 		exit_init(game, "Error: Can't initialize buffer\n");
 	mlx_mouse_move(game->win_ptr, WIDTH / 2, HEIGHT / 2);
 }
+
+#endif
 
 void	init_player(t_data *game)
 {

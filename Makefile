@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+         #
+#    By: alsaeed <alsaeed@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 01:50:23 by alsaeed           #+#    #+#              #
-#    Updated: 2024/03/25 08:28:54 by mlumibao         ###   ########.fr        #
+#    Updated: 2024/03/25 22:25:20 by alsaeed          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,7 +98,7 @@ LIBFT_DIR = libs/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 MINILIBX = $(MLX_DIR)libmlx.a
 
-all: $(NAME) $(NAME_BONUS)
+all: $(NAME_BONUS) $(NAME)
 
 $(OBJD_DIR)%.o: mandatory/src/parsing%.c
 	@mkdir -p $(OBJD_DIR)
@@ -106,7 +106,7 @@ $(OBJD_DIR)%.o: mandatory/src/parsing%.c
 $(OBJX_DIR)%.o: mandatory/src/execution%.c
 	@mkdir -p $(OBJX_DIR)
 	@$(CC) $(CFLAGS) -c $(INCLUDES) $< -o $@
-	
+
 $(NAME): $(LIBFT) $(MINILIBX) $(OBJD) $(OBJX) main.c
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJD) $(OBJX) main.c -o $(NAME) $(LDFLAGS)
 	@echo "cub3D Compiled : \033[1;32mOK\033[0m"
