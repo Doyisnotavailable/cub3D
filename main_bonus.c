@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlumibao <mlumibao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:14:13 by mlumibao          #+#    #+#             */
-/*   Updated: 2024/03/25 08:27:06 by mlumibao         ###   ########.fr       */
+/*   Updated: 2024/03/25 08:06:01 by mlumibao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	game_loop(t_data *game)
 {
@@ -18,6 +18,29 @@ int	game_loop(t_data *game)
 		return (0);
 	calc_ray(game);
 	return (1);
+}
+
+int	mouse_move(int x, int y, t_data *game)
+{
+	static int	old_x;
+
+	(void)y;
+	if (x == old_x)
+		return (0);
+	else if (x > 0 || x < (WIDTH >> 1))
+	{
+		if (x < old_x)
+			key_rotate(1, game);
+		else if (x > old_x)
+			key_rotate(-1, game);
+		old_x = x;
+	}
+	if (x < 20 || x > (WIDTH) - 20)
+	{
+		mlx_mouse_move(game->win_ptr, WIDTH >> 1, HEIGHT >> 1);
+		old_x = WIDTH >> 1;
+	}
+	return (0);
 }
 
 int	main(int ac, char **av)
@@ -33,6 +56,8 @@ int	main(int ac, char **av)
 	check(av, &game);
 	finaladd(&game);
 	mlx_loop_hook(game.mlx_ptr, game_loop, &game);
+	mlx_mouse_hide();
+	mlx_hook(game.win_ptr, 6, 0, mouse_move, &game);
 	mlx_hook(game.win_ptr, 2, 1L << 0, key_move, &game);
 	mlx_hook(game.win_ptr, 17, 1L << 17, close_game, &game);
 	mlx_loop(game.mlx_ptr);
